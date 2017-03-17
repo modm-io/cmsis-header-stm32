@@ -17,6 +17,8 @@ Here is the list of the current device header version and release date as well a
 - [L1: v2.2.0 released 01-July-2016 (CubeL1 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
 - [L4: v1.3.0 released 17-February-2017 (CubeL4 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
 
+The Travis CI integration checks these versions daily and will fail, if they need updating: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
+
 The ST header files in this directory are available under the BSD 3-Clause License:
 ```
 COPYRIGHT(c) {year} STMicroelectronics
