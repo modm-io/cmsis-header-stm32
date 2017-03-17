@@ -11,7 +11,7 @@ Here is the list of the current device header version and release date as well a
 - [F1: v4.1.0 released 29-April-2016 (CubeF1 v1.4.0)](http://www.st.com/en/embedded-software/stm32cubef1.html)
 - [F2: v2.1.2 released 29-June-2016 (CubeF2 v1.4.0)](http://www.st.com/en/embedded-software/stm32cubef2.html)
 - [F3: v2.3.1 released 16-December-2016 (CubeF3 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubef3.html)
-- [F4: v2.5.0 released 22-April-2016 (CubeF4 v1.14.0)](http://www.st.com/en/embedded-software/stm32cubef4.html)
+- [F4: v2.6.1 released 14-February-2017 (CubeF4 v1.15.0)](http://www.st.com/en/embedded-software/stm32cubef4.html)
 - [F7: v1.1.0 released 22-April-2016 (CubeF7 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubef7.html)
 - [L0: v1.7.1 released 25-November-2016 (CubeL0 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubel0.html)
 - [L1: v2.2.0 released 01-July-2016 (CubeL1 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
