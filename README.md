@@ -15,7 +15,7 @@ Here is the list of the current device header version and release date as well a
 - [F7: v1.1.0 released 22-April-2016 (CubeF7 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubef7.html)
 - [L0: v1.7.1 released 25-November-2016 (CubeL0 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubel0.html)
 - [L1: v2.2.0 released 01-July-2016 (CubeL1 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
-- [L4: v1.2.0 released 28-October-2016 (CubeL4 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
+- [L4: v1.3.0 released 17-February-2017 (CubeL4 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
 
 The ST header files in this directory are available under the BSD 3-Clause License:
 ```
