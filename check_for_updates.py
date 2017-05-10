@@ -14,7 +14,7 @@ stm32_families = [
 ]
 
 def get_local_cube_version(readme, family):
-    regex = "\(Cube{} v(?P<version>[0-9]+\.[0-9]+\.[0-9]+)\)".format(family.upper())
+    regex = "Cube{} v(?P<version>[0-9]+\.[0-9]+\.[0-9]+)\)".format(family.upper())
     match = re.search(regex, readme)
     return match.group("version") if match else None
 
