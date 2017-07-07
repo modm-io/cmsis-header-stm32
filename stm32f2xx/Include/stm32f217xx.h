@@ -1088,7 +1088,6 @@ USB_OTG_HostChannelTypeDef;
 #define DCMI_BASE             (AHB2PERIPH_BASE + 0x50000U)
 #define CRYP_BASE             (AHB2PERIPH_BASE + 0x60000U)
 #define HASH_BASE             (AHB2PERIPH_BASE + 0x60400U)
-#define HASH_DIGEST_BASE      (AHB2PERIPH_BASE + 0x60710U)
 #define RNG_BASE              (AHB2PERIPH_BASE + 0x60800U)
 
 /*!< FSMC Bankx registers base address */
@@ -1205,7 +1204,6 @@ USB_OTG_HostChannelTypeDef;
 #define DCMI                ((DCMI_TypeDef *) DCMI_BASE)
 #define CRYP                ((CRYP_TypeDef *) CRYP_BASE)
 #define HASH                ((HASH_TypeDef *) HASH_BASE)
-#define HASH_DIGEST         ((HASH_DIGEST_TypeDef *) HASH_DIGEST_BASE)
 #define RNG                 ((RNG_TypeDef *) RNG_BASE)
 #define FSMC_Bank1          ((FSMC_Bank1_TypeDef *) FSMC_Bank1_R_BASE)
 #define FSMC_Bank1E         ((FSMC_Bank1E_TypeDef *) FSMC_Bank1E_R_BASE)
