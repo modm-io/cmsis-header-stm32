@@ -14,20 +14,20 @@ stm32_families = [
 ]
 
 def get_local_cube_version(readme, family):
-    regex = "Cube{} v(?P<version>[0-9]+\.[0-9]+\.[0-9]+)\)".format(family.upper())
+    regex = r"Cube{} v(?P<version>[0-9]+\.[0-9]+\.[0-9]+)\)".format(family.upper())
     match = re.search(regex, readme)
     return match.group("version") if match else None
 
 def get_header_version(release_notes):
-    vmatch = re.search("\">V(?P<version>[0-9]+\.[0-9]+\.[0-9]+)", release_notes)
+    vmatch = re.search(r"\">V(?P<version>[0-9]+\.[0-9]+\.[0-9]+)", release_notes)
     return vmatch.group("version") if vmatch else None
 
 def get_remote_cube_version(html):
-    vmatch = re.search("    (?P<version>[0-9]+\.[0-9]+\.[0-9]+)", html)
+    vmatch = re.search(r"    (?P<version>[0-9]+\.[0-9]+\.[0-9]+)", html)
     return vmatch.group("version") if vmatch else None
 
-def get_remote_zip_url(html):
-    dlmatch = re.search("data-download-path=\"(?P<dlurl>/content/ccc/resource/.*?\.zip)\"", html)
+def get_remote_zip_url(html, family):
+    dlmatch = re.search(r"data-download-path=\"(?P<dlurl>/content/ccc/resource/.*?cube{}\.zip)\"".format(family), html)
     return "http://www.st.com" + dlmatch.group("dlurl") if dlmatch else None
 
 
@@ -62,7 +62,7 @@ for family in stm32_families:
             print("No version match in remote html for", family)
             exit(1)
         # extract cube download link from website
-        cube_dl_url[family] = get_remote_zip_url(html)
+        cube_dl_url[family] = get_remote_zip_url(html, family)
         if not cube_dl_url[family]:
             print("No zip download link for", family)
             exit(1)
