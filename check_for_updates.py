@@ -8,9 +8,9 @@ import sys
 import re
 
 stm32_families = [
-    "f0", "f1", "f2",
-    "f3", "f4", "f7",
-    "l0", "l1", "l4"
+    "l0", "l1", "l4",
+    "f0", "f1", "f2", "f3", "f4", "f7",
+    "h7"
 ]
 
 def get_local_cube_version(readme, family):
