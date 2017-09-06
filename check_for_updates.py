@@ -68,7 +68,7 @@ for family in stm32_families:
             exit(1)
 
 # compare all versions and print a status page
-check_header_version = [f for f in stm32_families if cube_local_version[f] != cube_remote_version[f]]
+check_header_version = [f for f in stm32_families if cube_local_version[f] < cube_remote_version[f]]
 header_remote_version = {}
 # compare local and remote header versions
 for family in check_header_version:
@@ -102,7 +102,7 @@ for family in check_header_version:
     status = "{}: Header v{} -> v{}\t{}"
     hl = header_local_version[family]
     hr = header_remote_version[family]
-    print(status.format(family.upper(), hl, hr, "update!" if hl != hr else "ok"))
+    print(status.format(family.upper(), hl, hr, "update!" if hl < hr else "ok"))
     if hl != hr:
         update_required = True
 
