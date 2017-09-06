@@ -8,12 +8,12 @@ The files are copied and modified by converting all line endings from Windows to
 Here is the list of the current device header version and release date as well as the Cube release version in braces:
 
 - [L0: v1.7.1 created 25-November-2016 (CubeL0 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubel0.html)
-- [L1: v2.2.1 created 21-April-2017 (published 09-May-2017 in CubeL1 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
-- [L4: v1.3.1 created 21-April-2017 (published 09-May-2017 in CubeL4 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
-- [F0: v2.3.2 created 07-April-2017 (published 09-May-2017 in CubeF0 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
-- [F1: v4.1.0 created 29-April-2016 (published 10-July-2017 in CubeF1 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubef1.html)
-- [F2: v2.2.0 created 17-March-2017 (published 10-May-2017 in CubeF2 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubef2.html)
-- [F3: v2.3.2 created 23-June-2017 (published 10-July-2017 in CubeF3 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubef3.html)
+- [L1: v2.2.1 created 21-April-2017 (CubeL1 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
+- [L4: v1.3.2 created 16-June-2017 (CubeL4 v1.8.1)](http://www.st.com/en/embedded-software/stm32cubel4.html)
+- [F0: v2.3.2 created 07-April-2017 (CubeF0 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
+- [F1: v4.1.0 created 29-April-2016 (CubeF1 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubef1.html)
+- [F2: v2.2.0 created 17-March-2017 (CubeF2 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubef2.html)
+- [F3: v2.3.2 created 23-June-2017 (CubeF3 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubef3.html)
 - [F4: v2.6.1 created 14-February-2017 (CubeF4 v1.16.0)](http://www.st.com/en/embedded-software/stm32cubef4.html)
 - [F7: v1.2.0 created 30-December-2016 (CubeF7 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubef7.html)
 - [H7: v1.0.0 created 21-April-2017 (CubeH7 v1.0.0)](http://www.st.com/en/embedded-software/stm32cubeh7.html)
