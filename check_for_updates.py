@@ -30,6 +30,16 @@ def get_remote_zip_url(html, family):
     dlmatch = re.search(r"data-download-path=\"(?P<dlurl>/content/ccc/resource/.*?cube{}\.zip)\"".format(family), html)
     return "http://www.st.com" + dlmatch.group("dlurl") if dlmatch else None
 
+def remote_is_newer(local, remote):
+    if "x" in local or "x" in remote:
+        return True
+    for l, r in zip(local.split('.'), remote.split('.')):
+        if int(l) < int(r):
+            return True
+    return False
+
+download_remote = ("-d" in sys.argv)
+check_header = ("-h" in sys.argv)
 
 cube_local_version = {}
 header_local_version = {}
@@ -68,27 +78,7 @@ for family in stm32_families:
             exit(1)
 
 # compare all versions and print a status page
-check_header_version = [f for f in stm32_families if cube_local_version[f] < cube_remote_version[f]]
-header_remote_version = {}
-# compare local and remote header versions
-for family in check_header_version:
-    # download cmsis pack into zip file
-    dl_file = "{}.zip".format(family)
-    if "-d" in sys.argv:
-        print("Downloading '{}.zip' ...".format(family))
-        with urllib.request.urlopen(cube_dl_url[family]) as response, \
-                              open(dl_file, "wb") as out_file:
-            shutil.copyfileobj(response, out_file)
-    # extract the remote header version from the zip file
-    with zipfile.ZipFile(dl_file, "r") as zip_ref:
-        base_name = zip_ref.namelist()[0].split("/")[0]
-        release_note_path = "{}/Drivers/CMSIS/Device/ST/STM32{}xx/Release_Notes.html".format(base_name, family.upper())
-        # only read the release notes, we don't care about the rest
-        html = zip_ref.read(release_note_path).decode("utf-8", errors="replace")
-        header_remote_version[family] = get_header_version(html)
-    if not header_remote_version[family]:
-        print("No version match in remote release notes for", family)
-        exit(1)
+check_header_version = [f for f in stm32_families if remote_is_newer(cube_local_version[f], cube_remote_version[f])]
 
 update_required = False
 # intermediate report on cube versions
@@ -96,15 +86,44 @@ for family in stm32_families:
     status = "{}: Cube   v{} -> v{}\t{}"
     print(status.format(family.upper(), cube_local_version[family], cube_remote_version[family],
             "update!" if family in check_header_version else "ok"))
-print()
-# final report
-for family in check_header_version:
-    status = "{}: Header v{} -> v{}\t{}"
-    hl = header_local_version[family]
-    hr = header_remote_version[family]
-    print(status.format(family.upper(), hl, hr, "update!" if hl < hr else "ok"))
-    if hl != hr:
-        update_required = True
+
+if check_header:
+    header_remote_version = {}
+    # compare local and remote header versions
+    for family in check_header_version:
+        # download cmsis pack into zip file
+        dl_file = "{}.zip".format(family)
+        if download_remote:
+            print("Downloading '{}.zip' ...\n{}".format(family, cube_dl_url[family]))
+            with urllib.request.urlopen(cube_dl_url[family]) as response, \
+                                  open(dl_file, "wb") as out_file:
+                shutil.copyfileobj(response, out_file)
+        print("Extracting '{}.zip' ...".format(family))
+        # extract the remote header version from the zip file
+        try:
+            with zipfile.ZipFile(dl_file, "r") as zip_ref:
+                base_name = zip_ref.namelist()[0].split("/")[0]
+                release_note_path = "{}/Drivers/CMSIS/Device/ST/STM32{}xx/Release_Notes.html".format(base_name, family.upper())
+                # only read the release notes, we don't care about the rest
+                html = zip_ref.read(release_note_path).decode("utf-8", errors="replace")
+                header_remote_version[family] = get_header_version(html)
+        except:
+            print("Bad zipfile for {}!".format(family))
+            header_remote_version[family] = "x.x.x"
+            continue
+        if not header_remote_version[family]:
+            print("No version match in remote release notes for", family)
+            exit(1)
+
+    print()
+    # final report
+    for family in check_header_version:
+        status = "{}: Header v{} -> v{}\t{}"
+        hl = header_local_version[family]
+        hr = header_remote_version[family]
+        print(status.format(family.upper(), hl, hr, "update!" if remote_is_newer(hl, hr) else "ok"))
+        if remote_is_newer(hl, hr):
+            update_required = True
 
 # if an update is required, fail this "test"
 if update_required:
