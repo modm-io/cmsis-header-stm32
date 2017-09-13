@@ -6,6 +6,7 @@ import zipfile
 import shutil
 import sys
 import re
+import os
 
 stm32_families = [
     "l0", "l1", "l4",
@@ -40,6 +41,7 @@ def remote_is_newer(local, remote):
 
 download_remote = ("-d" in sys.argv)
 check_header = ("-h" in sys.argv)
+replace_header = ("-r" in sys.argv)
 
 cube_local_version = {}
 header_local_version = {}
@@ -124,7 +126,25 @@ if check_header:
         print(status.format(family.upper(), hl, hr, "update!" if remote_is_newer(hl, hr) else "ok"))
         if remote_is_newer(hl, hr):
             update_required = True
+            if replace_header:
+                try:
+                    print("Replacing headers stm32{}xx...".format(family))
+                    with zipfile.ZipFile("{}.zip".format(family), "r") as zip_ref:
+                        base_name = "{}/Drivers/CMSIS/Device/ST/STM32{}xx/".format(zip_ref.namelist()[0].split("/")[0], family.upper())
+                        destination_path = "stm32{}xx".format(family)
+                        sources = ["Release_Notes.html", "Include/s"]
+                        for member in zip_ref.namelist():
+                            if any(member.startswith(os.path.join(base_name, src)) for src in sources):
+                                with zip_ref.open(member) as mem, \
+                                    open(os.path.join(destination_path, member.replace(base_name, '')), "wb") as dp:
+                                    shutil.copyfileobj(mem, dp)
+                except zipfile.BadZipFile:
+                    print("Skipping bad zip file for stm32{}xx...".format(family))
+                    pass
 
 # if an update is required, fail this "test"
 if update_required:
+    print("Normalizing newlines and whitespace...")
+    os.system("sh ./post_script.sh > /dev/null 2>&1")
+    os.system("git --no-pager diff")
     exit(1)
