@@ -9703,59 +9703,62 @@ typedef struct
 #define SCB_SHCSR_USGFAULTENA               (0x00040000U)                      /*!< UsageFault enable */
 
 /*******************  Bit definition for SCB_CFSR register  *******************/
+#if __CM3_CMSIS_VERSION_MAIN < 5U
 /*!< MFSR */
 #define SCB_CFSR_IACCVIOL_Pos              (SCB_SHCSR_MEMFAULTACT_Pos + 0U)    /*!< SCB CFSR (MMFSR): IACCVIOL Position */
 #define SCB_CFSR_IACCVIOL_Msk              (1UL /*<< SCB_CFSR_IACCVIOL_Pos*/)  /*!< SCB CFSR (MMFSR): IACCVIOL Mask */
-#define SCB_CFSR_IACCVIOL                   SCB_CFSR_IACCVIOL_Msk              /*!< Instruction access violation */
 #define SCB_CFSR_DACCVIOL_Pos              (SCB_SHCSR_MEMFAULTACT_Pos + 1U)    /*!< SCB CFSR (MMFSR): DACCVIOL Position */
 #define SCB_CFSR_DACCVIOL_Msk              (1UL << SCB_CFSR_DACCVIOL_Pos)      /*!< SCB CFSR (MMFSR): DACCVIOL Mask */
-#define SCB_CFSR_DACCVIOL                   SCB_CFSR_DACCVIOL_Msk              /*!< Data access violation */
 #define SCB_CFSR_MUNSTKERR_Pos             (SCB_SHCSR_MEMFAULTACT_Pos + 3U)    /*!< SCB CFSR (MMFSR): MUNSTKERR Position */
 #define SCB_CFSR_MUNSTKERR_Msk             (1UL << SCB_CFSR_MUNSTKERR_Pos)     /*!< SCB CFSR (MMFSR): MUNSTKERR Mask */
-#define SCB_CFSR_MUNSTKERR                  SCB_CFSR_MUNSTKERR_Msk             /*!< Unstacking error */
 #define SCB_CFSR_MSTKERR_Pos               (SCB_SHCSR_MEMFAULTACT_Pos + 4U)    /*!< SCB CFSR (MMFSR): MSTKERR Position */
 #define SCB_CFSR_MSTKERR_Msk               (1UL << SCB_CFSR_MSTKERR_Pos)       /*!< SCB CFSR (MMFSR): MSTKERR Mask */
-#define SCB_CFSR_MSTKERR                    SCB_CFSR_MSTKERR_Msk               /*!< Stacking error */
 #define SCB_CFSR_MMARVALID_Pos             (SCB_SHCSR_MEMFAULTACT_Pos + 7U)    /*!< SCB CFSR (MMFSR): MMARVALID Position */
 #define SCB_CFSR_MMARVALID_Msk             (1UL << SCB_CFSR_MMARVALID_Pos)     /*!< SCB CFSR (MMFSR): MMARVALID Mask */
-#define SCB_CFSR_MMARVALID                  SCB_CFSR_MMARVALID_Msk             /*!< Memory Manage Address Register address valid flag */
 /*!< BFSR */
 #define SCB_CFSR_IBUSERR_Pos              (SCB_CFSR_BUSFAULTSR_Pos + 0U)       /*!< SCB CFSR (BFSR): IBUSERR Position */
 #define SCB_CFSR_IBUSERR_Msk              (1UL << SCB_CFSR_IBUSERR_Pos)        /*!< SCB CFSR (BFSR): IBUSERR Mask */
-#define SCB_CFSR_IBUSERR                    SCB_CFSR_IBUSERR_Msk               /*!< Instruction bus error flag */
 #define SCB_CFSR_PRECISERR_Pos            (SCB_CFSR_BUSFAULTSR_Pos + 1U)       /*!< SCB CFSR (BFSR): PRECISERR Position */
 #define SCB_CFSR_PRECISERR_Msk            (1UL << SCB_CFSR_PRECISERR_Pos)      /*!< SCB CFSR (BFSR): PRECISERR Mask */
-#define SCB_CFSR_PRECISERR                  SCB_CFSR_PRECISERR_Msk             /*!< Precise data bus error */
 #define SCB_CFSR_IMPRECISERR_Pos          (SCB_CFSR_BUSFAULTSR_Pos + 2U)       /*!< SCB CFSR (BFSR): IMPRECISERR Position */
 #define SCB_CFSR_IMPRECISERR_Msk          (1UL << SCB_CFSR_IMPRECISERR_Pos)    /*!< SCB CFSR (BFSR): IMPRECISERR Mask */
-#define SCB_CFSR_IMPRECISERR                SCB_CFSR_IMPRECISERR_Msk           /*!< Imprecise data bus error */
 #define SCB_CFSR_UNSTKERR_Pos             (SCB_CFSR_BUSFAULTSR_Pos + 3U)       /*!< SCB CFSR (BFSR): UNSTKERR Position */
 #define SCB_CFSR_UNSTKERR_Msk             (1UL << SCB_CFSR_UNSTKERR_Pos)       /*!< SCB CFSR (BFSR): UNSTKERR Mask */
-#define SCB_CFSR_UNSTKERR                   SCB_CFSR_UNSTKERR_Msk              /*!< Unstacking error */
 #define SCB_CFSR_STKERR_Pos               (SCB_CFSR_BUSFAULTSR_Pos + 4U)       /*!< SCB CFSR (BFSR): STKERR Position */
 #define SCB_CFSR_STKERR_Msk               (1UL << SCB_CFSR_STKERR_Pos)         /*!< SCB CFSR (BFSR): STKERR Mask */
-#define SCB_CFSR_STKERR                     SCB_CFSR_STKERR_Msk                /*!< Stacking error */
 #define SCB_CFSR_BFARVALID_Pos            (SCB_CFSR_BUSFAULTSR_Pos + 7U)       /*!< SCB CFSR (BFSR): BFARVALID Position */
 #define SCB_CFSR_BFARVALID_Msk            (1UL << SCB_CFSR_BFARVALID_Pos)      /*!< SCB CFSR (BFSR): BFARVALID Mask */
-#define SCB_CFSR_BFARVALID                  SCB_CFSR_BFARVALID_Msk             /*!< Bus Fault Address Register address valid flag */
 /*!< UFSR */
 #define SCB_CFSR_UNDEFINSTR_Pos           (SCB_CFSR_USGFAULTSR_Pos + 0U)       /*!< SCB CFSR (UFSR): UNDEFINSTR Position */
 #define SCB_CFSR_UNDEFINSTR_Msk           (1UL << SCB_CFSR_UNDEFINSTR_Pos)     /*!< SCB CFSR (UFSR): UNDEFINSTR Mask */
-#define SCB_CFSR_UNDEFINSTR                 SCB_CFSR_UNDEFINSTR_Msk            /*!< The processor attempt to excecute an undefined instruction */
 #define SCB_CFSR_INVSTATE_Pos             (SCB_CFSR_USGFAULTSR_Pos + 1U)       /*!< SCB CFSR (UFSR): INVSTATE Position */
 #define SCB_CFSR_INVSTATE_Msk             (1UL << SCB_CFSR_INVSTATE_Pos)       /*!< SCB CFSR (UFSR): INVSTATE Mask */
-#define SCB_CFSR_INVSTATE                   SCB_CFSR_INVSTATE_Msk              /*!< Invalid combination of EPSR and instruction */
 #define SCB_CFSR_INVPC_Pos                (SCB_CFSR_USGFAULTSR_Pos + 2U)       /*!< SCB CFSR (UFSR): INVPC Position */
 #define SCB_CFSR_INVPC_Msk                (1UL << SCB_CFSR_INVPC_Pos)          /*!< SCB CFSR (UFSR): INVPC Mask */
-#define SCB_CFSR_INVPC                      SCB_CFSR_INVPC_Msk                 /*!< Attempt to load EXC_RETURN into pc illegally */
 #define SCB_CFSR_NOCP_Pos                 (SCB_CFSR_USGFAULTSR_Pos + 3U)       /*!< SCB CFSR (UFSR): NOCP Position */
 #define SCB_CFSR_NOCP_Msk                 (1UL << SCB_CFSR_NOCP_Pos)           /*!< SCB CFSR (UFSR): NOCP Mask */
-#define SCB_CFSR_NOCP                       SCB_CFSR_NOCP_Msk                  /*!< Attempt to use a coprocessor instruction */
 #define SCB_CFSR_UNALIGNED_Pos            (SCB_CFSR_USGFAULTSR_Pos + 8U)       /*!< SCB CFSR (UFSR): UNALIGNED Position */
 #define SCB_CFSR_UNALIGNED_Msk            (1UL << SCB_CFSR_UNALIGNED_Pos)      /*!< SCB CFSR (UFSR): UNALIGNED Mask */
-#define SCB_CFSR_UNALIGNED                  SCB_CFSR_UNALIGNED_Msk             /*!< Fault occurs when there is an attempt to make an unaligned memory access */
 #define SCB_CFSR_DIVBYZERO_Pos            (SCB_CFSR_USGFAULTSR_Pos + 9U)       /*!< SCB CFSR (UFSR): DIVBYZERO Position */
 #define SCB_CFSR_DIVBYZERO_Msk            (1UL << SCB_CFSR_DIVBYZERO_Pos)      /*!< SCB CFSR (UFSR): DIVBYZERO Mask */
+#endif
+
+#define SCB_CFSR_IACCVIOL                   SCB_CFSR_IACCVIOL_Msk              /*!< Instruction access violation */
+#define SCB_CFSR_DACCVIOL                   SCB_CFSR_DACCVIOL_Msk              /*!< Data access violation */
+#define SCB_CFSR_MUNSTKERR                  SCB_CFSR_MUNSTKERR_Msk             /*!< Unstacking error */
+#define SCB_CFSR_MSTKERR                    SCB_CFSR_MSTKERR_Msk               /*!< Stacking error */
+#define SCB_CFSR_MMARVALID                  SCB_CFSR_MMARVALID_Msk             /*!< Memory Manage Address Register address valid flag */
+#define SCB_CFSR_IBUSERR                    SCB_CFSR_IBUSERR_Msk               /*!< Instruction bus error flag */
+#define SCB_CFSR_PRECISERR                  SCB_CFSR_PRECISERR_Msk             /*!< Precise data bus error */
+#define SCB_CFSR_IMPRECISERR                SCB_CFSR_IMPRECISERR_Msk           /*!< Imprecise data bus error */
+#define SCB_CFSR_UNSTKERR                   SCB_CFSR_UNSTKERR_Msk              /*!< Unstacking error */
+#define SCB_CFSR_STKERR                     SCB_CFSR_STKERR_Msk                /*!< Stacking error */
+#define SCB_CFSR_BFARVALID                  SCB_CFSR_BFARVALID_Msk             /*!< Bus Fault Address Register address valid flag */
+#define SCB_CFSR_UNDEFINSTR                 SCB_CFSR_UNDEFINSTR_Msk            /*!< The processor attempt to execute an undefined instruction */
+#define SCB_CFSR_INVSTATE                   SCB_CFSR_INVSTATE_Msk              /*!< Invalid combination of EPSR and instruction */
+#define SCB_CFSR_INVPC                      SCB_CFSR_INVPC_Msk                 /*!< Attempt to load EXC_RETURN into pc illegally */
+#define SCB_CFSR_NOCP                       SCB_CFSR_NOCP_Msk                  /*!< Attempt to use a coprocessor instruction */
+#define SCB_CFSR_UNALIGNED                  SCB_CFSR_UNALIGNED_Msk             /*!< Fault occurs when there is an attempt to make an unaligned memory access */
 #define SCB_CFSR_DIVBYZERO                  SCB_CFSR_DIVBYZERO_Msk             /*!< Fault occurs when SDIV or DIV instruction is used with a divisor of 0 */
 
 /*******************  Bit definition for SCB_HFSR register  *******************/
