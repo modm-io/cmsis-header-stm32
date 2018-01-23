@@ -8,7 +8,7 @@
   *          This file contains :
   *           - Data structures and the address mapping for all peripherals
   *           - Peripherals registers declarations and bits definition
-  *           - Macros to access peripheral’s registers hardware
+  *           - Macros to access peripherals registers hardware
   *
   ******************************************************************************
   * @attention
@@ -15254,4 +15254,3 @@ USB_OTG_HostChannelTypeDef;
 #endif /* __STM32F217xx_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-
