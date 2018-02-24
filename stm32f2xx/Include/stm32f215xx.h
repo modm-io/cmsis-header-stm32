@@ -11067,7 +11067,7 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR1_EXTI1_PC         0x00000020U                            /*!<PC[1] pin */
 #define SYSCFG_EXTICR1_EXTI1_PD         0x00000030U                            /*!<PD[1] pin */
 #define SYSCFG_EXTICR1_EXTI1_PE         0x00000040U                            /*!<PE[1] pin */
-#define SYSCFG_EXTICR1_EXTI1_PF         0x00000050)                            /*!<PF[1] pin */
+#define SYSCFG_EXTICR1_EXTI1_PF         0x00000050U                            /*!<PF[1] pin */
 #define SYSCFG_EXTICR1_EXTI1_PG         0x00000060U                            /*!<PG[1] pin */
 #define SYSCFG_EXTICR1_EXTI1_PH         0x00000070U                            /*!<PH[1] pin */
 #define SYSCFG_EXTICR1_EXTI1_PI         0x00000080U                            /*!<PI[1] pin */
@@ -11079,8 +11079,8 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR1_EXTI2_PC         0x00000200U                            /*!<PC[2] pin */
 #define SYSCFG_EXTICR1_EXTI2_PD         0x00000300U                            /*!<PD[2] pin */
 #define SYSCFG_EXTICR1_EXTI2_PE         0x00000400U                            /*!<PE[2] pin */
-#define SYSCFG_EXTICR1_EXTI2_PF         0x00000500)                            /*!<PF[2] pin */
-#define SYSCFG_EXTICR1_EXTI2_PG         0x00000600)                            /*!<PG[2] pin */
+#define SYSCFG_EXTICR1_EXTI2_PF         0x00000500U                            /*!<PF[2] pin */
+#define SYSCFG_EXTICR1_EXTI2_PG         0x00000600U                            /*!<PG[2] pin */
 #define SYSCFG_EXTICR1_EXTI2_PH         0x00000700U                            /*!<PH[2] pin */
 #define SYSCFG_EXTICR1_EXTI2_PI         0x00000800U                            /*!<PI[2] pin */
 /**
@@ -11091,7 +11091,7 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR1_EXTI3_PC         0x00002000U                            /*!<PC[3] pin */
 #define SYSCFG_EXTICR1_EXTI3_PD         0x00003000U                            /*!<PD[3] pin */
 #define SYSCFG_EXTICR1_EXTI3_PE         0x00004000U                            /*!<PE[3] pin */
-#define SYSCFG_EXTICR1_EXTI3_PF         0x00005000)                            /*!<PF[3] pin */
+#define SYSCFG_EXTICR1_EXTI3_PF         0x00005000U                            /*!<PF[3] pin */
 #define SYSCFG_EXTICR1_EXTI3_PG         0x00006000U                            /*!<PG[3] pin */
 #define SYSCFG_EXTICR1_EXTI3_PH         0x00007000U                            /*!<PH[3] pin */
 #define SYSCFG_EXTICR1_EXTI3_PI         0x00008000U                            /*!<PI[3] pin */
@@ -11129,7 +11129,7 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR2_EXTI5_PC         0x00000020U                            /*!<PC[5] pin */
 #define SYSCFG_EXTICR2_EXTI5_PD         0x00000030U                            /*!<PD[5] pin */
 #define SYSCFG_EXTICR2_EXTI5_PE         0x00000040U                            /*!<PE[5] pin */
-#define SYSCFG_EXTICR2_EXTI5_PF         0x00000050)                            /*!<PF[5] pin */
+#define SYSCFG_EXTICR2_EXTI5_PF         0x00000050U                            /*!<PF[5] pin */
 #define SYSCFG_EXTICR2_EXTI5_PG         0x00000060U                            /*!<PG[5] pin */
 #define SYSCFG_EXTICR2_EXTI5_PH         0x00000070U                            /*!<PH[5] pin */
 #define SYSCFG_EXTICR2_EXTI5_PI         0x00000080U                            /*!<PI[5] pin */
@@ -11141,8 +11141,8 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR2_EXTI6_PC         0x00000200U                            /*!<PC[6] pin */
 #define SYSCFG_EXTICR2_EXTI6_PD         0x00000300U                            /*!<PD[6] pin */
 #define SYSCFG_EXTICR2_EXTI6_PE         0x00000400U                            /*!<PE[6] pin */
-#define SYSCFG_EXTICR2_EXTI6_PF         0x00000500)                            /*!<PF[6] pin */
-#define SYSCFG_EXTICR2_EXTI6_PG         0x00000600)                            /*!<PG[6] pin */
+#define SYSCFG_EXTICR2_EXTI6_PF         0x00000500U                            /*!<PF[6] pin */
+#define SYSCFG_EXTICR2_EXTI6_PG         0x00000600U                            /*!<PG[6] pin */
 #define SYSCFG_EXTICR2_EXTI6_PH         0x00000700U                            /*!<PH[6] pin */
 #define SYSCFG_EXTICR2_EXTI6_PI         0x00000800U                            /*!<PI[6] pin */
 /**
@@ -11153,7 +11153,7 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR2_EXTI7_PC         0x00002000U                            /*!<PC[7] pin */
 #define SYSCFG_EXTICR2_EXTI7_PD         0x00003000U                            /*!<PD[7] pin */
 #define SYSCFG_EXTICR2_EXTI7_PE         0x00004000U                            /*!<PE[7] pin */
-#define SYSCFG_EXTICR2_EXTI7_PF         0x00005000)                            /*!<PF[7] pin */
+#define SYSCFG_EXTICR2_EXTI7_PF         0x00005000U                            /*!<PF[7] pin */
 #define SYSCFG_EXTICR2_EXTI7_PG         0x00006000U                            /*!<PG[7] pin */
 #define SYSCFG_EXTICR2_EXTI7_PH         0x00007000U                            /*!<PH[7] pin */
 #define SYSCFG_EXTICR2_EXTI7_PI         0x00008000U                            /*!<PI[7] pin */
@@ -11192,7 +11192,7 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR3_EXTI9_PC         0x00000020U                            /*!<PC[9] pin */
 #define SYSCFG_EXTICR3_EXTI9_PD         0x00000030U                            /*!<PD[9] pin */
 #define SYSCFG_EXTICR3_EXTI9_PE         0x00000040U                            /*!<PE[9] pin */
-#define SYSCFG_EXTICR3_EXTI9_PF         0x00000050)                            /*!<PF[9] pin */
+#define SYSCFG_EXTICR3_EXTI9_PF         0x00000050U                            /*!<PF[9] pin */
 #define SYSCFG_EXTICR3_EXTI9_PG         0x00000060U                            /*!<PG[9] pin */
 #define SYSCFG_EXTICR3_EXTI9_PH         0x00000070U                            /*!<PH[9] pin */
 #define SYSCFG_EXTICR3_EXTI9_PI         0x00000080U                            /*!<PI[9] pin */
@@ -11204,8 +11204,8 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR3_EXTI10_PC        0x00000200U                            /*!<PC[10] pin */
 #define SYSCFG_EXTICR3_EXTI10_PD        0x00000300U                            /*!<PD[10] pin */
 #define SYSCFG_EXTICR3_EXTI10_PE        0x00000400U                            /*!<PE[10] pin */
-#define SYSCFG_EXTICR3_EXTI10_PF        0x00000500)                            /*!<PF[10] pin */
-#define SYSCFG_EXTICR3_EXTI10_PG        0x00000600)                            /*!<PG[10] pin */
+#define SYSCFG_EXTICR3_EXTI10_PF        0x00000500U                            /*!<PF[10] pin */
+#define SYSCFG_EXTICR3_EXTI10_PG        0x00000600U                            /*!<PG[10] pin */
 #define SYSCFG_EXTICR3_EXTI10_PH        0x00000700U                            /*!<PH[10] pin */
 #define SYSCFG_EXTICR3_EXTI10_PI        0x00000800U                            /*!<PI[10] pin */
 /**
@@ -11216,7 +11216,7 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR3_EXTI11_PC        0x00002000U                            /*!<PC[11] pin */
 #define SYSCFG_EXTICR3_EXTI11_PD        0x00003000U                            /*!<PD[11] pin */
 #define SYSCFG_EXTICR3_EXTI11_PE        0x00004000U                            /*!<PE[11] pin */
-#define SYSCFG_EXTICR3_EXTI11_PF        0x00005000)                            /*!<PF[11] pin */
+#define SYSCFG_EXTICR3_EXTI11_PF        0x00005000U                            /*!<PF[11] pin */
 #define SYSCFG_EXTICR3_EXTI11_PG        0x00006000U                            /*!<PG[11] pin */
 #define SYSCFG_EXTICR3_EXTI11_PH        0x00007000U                            /*!<PH[11] pin */
 #define SYSCFG_EXTICR3_EXTI11_PI        0x00008000U                            /*!<PI[11] pin */
@@ -11253,7 +11253,7 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR4_EXTI13_PC        0x00000020U                            /*!<PC[13] pin */
 #define SYSCFG_EXTICR4_EXTI13_PD        0x00000030U                            /*!<PD[13] pin */
 #define SYSCFG_EXTICR4_EXTI13_PE        0x00000040U                            /*!<PE[13] pin */
-#define SYSCFG_EXTICR4_EXTI13_PF        0x00000050)                            /*!<PF[13] pin */
+#define SYSCFG_EXTICR4_EXTI13_PF        0x00000050U                            /*!<PF[13] pin */
 #define SYSCFG_EXTICR4_EXTI13_PG        0x00000060U                            /*!<PG[13] pin */
 #define SYSCFG_EXTICR3_EXTI13_PH        0x00000070U                            /*!<PH[13] pin */
 /**
@@ -11264,8 +11264,8 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR4_EXTI14_PC        0x00000200U                            /*!<PC[14] pin */
 #define SYSCFG_EXTICR4_EXTI14_PD        0x00000300U                            /*!<PD[14] pin */
 #define SYSCFG_EXTICR4_EXTI14_PE        0x00000400U                            /*!<PE[14] pin */
-#define SYSCFG_EXTICR4_EXTI14_PF        0x00000500)                            /*!<PF[14] pin */
-#define SYSCFG_EXTICR4_EXTI14_PG        0x00000600)                            /*!<PG[14] pin */
+#define SYSCFG_EXTICR4_EXTI14_PF        0x00000500U                            /*!<PF[14] pin */
+#define SYSCFG_EXTICR4_EXTI14_PG        0x00000600U                            /*!<PG[14] pin */
 #define SYSCFG_EXTICR3_EXTI14_PH        0x00000700U                            /*!<PH[14] pin */
 /**
   * @brief   EXTI15 configuration
@@ -11275,7 +11275,7 @@ USB_OTG_HostChannelTypeDef;
 #define SYSCFG_EXTICR4_EXTI15_PC        0x00002000U                            /*!<PC[15] pin */
 #define SYSCFG_EXTICR4_EXTI15_PD        0x00003000U                            /*!<PD[15] pin */
 #define SYSCFG_EXTICR4_EXTI15_PE        0x00004000U                            /*!<PE[15] pin */
-#define SYSCFG_EXTICR4_EXTI15_PF        0x00005000)                            /*!<PF[15] pin */
+#define SYSCFG_EXTICR4_EXTI15_PF        0x00005000U                            /*!<PF[15] pin */
 #define SYSCFG_EXTICR4_EXTI15_PG        0x00006000U                            /*!<PG[15] pin */
 #define SYSCFG_EXTICR3_EXTI15_PH        0x00007000U                            /*!<PH[15] pin */
 
