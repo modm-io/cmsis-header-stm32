@@ -748,7 +748,7 @@ typedef struct
   uint32_t      RESERVED15[14];
   __IO uint32_t MMCTSCGPR;
   __IO uint32_t MMCTMCGPR;
-  int32_t       RESERVED16[5];
+  uint32_t      RESERVED16[5];
   __IO uint32_t MMCTPCGR;
   uint32_t      RESERVED17[10];
   __IO uint32_t MMCRCRCEPR;
@@ -2352,7 +2352,8 @@ typedef struct
 #define EXTI                ((EXTI_TypeDef *) EXTI_BASE)
 #define EXTI_D1             ((EXTI_Core_TypeDef *) EXTI_D1_BASE)
 #define EXTI_D2             ((EXTI_Core_TypeDef *) EXTI_D2_BASE)
-#define SDMMC               ((SDMMC_TypeDef *) SDMMC_BASE)
+#define SDMMC1              ((SDMMC_TypeDef *) SDMMC1_BASE)
+#define SDMMC2              ((SDMMC_TypeDef *) SDMMC2_BASE)
 #define TIM1                ((TIM_TypeDef *) TIM1_BASE)
 #define SPI1                ((SPI_TypeDef *) SPI1_BASE)
 #define TIM8                ((TIM_TypeDef *) TIM8_BASE)
@@ -2362,11 +2363,11 @@ typedef struct
 #define TIM16               ((TIM_TypeDef *) TIM16_BASE)
 #define TIM17               ((TIM_TypeDef *) TIM17_BASE)
 #define HRTIM1              ((HRTIM_TypeDef *) HRTIM1_BASE)
-#define HRTIM1_TIMA         ((HRTIM_TIM_TypeDef *) HRTIM1_TIMA_BASE)
-#define HRTIM1_TIMB         ((HRTIM_TIM_TypeDef *) HRTIM1_TIMB_BASE)
-#define HRTIM1_TIMC         ((HRTIM_TIM_TypeDef *) HRTIM1_TIMC_BASE)
-#define HRTIM1_TIMD         ((HRTIM_TIM_TypeDef *) HRTIM1_TIMD_BASE)
-#define HRTIM1_TIME         ((HRTIM_TIM_TypeDef *) HRTIM1_TIME_BASE)
+#define HRTIM1_TIMA         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMA_BASE)
+#define HRTIM1_TIMB         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMB_BASE)
+#define HRTIM1_TIMC         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMC_BASE)
+#define HRTIM1_TIMD         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMD_BASE)
+#define HRTIM1_TIME         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIME_BASE)
 #define HRTIM1_COMMON       ((HRTIM_Common_TypeDef *) HRTIM1_COMMON_BASE)
 #define SAI1                ((SAI_TypeDef *) SAI1_BASE)
 #define SAI1_Block_A        ((SAI_Block_TypeDef *)SAI1_Block_A_BASE)
@@ -2398,7 +2399,7 @@ typedef struct
 #define DMA2D               ((DMA2D_TypeDef *) DMA2D_BASE)
 #define DCMI                ((DCMI_TypeDef *) DCMI_BASE)
 #define RCC                 ((RCC_TypeDef *) RCC_BASE)
-#define RCC_C1              ((RCC_Core_TypeDef *) RCC_C1_BASE)
+// #define RCC_C1              ((RCC_Core_TypeDef *) RCC_C1_BASE)
 #define FLASH               ((FLASH_TypeDef *) FLASH_R_BASE)
 #define CRC                 ((CRC_TypeDef *) CRC_BASE)
 
