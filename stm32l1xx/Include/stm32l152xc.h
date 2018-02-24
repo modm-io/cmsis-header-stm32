@@ -7799,10 +7799,10 @@ typedef struct
 #define USB_COUNT2_TX_1_COUNT2_TX_1           (0x03FF0000U)                    /*!< Transmission Byte Count 2 (high) */
 
 /****************  Bit definition for USB_COUNT3_TX_0 register  ***************/
-#define  USB_COUNT3_TX_0_COUNT3_TX_0         ((uint32_t)0x00000000U03FF)        /*!< Transmission Byte Count 3 (low) */
+#define USB_COUNT3_TX_0_COUNT3_TX_0           (0x000003FFU)                    /*!< Transmission Byte Count 3 (low) */
 
 /****************  Bit definition for USB_COUNT3_TX_1 register  ***************/
-#define  USB_COUNT3_TX_1_COUNT3_TX_1         ((uint32_t)0x000003FFU0000)        /*!< Transmission Byte Count 3 (high) */
+#define USB_COUNT3_TX_1_COUNT3_TX_1           (0x03FF0000U)                    /*!< Transmission Byte Count 3 (high) */
 
 /****************  Bit definition for USB_COUNT4_TX_0 register  ***************/
 #define USB_COUNT4_TX_0_COUNT4_TX_0           (0x000003FFU)                    /*!< Transmission Byte Count 4 (low) */
