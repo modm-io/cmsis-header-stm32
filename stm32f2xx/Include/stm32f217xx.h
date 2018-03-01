@@ -2,13 +2,11 @@
   ******************************************************************************
   * @file    stm32f217xx.h
   * @author  MCD Application Team
-  * @version V2.2.0
-  * @date    17-March-2017
   * @brief   CMSIS STM32F217xx Device Peripheral Access Layer Header File.
   *          This file contains :
   *           - Data structures and the address mapping for all peripherals
   *           - Peripherals registers declarations and bits definition
-  *           - Macros to access peripherals registers hardware
+  *           - Macros to access peripheral’s registers hardware
   *
   ******************************************************************************
   * @attention
@@ -84,6 +82,7 @@ typedef enum
 {
 /******  Cortex-M3 Processor Exceptions Numbers ****************************************************************/
   NonMaskableInt_IRQn         = -14,    /*!< 2 Non Maskable Interrupt                                          */
+  HardFault_IRQn              = -13,    /*!< 3 Hard Fault Interrupt                                            */
   MemoryManagement_IRQn       = -12,    /*!< 4 Cortex-M3 Memory Management Interrupt                           */
   BusFault_IRQn               = -11,    /*!< 5 Cortex-M3 Bus Fault Interrupt                                   */
   UsageFault_IRQn             = -10,    /*!< 6 Cortex-M3 Usage Fault Interrupt                                 */
@@ -15254,3 +15253,4 @@ USB_OTG_HostChannelTypeDef;
 #endif /* __STM32F217xx_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
