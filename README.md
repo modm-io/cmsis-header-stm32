@@ -18,7 +18,8 @@ Here is the list of the current device header version and release date as well a
 - [F7: v1.2.2 created 26-December-2017 (CubeF7 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubef7.html)
 - [H7: v1.2.0 created 29-December-2017 (CubeH7 v1.2.0)](http://www.st.com/en/embedded-software/stm32cubeh7.html)
 
-The Travis CI integration checks these versions daily and will fail, if they need updating: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
+The Travis CI integration checks these versions daily and will update them automatically.
+However, when our manual patches fail to apply, the CI will fail too: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
 
 The ST header files in this directory are available under the BSD 3-Clause License:
 ```
