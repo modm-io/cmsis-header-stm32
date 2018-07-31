@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    stm32h753xx.h
+  * @file    stm32h750xx.h
   * @author  MCD Application Team
-  * @brief   CMSIS STM32H753xx Device Peripheral Access Layer Header File.
+  * @brief   CMSIS STM32H750xx Device Peripheral Access Layer Header File.
   *
   *          This file contains:
   *           - Data structures and the address mapping for all peripherals
@@ -43,12 +43,12 @@
   * @{
   */
 
-/** @addtogroup stm32h753xx
+/** @addtogroup stm32h750xx
   * @{
   */
 
-#ifndef __STM32H753xx_H
-#define __STM32H753xx_H
+#ifndef __STM32H750xx_H
+#define __STM32H750xx_H
 
 #ifdef __cplusplus
  extern "C" {
@@ -749,7 +749,7 @@ typedef struct
   uint32_t      RESERVED15[14];
   __IO uint32_t MMCTSCGPR;
   __IO uint32_t MMCTMCGPR;
-  uint32_t      RESERVED16[5];
+  int32_t       RESERVED16[5];
   __IO uint32_t MMCTPCGR;
   uint32_t      RESERVED17[10];
   __IO uint32_t MMCRCRCEPR;
@@ -2025,7 +2025,7 @@ typedef struct
 #define D1_ITCMRAM_BASE           ((uint32_t)0x00000000) /*!< Base address of : 64KB RAM reserved for CPU execution/instruction accessible over ITCM  */
 #define D1_ITCMICP_BASE           ((uint32_t)0x00100000) /*!< Base address of : (up to 128KB) embedded Test FLASH memory accessible over ITCM         */
 #define D1_DTCMRAM_BASE           ((uint32_t)0x20000000) /*!< Base address of : 128KB system data RAM accessible over DTCM                            */
-#define D1_AXIFLASH_BASE          ((uint32_t)0x08000000) /*!< Base address of : (up to 2 MB) embedded FLASH memory accessible over AXI                */
+#define D1_AXIFLASH_BASE          ((uint32_t)0x08000000) /*!< Base address of : (up to 128 KB) embedded FLASH memory accessible over AXI              */
 #define D1_AXIICP_BASE            ((uint32_t)0x1FF00000) /*!< Base address of : (up to 128KB) embedded Test FLASH memory accessible over AXI          */
 #define D1_AXISRAM_BASE           ((uint32_t)0x24000000) /*!< Base address of : (up to 512KB) system data RAM accessible over over AXI                */
 
@@ -2038,18 +2038,18 @@ typedef struct
 #define PERIPH_BASE               ((uint32_t)0x40000000) /*!< Base address of : AHB/ABP Peripherals                                                   */
 #define QSPI_BASE                 ((uint32_t)0x90000000) /*!< Base address of : QSPI memories accessible over AXI                                     */
 
-#define FLASH_BANK1_BASE          ((uint32_t)0x08000000) /*!< Base address of : (up to 1 MB) Flash Bank1 accessible over AXI                          */
-#define FLASH_BANK2_BASE          ((uint32_t)0x08100000) /*!< Base address of : (up to 1 MB) Flash Bank2 accessible over AXI                          */
-#define FLASH_END                 ((uint32_t)0x081FFFFF) /*!< FLASH end address                                                                       */
+#define FLASH_BANK1_BASE          ((uint32_t)0x08000000) /*!< Base address of : (up to 128 KB) Flash Bank1 accessible over AXI                        */
+#define FLASH_END                 ((uint32_t)0x0801FFFF) /*!< FLASH end address                                                                       */
 
 #define FLASH_OTP_BANK1_BASE      ((uint32_t)0x1FF00000) /*!< Base address of : (up to 128KB) embedded FLASH Bank1 OTP Area                           */
 #define FLASH_OTP_BANK1_END       ((uint32_t)0x1FF1FFFF) /*!< End address of : (up to 128KB) embedded FLASH Bank1 OTP Area                            */
-#define FLASH_OTP_BANK2_BASE      ((uint32_t)0x1FF40000) /*!< Base address of : (up to 128KB) embedded FLASH Bank2 OTP Area                           */
-#define FLASH_OTP_BANK2_END       ((uint32_t)0x1FF5FFFF) /*!< End address of : (up to 128KB) embedded FLASH Bank2 OTP Area                            */
 
 /* Legacy define */
 #define FLASH_BASE                FLASH_BANK1_BASE
 
+#define FLASH_BANK2_BASE          ((uint32_t)0x08100000) /*!< For legacy only , Flash bank 2 not available on STM32H750xx value line                  */
+#define FLASH_OTP_BANK2_BASE      ((uint32_t)0x1FF40000) /*!< For legacy only , Flash bank 2 not available on STM32H750xx value line                  */
+#define FLASH_OTP_BANK2_END       ((uint32_t)0x1FF5FFFF) /*!< For legacy only , Flash bank 2 not available on STM32H750xx value line                  */
 
 /*!< Peripheral memory map */
 #define D2_APB1PERIPH_BASE        PERIPH_BASE
@@ -2423,8 +2423,7 @@ typedef struct
 #define EXTI                ((EXTI_TypeDef *) EXTI_BASE)
 #define EXTI_D1             ((EXTI_Core_TypeDef *) EXTI_D1_BASE)
 #define EXTI_D2             ((EXTI_Core_TypeDef *) EXTI_D2_BASE)
-#define SDMMC1              ((SDMMC_TypeDef *) SDMMC1_BASE)
-#define SDMMC2              ((SDMMC_TypeDef *) SDMMC2_BASE)
+#define SDMMC               ((SDMMC_TypeDef *) SDMMC_BASE)
 #define TIM1                ((TIM_TypeDef *) TIM1_BASE)
 #define SPI1                ((SPI_TypeDef *) SPI1_BASE)
 #define TIM8                ((TIM_TypeDef *) TIM8_BASE)
@@ -2434,11 +2433,11 @@ typedef struct
 #define TIM16               ((TIM_TypeDef *) TIM16_BASE)
 #define TIM17               ((TIM_TypeDef *) TIM17_BASE)
 #define HRTIM1              ((HRTIM_TypeDef *) HRTIM1_BASE)
-#define HRTIM1_TIMA         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMA_BASE)
-#define HRTIM1_TIMB         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMB_BASE)
-#define HRTIM1_TIMC         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMC_BASE)
-#define HRTIM1_TIMD         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMD_BASE)
-#define HRTIM1_TIME         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIME_BASE)
+#define HRTIM1_TIMA         ((HRTIM_TIM_TypeDef *) HRTIM1_TIMA_BASE)
+#define HRTIM1_TIMB         ((HRTIM_TIM_TypeDef *) HRTIM1_TIMB_BASE)
+#define HRTIM1_TIMC         ((HRTIM_TIM_TypeDef *) HRTIM1_TIMC_BASE)
+#define HRTIM1_TIMD         ((HRTIM_TIM_TypeDef *) HRTIM1_TIMD_BASE)
+#define HRTIM1_TIME         ((HRTIM_TIM_TypeDef *) HRTIM1_TIME_BASE)
 #define HRTIM1_COMMON       ((HRTIM_Common_TypeDef *) HRTIM1_COMMON_BASE)
 #define SAI1                ((SAI_TypeDef *) SAI1_BASE)
 #define SAI1_Block_A        ((SAI_Block_TypeDef *)SAI1_Block_A_BASE)
@@ -2470,7 +2469,7 @@ typedef struct
 #define DMA2D               ((DMA2D_TypeDef *) DMA2D_BASE)
 #define DCMI                ((DCMI_TypeDef *) DCMI_BASE)
 #define RCC                 ((RCC_TypeDef *) RCC_BASE)
-// #define RCC_C1              ((RCC_Core_TypeDef *) RCC_C1_BASE)
+#define RCC_C1              ((RCC_Core_TypeDef *) RCC_C1_BASE)
 #define FLASH               ((FLASH_TypeDef *) FLASH_R_BASE)
 #define CRC                 ((CRC_TypeDef *) CRC_BASE)
 
@@ -10286,7 +10285,7 @@ typedef struct
 /*
 * @brief FLASH Total Sectors Number
 */
-#define FLASH_SECTOR_TOTAL  16
+#define FLASH_SECTOR_TOTAL  1
 
 /*******************  Bits definition for FLASH_ACR register  **********************/
 #define FLASH_ACR_LATENCY_Pos                (0U)
@@ -25788,11 +25787,10 @@ typedef struct
   */
 /****************************** Product define *********************************/
 
-#define FLASH_SIZE                         0x200000  /* 2MB */
-#define FLASH_BANK_SIZE                    (FLASH_SIZE >> 1)   /* 1MB */
+#define FLASH_SECTOR_SIZE  0x00020000          /* 128 KB */
 
-#define FLASH_SECTOR_SIZE 0x00020000 /* 128 KB */
-
+#define FLASH_SIZE         FLASH_SECTOR_SIZE   /* 128 KB */
+#define FLASH_BANK_SIZE    FLASH_SIZE          /* 128 KB */
 
 
 /**
@@ -25807,6 +25805,6 @@ typedef struct
 }
 #endif /* __cplusplus */
 
-#endif /* STM32H753xx_H */
+#endif /* STM32H750xx_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

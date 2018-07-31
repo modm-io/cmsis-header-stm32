@@ -9,14 +9,14 @@ Here is the list of the current device header version and release date as well a
 
 - [L0: v1.7.2 created 25-August-2017 (CubeL0 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubel0.html)
 - [L1: v2.2.2 created 25-August-2017 (CubeL1 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
-- [L4: v1.4.2 created 22-December-2017 (CubeL4 v1.12.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
+- [L4: v1.4.3 created 30-April-2018 (CubeL4 v1.12.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
 - [F0: v2.3.3 created 25-August-2017 (CubeF0 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
 - [F1: v4.2.0 created 31-March-2017 (CubeF1 v1.6.0)](http://www.st.com/en/embedded-software/stm32cubef1.html)
 - [F2: v2.2.1 created 29-September-2017 (CubeF2 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubef2.html)
-- [F3: v2.3.2 created 23-June-2017 (CubeF3 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubef3.html)
+- [F3: v2.3.3 created 11-June-2018 (CubeF3 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubef3.html)
 - [F4: v2.6.2 created 06-October-2017 (CubeF4 v1.21.0)](http://www.st.com/en/embedded-software/stm32cubef4.html)
 - [F7: v1.2.3 created 29-June-2018 (CubeF7 v1.12.0)](http://www.st.com/en/embedded-software/stm32cubef7.html)
-- [H7: v1.2.0 created 29-December-2017 (CubeH7 v1.3.0)](http://www.st.com/en/embedded-software/stm32cubeh7.html)
+- [H7: v1.3.0 created 29-June-2018 (CubeH7 v1.3.0)](http://www.st.com/en/embedded-software/stm32cubeh7.html)
 
 The Travis CI integration checks these versions daily and will update them automatically.
 However, when our manual patches fail to apply, the CI will fail too: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
