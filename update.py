@@ -34,13 +34,12 @@ def get_remote_cube_version(html):
 
 def get_remote_zip_url(html, family):
     dlmatch = re.search(r"data-download-path=\"(?P<dlurl>/content/ccc/resource/.*?cube{}\.zip)\"".format(family), html)
-    return "http://www.st.com" + dlmatch.group("dlurl") if dlmatch else None
+    return "https://www.st.com" + dlmatch.group("dlurl") if dlmatch else None
 
 def remote_is_newer(local, remote):
     if "x" in local or "x" in remote:
         print("Unknown version format")
-        exit(1)
-        return True
+        return False
     for l, r in zip(local.split('.'), remote.split('.')):
         if int(l) < int(r):
             return True
@@ -99,26 +98,34 @@ header_remote_date = {}
 # compare local and remote header versions
 for family in check_header_version:
     # download cmsis pack into zip file
-    dl_file = "{}.zip".format(family)
+    dl_count = 0
     if download_remote:
         print("Downloading '{}.zip' ...\n{}".format(family, cube_dl_url[family]))
-        with urllib.request.urlopen(cube_dl_url[family]) as response, \
-                              open(dl_file, "wb") as out_file:
-            shutil.copyfileobj(response, out_file)
-    print("Extracting '{}.zip' ...".format(family))
-    # extract the remote header version from the zip file
-    try:
-        with zipfile.ZipFile(dl_file, "r") as zip_ref:
-            base_name = zip_ref.namelist()[0].split("/")[0]
-            release_note_path = "{}/Drivers/CMSIS/Device/ST/STM32{}xx/Release_Notes.html".format(base_name, family.upper())
-            # only read the release notes, we don't care about the rest
-            html = zip_ref.read(release_note_path).decode("utf-8", errors="replace")
-            header_remote_version[family] = get_header_version(html)
-            header_remote_date[family] = get_header_date(html)
-    except:
-        print("Bad zipfile for {}!".format(family))
-        header_remote_version[family] = "x.x.x"
-        continue
+    while(1):
+        dl_file = "{}.zip".format(family)
+        if download_remote:
+            with urllib.request.urlopen(cube_dl_url[family]) as response, \
+                                  open(dl_file, "wb") as out_file:
+                shutil.copyfileobj(response, out_file)
+            dl_count += 1
+        print("Extracting '{}.zip' ...".format(family))
+        # extract the remote header version from the zip file
+        try:
+            with zipfile.ZipFile(dl_file, "r") as zip_ref:
+                base_name = zip_ref.namelist()[0].split("/")[0]
+                release_note_path = "{}/Drivers/CMSIS/Device/ST/STM32{}xx/Release_Notes.html".format(base_name, family.upper())
+                # only read the release notes, we don't care about the rest
+                html = zip_ref.read(release_note_path).decode("utf-8", errors="replace")
+                header_remote_version[family] = get_header_version(html)
+                header_remote_date[family] = get_header_date(html)
+            break
+        except:
+            if (dl_count > 10):
+                print("===>>> Bad zipfile for {}! <<<===".format(family))
+                header_remote_version[family] = "x.x.x"
+                break
+            else:
+                print("<<<=== Retrying zipfile for {}! ===>>>".format(family))
     if not header_remote_version[family]:
         print("No version match in remote release notes for", family)
         exit(1)
@@ -146,7 +153,7 @@ for family in check_header_version:
         print("Skipping bad zip file for stm32{}xx...".format(family))
         pass
 
-print("Normalizing newlines and whitespace...")
+print("Normalizing newlines and whitespace...", flush=True)
 if os.system("sh ./post_script.sh > /dev/null 2>&1") != 0:
     print("Normalizing newlines and whitespace FAILED...")
     exit(1)
