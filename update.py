@@ -21,11 +21,11 @@ def get_local_cube_version(readme, family):
     return match.group("version") if match else None
 
 def get_header_version(release_notes):
-    vmatch = re.search(r"\">V([0-9]+\.[0-9]+\.[0-9]+)", release_notes)
+    vmatch = re.search(r">V([0-9]+\.[0-9]+\.[0-9]+)", release_notes)
     return vmatch.group(1) if vmatch else None
 
 def get_header_date(release_notes):
-    vmatch = re.search(r"\">V.+?/.*?(\d{2}-[A-Z][a-z]+?-20\d{2}).*?<", release_notes, flags=re.DOTALL | re.MULTILINE)
+    vmatch = re.search(r">V.+?/.*?(\d{2}-[A-Z][a-z]+?-20\d{2}).*?<", release_notes, flags=re.DOTALL | re.MULTILINE)
     return vmatch.group(1) if vmatch else None
 
 def get_remote_cube_version(html):
