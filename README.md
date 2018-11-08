@@ -7,7 +7,7 @@ The files are copied and modified by converting all line endings from Windows to
 
 Here is the list of the current device header version and release date as well as the Cube release version in braces:
 
-- [L0: v1.7.2 created 25-August-2017 (CubeL0 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubel0.html)
+- [L0: v1.7.2 created 25-August-2017 (CubeL0 v1.11.0)](http://www.st.com/en/embedded-software/stm32cubel0.html)
 - [L1: v2.2.2 created 25-August-2017 (CubeL1 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
 - [L4: v1.5.0 created 27-July-2018 (CubeL4 v1.13.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
 - [F0: v2.3.3 created 25-August-2017 (CubeF0 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
