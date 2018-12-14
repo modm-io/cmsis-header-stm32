@@ -11,7 +11,7 @@ from pathlib import Path
 
 stm32_families = [
     "l0", "l1", "l4",
-    "f0", "f1", "f2", "f3", "f4", "f7",
+    "f0", "g0", "f1", "f2", "f3", "f4", "f7",
     "h7"
 ]
 
@@ -107,7 +107,7 @@ for family in check_header_version:
             with urllib.request.urlopen(cube_dl_url[family]) as response, \
                                   open(dl_file, "wb") as out_file:
                 shutil.copyfileobj(response, out_file)
-            dl_count += 1
+        dl_count += 1
         print("Extracting '{}.zip' ...".format(family))
         # extract the remote header version from the zip file
         try:
