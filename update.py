@@ -33,7 +33,7 @@ def get_remote_cube_version(html):
     return vmatch.group("version") if vmatch else None
 
 def get_remote_zip_url(html, family):
-    dlmatch = re.search(r"data-download-path=\"(?P<dlurl>/content/ccc/resource/.*?cube{}\.zip)\"".format(family), html)
+    dlmatch = re.search(r"data-download-path=\"(?P<dlurl>/content/ccc/resource/.*?stm32cube{}\.zip)\"".format(family), html)
     return "https://www.st.com" + dlmatch.group("dlurl") if dlmatch else None
 
 def remote_is_newer(local, remote):
