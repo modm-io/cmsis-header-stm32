@@ -4205,6 +4205,12 @@ typedef struct
 #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
 #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
 
+#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
+#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
+#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
+#define RCC_CFGR_PPRE_DIV8             (0x00006000UL)                          /*!< HCLK divided by 8 */
+#define RCC_CFGR_PPRE_DIV16            (0x00007000UL)                          /*!< HCLK divided by 16 */
+
 /*!< MCOSEL configuration */
 #define RCC_CFGR_MCOSEL_Pos            (24U)
 #define RCC_CFGR_MCOSEL_Msk            (0x7UL << RCC_CFGR_MCOSEL_Pos)          /*!< 0x0F000000 */

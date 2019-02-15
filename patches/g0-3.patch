@@ -1,0 +1,118 @@
+From 1b640f4e7308272a2e64bcfccf404ec30aebaa43 Mon Sep 17 00:00:00 2001
+From: Niklas Hauser <niklas.hauser@rwth-aachen.de>
+Date: Fri, 15 Feb 2019 21:32:24 +0100
+Subject: [PATCH] Fix STM32G0 headers RCC_CFGR_PPRE_DIV*
+
+---
+ stm32g0xx/Include/stm32g030xx.h | 6 ++++++
+ stm32g0xx/Include/stm32g031xx.h | 6 ++++++
+ stm32g0xx/Include/stm32g041xx.h | 6 ++++++
+ stm32g0xx/Include/stm32g070xx.h | 6 ++++++
+ stm32g0xx/Include/stm32g071xx.h | 6 ++++++
+ stm32g0xx/Include/stm32g081xx.h | 6 ++++++
+ 6 files changed, 36 insertions(+)
+
+diff --git a/stm32g0xx/Include/stm32g030xx.h b/stm32g0xx/Include/stm32g030xx.h
+index 398947b..0390c8d 100755
+--- a/stm32g0xx/Include/stm32g030xx.h
++++ b/stm32g0xx/Include/stm32g030xx.h
+@@ -4027,6 +4027,12 @@ typedef struct
+ #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
+ #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
++#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
++#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
++#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
++#define RCC_CFGR_PPRE_DIV8             (0x00006000UL)                          /*!< HCLK divided by 8 */
++#define RCC_CFGR_PPRE_DIV16            (0x00007000UL)                          /*!< HCLK divided by 16 */
++
+ /*!< MCOSEL configuration */
+ #define RCC_CFGR_MCOSEL_Pos            (24U)
+ #define RCC_CFGR_MCOSEL_Msk            (0x7UL << RCC_CFGR_MCOSEL_Pos)          /*!< 0x0F000000 */
+diff --git a/stm32g0xx/Include/stm32g031xx.h b/stm32g0xx/Include/stm32g031xx.h
+index a54590e..d89ae5e 100755
+--- a/stm32g0xx/Include/stm32g031xx.h
++++ b/stm32g0xx/Include/stm32g031xx.h
+@@ -4205,6 +4205,12 @@ typedef struct
+ #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
+ #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
++#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
++#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
++#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
++#define RCC_CFGR_PPRE_DIV8             (0x00006000UL)                          /*!< HCLK divided by 8 */
++#define RCC_CFGR_PPRE_DIV16            (0x00007000UL)                          /*!< HCLK divided by 16 */
++
+ /*!< MCOSEL configuration */
+ #define RCC_CFGR_MCOSEL_Pos            (24U)
+ #define RCC_CFGR_MCOSEL_Msk            (0x7UL << RCC_CFGR_MCOSEL_Pos)          /*!< 0x0F000000 */
+diff --git a/stm32g0xx/Include/stm32g041xx.h b/stm32g0xx/Include/stm32g041xx.h
+index d375032..075b643 100755
+--- a/stm32g0xx/Include/stm32g041xx.h
++++ b/stm32g0xx/Include/stm32g041xx.h
+@@ -4441,6 +4441,12 @@ typedef struct
+ #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
+ #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
++#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
++#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
++#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
++#define RCC_CFGR_PPRE_DIV8             (0x00006000UL)                          /*!< HCLK divided by 8 */
++#define RCC_CFGR_PPRE_DIV16            (0x00007000UL)                          /*!< HCLK divided by 16 */
++
+ /*!< MCOSEL configuration */
+ #define RCC_CFGR_MCOSEL_Pos            (24U)
+ #define RCC_CFGR_MCOSEL_Msk            (0x7UL << RCC_CFGR_MCOSEL_Pos)          /*!< 0x0F000000 */
+diff --git a/stm32g0xx/Include/stm32g070xx.h b/stm32g0xx/Include/stm32g070xx.h
+index a5c40c9..bffa13d 100755
+--- a/stm32g0xx/Include/stm32g070xx.h
++++ b/stm32g0xx/Include/stm32g070xx.h
+@@ -4149,6 +4149,12 @@ typedef struct
+ #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
+ #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
++#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
++#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
++#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
++#define RCC_CFGR_PPRE_DIV8             (0x00006000UL)                          /*!< HCLK divided by 8 */
++#define RCC_CFGR_PPRE_DIV16            (0x00007000UL)                          /*!< HCLK divided by 16 */
++
+ /*!< MCOSEL configuration */
+ #define RCC_CFGR_MCOSEL_Pos            (24U)
+ #define RCC_CFGR_MCOSEL_Msk            (0x7UL << RCC_CFGR_MCOSEL_Pos)          /*!< 0x0F000000 */
+diff --git a/stm32g0xx/Include/stm32g071xx.h b/stm32g0xx/Include/stm32g071xx.h
+index c747bb5..01a3ed9 100755
+--- a/stm32g0xx/Include/stm32g071xx.h
++++ b/stm32g0xx/Include/stm32g071xx.h
+@@ -4848,6 +4848,12 @@ typedef struct
+ #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
+ #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
++#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
++#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
++#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
++#define RCC_CFGR_PPRE_DIV8             (0x00006000UL)                          /*!< HCLK divided by 8 */
++#define RCC_CFGR_PPRE_DIV16            (0x00007000UL)                          /*!< HCLK divided by 16 */
++
+ /*!< MCOSEL configuration */
+ #define RCC_CFGR_MCOSEL_Pos            (24U)
+ #define RCC_CFGR_MCOSEL_Msk            (0x7UL << RCC_CFGR_MCOSEL_Pos)          /*!< 0x0F000000 */
+diff --git a/stm32g0xx/Include/stm32g081xx.h b/stm32g0xx/Include/stm32g081xx.h
+index 7aa6964..83ef9f2 100755
+--- a/stm32g0xx/Include/stm32g081xx.h
++++ b/stm32g0xx/Include/stm32g081xx.h
+@@ -5084,6 +5084,12 @@ typedef struct
+ #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
+ #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
++#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
++#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
++#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
++#define RCC_CFGR_PPRE_DIV8             (0x00006000UL)                          /*!< HCLK divided by 8 */
++#define RCC_CFGR_PPRE_DIV16            (0x00007000UL)                          /*!< HCLK divided by 16 */
++
+ /*!< MCOSEL configuration */
+ #define RCC_CFGR_MCOSEL_Pos            (24U)
+ #define RCC_CFGR_MCOSEL_Msk            (0x7UL << RCC_CFGR_MCOSEL_Pos)          /*!< 0x0F000000 */
+--
+2.20.1+GitX
