@@ -4102,6 +4102,12 @@ typedef struct
 #define RCC_CFGR_SW_1                  (0x2UL << RCC_CFGR_SW_Pos)              /*!< 0x00000002 */
 #define RCC_CFGR_SW_2                  (0x4UL << RCC_CFGR_SW_Pos)              /*!< 0x00000004 */
 
+#define RCC_CFGR_SW_HSI                (0UL)                                   /*!< HSI selected as system clock */
+#define RCC_CFGR_SW_HSE                (0x00000001UL)                          /*!< HSE selected as system clock */
+#define RCC_CFGR_SW_PLL                (0x00000002UL)                          /*!< PLL selected as system clock */
+#define RCC_CFGR_SW_LSI                (0x00000003UL)                          /*!< LSI selected as system clock */
+#define RCC_CFGR_SW_LSE                (0x00000004UL)                          /*!< LSE selected as system clock */
+
 /*!< SWS configuration */
 #define RCC_CFGR_SWS_Pos               (3U)
 #define RCC_CFGR_SWS_Msk               (0x7UL << RCC_CFGR_SWS_Pos)             /*!< 0x00000038 */
