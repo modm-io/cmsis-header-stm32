@@ -4131,6 +4131,16 @@ typedef struct
 #define RCC_CFGR_HPRE_2                (0x4UL << RCC_CFGR_HPRE_Pos)            /*!< 0x00000400 */
 #define RCC_CFGR_HPRE_3                (0x8UL << RCC_CFGR_HPRE_Pos)            /*!< 0x00000800 */
 
+#define RCC_CFGR_HPRE_DIV1             (0x0UL)                                 /*!< SYSCLK not divided */
+#define RCC_CFGR_HPRE_DIV2             (0x00000800UL)                          /*!< SYSCLK divided by 2 */
+#define RCC_CFGR_HPRE_DIV4             (0x00000900UL)                          /*!< SYSCLK divided by 4 */
+#define RCC_CFGR_HPRE_DIV8             (0x00000A00UL)                          /*!< SYSCLK divided by 8 */
+#define RCC_CFGR_HPRE_DIV16            (0x00000B00UL)                          /*!< SYSCLK divided by 16 */
+#define RCC_CFGR_HPRE_DIV64            (0x00000C00UL)                          /*!< SYSCLK divided by 64 */
+#define RCC_CFGR_HPRE_DIV128           (0x00000D00UL)                          /*!< SYSCLK divided by 128 */
+#define RCC_CFGR_HPRE_DIV256           (0x00000E00UL)                          /*!< SYSCLK divided by 256 */
+#define RCC_CFGR_HPRE_DIV512           (0x00000F00UL)                          /*!< SYSCLK divided by 512 */
+
 /*!< PPRE configuration */
 #define RCC_CFGR_PPRE_Pos              (12U)
 #define RCC_CFGR_PPRE_Msk              (0x7UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00007000 */
