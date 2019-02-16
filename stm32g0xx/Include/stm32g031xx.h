@@ -695,7 +695,6 @@ typedef struct
 
 #define DMAMUX1_ChannelStatus      ((DMAMUX_ChannelStatus_TypeDef *) DMAMUX1_ChannelStatus_BASE)
 #define DMAMUX1_RequestGenStatus   ((DMAMUX_RequestGenStatus_TypeDef *) DMAMUX1_RequestGenStatus_BASE)
-#define DMAMUX1_IdRegisters        ((DMAMUX_IdRegisters_TypeDef *) DMAMUX1_IdRegisters_BASE)
 
 #define DBG              ((DBG_TypeDef *) DBG_BASE)
 
