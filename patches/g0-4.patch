@@ -4,49 +4,10 @@ Date: Sat, 16 Feb 2019 22:00:21 +0100
 Subject: [PATCH] Fix STM32G0 headers DMAMUX1_IdRegisters_TypeDef
 
 ---
- stm32g0xx/Include/stm32g030xx.h | 1 -
- stm32g0xx/Include/stm32g031xx.h | 1 -
- stm32g0xx/Include/stm32g041xx.h | 1 -
  stm32g0xx/Include/stm32g070xx.h | 1 -
  stm32g0xx/Include/stm32g071xx.h | 1 -
  stm32g0xx/Include/stm32g081xx.h | 1 -
  6 files changed, 6 deletions(-)
-
-diff --git a/stm32g0xx/Include/stm32g030xx.h b/stm32g0xx/Include/stm32g030xx.h
-index 0390c8d..da6e53d 100755
---- a/stm32g0xx/Include/stm32g030xx.h
-+++ b/stm32g0xx/Include/stm32g030xx.h
-@@ -652,7 +652,6 @@ typedef struct
-
- #define DMAMUX1_ChannelStatus      ((DMAMUX_ChannelStatus_TypeDef *) DMAMUX1_ChannelStatus_BASE)
- #define DMAMUX1_RequestGenStatus   ((DMAMUX_RequestGenStatus_TypeDef *) DMAMUX1_RequestGenStatus_BASE)
--#define DMAMUX1_IdRegisters        ((DMAMUX_IdRegisters_TypeDef *) DMAMUX1_IdRegisters_BASE)
-
- #define DBG              ((DBG_TypeDef *) DBG_BASE)
-
-diff --git a/stm32g0xx/Include/stm32g031xx.h b/stm32g0xx/Include/stm32g031xx.h
-index d89ae5e..d5609fa 100755
---- a/stm32g0xx/Include/stm32g031xx.h
-+++ b/stm32g0xx/Include/stm32g031xx.h
-@@ -695,7 +695,6 @@ typedef struct
-
- #define DMAMUX1_ChannelStatus      ((DMAMUX_ChannelStatus_TypeDef *) DMAMUX1_ChannelStatus_BASE)
- #define DMAMUX1_RequestGenStatus   ((DMAMUX_RequestGenStatus_TypeDef *) DMAMUX1_RequestGenStatus_BASE)
--#define DMAMUX1_IdRegisters        ((DMAMUX_IdRegisters_TypeDef *) DMAMUX1_IdRegisters_BASE)
-
- #define DBG              ((DBG_TypeDef *) DBG_BASE)
-
-diff --git a/stm32g0xx/Include/stm32g041xx.h b/stm32g0xx/Include/stm32g041xx.h
-index 075b643..fbb9d99 100755
---- a/stm32g0xx/Include/stm32g041xx.h
-+++ b/stm32g0xx/Include/stm32g041xx.h
-@@ -742,7 +742,6 @@ typedef struct
-
- #define DMAMUX1_ChannelStatus      ((DMAMUX_ChannelStatus_TypeDef *) DMAMUX1_ChannelStatus_BASE)
- #define DMAMUX1_RequestGenStatus   ((DMAMUX_RequestGenStatus_TypeDef *) DMAMUX1_RequestGenStatus_BASE)
--#define DMAMUX1_IdRegisters        ((DMAMUX_IdRegisters_TypeDef *) DMAMUX1_IdRegisters_BASE)
-
- #define DBG              ((DBG_TypeDef *) DBG_BASE)
 
 diff --git a/stm32g0xx/Include/stm32g070xx.h b/stm32g0xx/Include/stm32g070xx.h
 index bffa13d..6f2d876 100755

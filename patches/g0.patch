@@ -4,65 +4,11 @@ Date: Fri, 15 Feb 2019 21:04:17 +0100
 Subject: [PATCH] Fix STM32G0 headers
 
 ---
- stm32g0xx/Include/stm32g030xx.h | 6 ++++++
- stm32g0xx/Include/stm32g031xx.h | 6 ++++++
- stm32g0xx/Include/stm32g041xx.h | 6 ++++++
  stm32g0xx/Include/stm32g070xx.h | 6 ++++++
  stm32g0xx/Include/stm32g071xx.h | 6 ++++++
  stm32g0xx/Include/stm32g081xx.h | 6 ++++++
  6 files changed, 36 insertions(+)
 
-diff --git a/stm32g0xx/Include/stm32g030xx.h b/stm32g0xx/Include/stm32g030xx.h
-index fdac46e..a0687f8 100755
---- a/stm32g0xx/Include/stm32g030xx.h
-+++ b/stm32g0xx/Include/stm32g030xx.h
-@@ -3980,6 +3980,12 @@ typedef struct
- #define RCC_CFGR_SW_1                  (0x2UL << RCC_CFGR_SW_Pos)              /*!< 0x00000002 */
- #define RCC_CFGR_SW_2                  (0x4UL << RCC_CFGR_SW_Pos)              /*!< 0x00000004 */
-
-+#define RCC_CFGR_SW_HSI                (0UL)                                   /*!< HSI selected as system clock */
-+#define RCC_CFGR_SW_HSE                (0x00000001UL)                          /*!< HSE selected as system clock */
-+#define RCC_CFGR_SW_PLL                (0x00000002UL)                          /*!< PLL selected as system clock */
-+#define RCC_CFGR_SW_LSI                (0x00000003UL)                          /*!< LSI selected as system clock */
-+#define RCC_CFGR_SW_LSE                (0x00000004UL)                          /*!< LSE selected as system clock */
-+
- /*!< SWS configuration */
- #define RCC_CFGR_SWS_Pos               (3U)
- #define RCC_CFGR_SWS_Msk               (0x7UL << RCC_CFGR_SWS_Pos)             /*!< 0x00000038 */
-diff --git a/stm32g0xx/Include/stm32g031xx.h b/stm32g0xx/Include/stm32g031xx.h
-index 5a59702..9b2fb99 100755
---- a/stm32g0xx/Include/stm32g031xx.h
-+++ b/stm32g0xx/Include/stm32g031xx.h
-@@ -4158,6 +4158,12 @@ typedef struct
- #define RCC_CFGR_SW_1                  (0x2UL << RCC_CFGR_SW_Pos)              /*!< 0x00000002 */
- #define RCC_CFGR_SW_2                  (0x4UL << RCC_CFGR_SW_Pos)              /*!< 0x00000004 */
-
-+#define RCC_CFGR_SW_HSI                (0UL)                                   /*!< HSI selected as system clock */
-+#define RCC_CFGR_SW_HSE                (0x00000001UL)                          /*!< HSE selected as system clock */
-+#define RCC_CFGR_SW_PLL                (0x00000002UL)                          /*!< PLL selected as system clock */
-+#define RCC_CFGR_SW_LSI                (0x00000003UL)                          /*!< LSI selected as system clock */
-+#define RCC_CFGR_SW_LSE                (0x00000004UL)                          /*!< LSE selected as system clock */
-+
- /*!< SWS configuration */
- #define RCC_CFGR_SWS_Pos               (3U)
- #define RCC_CFGR_SWS_Msk               (0x7UL << RCC_CFGR_SWS_Pos)             /*!< 0x00000038 */
-diff --git a/stm32g0xx/Include/stm32g041xx.h b/stm32g0xx/Include/stm32g041xx.h
-index 566544c..e28603f 100755
---- a/stm32g0xx/Include/stm32g041xx.h
-+++ b/stm32g0xx/Include/stm32g041xx.h
-@@ -4394,6 +4394,12 @@ typedef struct
- #define RCC_CFGR_SW_1                  (0x2UL << RCC_CFGR_SW_Pos)              /*!< 0x00000002 */
- #define RCC_CFGR_SW_2                  (0x4UL << RCC_CFGR_SW_Pos)              /*!< 0x00000004 */
-
-+#define RCC_CFGR_SW_HSI                (0UL)                                   /*!< HSI selected as system clock */
-+#define RCC_CFGR_SW_HSE                (0x00000001UL)                          /*!< HSE selected as system clock */
-+#define RCC_CFGR_SW_PLL                (0x00000002UL)                          /*!< PLL selected as system clock */
-+#define RCC_CFGR_SW_LSI                (0x00000003UL)                          /*!< LSI selected as system clock */
-+#define RCC_CFGR_SW_LSE                (0x00000004UL)                          /*!< LSE selected as system clock */
-+
- /*!< SWS configuration */
- #define RCC_CFGR_SWS_Pos               (3U)
- #define RCC_CFGR_SWS_Msk               (0x7UL << RCC_CFGR_SWS_Pos)             /*!< 0x00000038 */
 diff --git a/stm32g0xx/Include/stm32g070xx.h b/stm32g0xx/Include/stm32g070xx.h
 index 69a6881..395b370 100755
 --- a/stm32g0xx/Include/stm32g070xx.h
