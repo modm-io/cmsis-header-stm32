@@ -9,7 +9,7 @@ Here is the list of the current device header version and release date as well a
 
 - [L0: v1.9.0 created 26-October-2018 (CubeL0 v1.11.2)](http://www.st.com/en/embedded-software/stm32cubel0.html)
 - [L1: v2.2.2 created 25-August-2017 (CubeL1 v1.8.1)](http://www.st.com/en/embedded-software/stm32cubel1.html)
-- [L4: v1.5.0 created 27-July-2018 (CubeL4 v1.13.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
+- [L4: v1.5.1 created 03-April-2019 (CubeL4 v1.14.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
 - [F0: v2.3.3 created 25-August-2017 (CubeF0 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
 - [G0: v1.1.0 created 06-February-2019 (CubeG0 v1.1.0)](http://www.st.com/en/embedded-software/stm32cubeg0.html)
 - [F1: v4.3.0 created 09-October-2018 (CubeF1 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubef1.html)
