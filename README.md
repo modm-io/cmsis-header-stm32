@@ -8,16 +8,16 @@ The files are copied and modified by converting all line endings from Windows to
 Here is the list of the current device header version and release date as well as the Cube release version in braces:
 
 - [L0: v1.9.0 created 26-October-2018 (CubeL0 v1.11.2)](http://www.st.com/en/embedded-software/stm32cubel0.html)
-- [L1: v2.2.2 created 25-August-2017 (CubeL1 v1.8.1)](http://www.st.com/en/embedded-software/stm32cubel1.html)
+- [L1: v2.3.0 created 05-April-2019 (CubeL1 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
 - [L4: v1.5.1 created 03-April-2019 (CubeL4 v1.14.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
-- [F0: v2.3.3 created 25-August-2017 (CubeF0 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
-- [G0: v1.1.0 created 06-February-2019 (CubeG0 v1.1.0)](http://www.st.com/en/embedded-software/stm32cubeg0.html)
+- [F0: v2.3.3 created 25-August-2017 (CubeF0 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
+- [G0: v1.2.0 created 05-April-2019 (CubeG0 v1.2.0)](http://www.st.com/en/embedded-software/stm32cubeg0.html)
 - [F1: v4.3.0 created 09-October-2018 (CubeF1 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubef1.html)
 - [F2: v2.2.1 created 29-September-2017 (CubeF2 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubef2.html)
 - [F3: v2.3.3 created 11-June-2018 (CubeF3 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubef3.html)
 - [F4: v2.6.2 created 06-October-2017 (CubeF4 v1.24.0)](http://www.st.com/en/embedded-software/stm32cubef4.html)
 - [F7: v1.2.3 created 29-June-2018 (CubeF7 v1.15.0)](http://www.st.com/en/embedded-software/stm32cubef7.html)
-- [H7: v1.3.0 created 29-June-2018 (CubeH7 v1.3.0)](http://www.st.com/en/embedded-software/stm32cubeh7.html)
+- [H7: v1.5.0 created 05-April-2019 (CubeH7 v1.4.0)](http://www.st.com/en/embedded-software/stm32cubeh7.html)
 
 The Travis CI integration checks these versions daily and will update them automatically.
 However, when our manual patches fail to apply, the CI will fail too: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
