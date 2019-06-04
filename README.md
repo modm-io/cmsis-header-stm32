@@ -11,12 +11,13 @@ Here is the list of the current device header version and release date as well a
 - [L1: v2.3.0 created 05-April-2019 (CubeL1 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
 - [L4: v1.5.1 created 03-April-2019 (CubeL4 v1.14.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
 - [F0: v2.3.3 created 25-August-2017 (CubeF0 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
-- [G0: v1.2.0 created 05-April-2019 (CubeG0 v1.2.0)](http://www.st.com/en/embedded-software/stm32cubeg0.html)
 - [F1: v4.3.0 created 09-October-2018 (CubeF1 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubef1.html)
 - [F2: v2.2.1 created 29-September-2017 (CubeF2 v1.7.0)](http://www.st.com/en/embedded-software/stm32cubef2.html)
 - [F3: v2.3.3 created 11-June-2018 (CubeF3 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubef3.html)
 - [F4: v2.6.2 created 06-October-2017 (CubeF4 v1.24.0)](http://www.st.com/en/embedded-software/stm32cubef4.html)
 - [F7: v1.2.3 created 29-June-2018 (CubeF7 v1.15.0)](http://www.st.com/en/embedded-software/stm32cubef7.html)
+- [G0: v1.2.0 created 05-April-2019 (CubeG0 v1.2.0)](http://www.st.com/en/embedded-software/stm32cubeg0.html)
+- [G4: v1.0.0 created 12-April-2019 (CubeG4 v1.0.0)](http://www.st.com/en/embedded-software/stm32cubeg4.html)
 - [H7: v1.5.0 created 05-April-2019 (CubeH7 v1.4.0)](http://www.st.com/en/embedded-software/stm32cubeh7.html)
 
 The Travis CI integration checks these versions daily and will update them automatically.

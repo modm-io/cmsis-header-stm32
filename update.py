@@ -11,7 +11,8 @@ from pathlib import Path
 
 stm32_families = [
     "l0", "l1", "l4",
-    "f0", "g0", "f1", "f2", "f3", "f4", "f7",
+    "f0", "f1", "f2", "f3", "f4", "f7",
+    "g0", "g4",
     "h7"
 ]
 
