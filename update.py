@@ -13,7 +13,8 @@ stm32_families = [
     "l0", "l1", "l4",
     "f0", "f1", "f2", "f3", "f4", "f7",
     "g0", "g4",
-    "h7"
+    "h7",
+    "wb"
 ]
 
 def get_local_cube_version(readme, family):
