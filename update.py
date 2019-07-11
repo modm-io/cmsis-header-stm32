@@ -9,6 +9,14 @@ import re
 import os
 from pathlib import Path
 
+# Set the right headers
+hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+       'Accept-Encoding': 'none',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Connection': 'keep-alive'}
+
 stm32_families = [
     "l0", "l1", "l4",
     "f0", "f1", "f2", "f3", "f4", "f7",
@@ -52,6 +60,7 @@ force_update = ("-f" in sys.argv)
 
 cube_local_version = {}
 header_local_version = {}
+print("Parsing local header versions...")
 # parse the versions directly from the README
 readme = Path("README.md").read_text()
 for family in stm32_families:
@@ -72,7 +81,8 @@ cube_dl_url = {}
 cube_furl = "http://www.st.com/en/embedded-software/stm32cube{}.html"
 # parse the versions and download links from ST's website
 for family in stm32_families:
-    with urllib.request.urlopen(cube_furl.format(family)) as response:
+    print("Downloading homepage for '{}'...".format(family))
+    with urllib.request.urlopen(urllib.request.Request(cube_furl.format(family), headers=hdr)) as response:
         html = response.read().decode("utf-8")
         # extract remote cube version from website
         cube_remote_version[family] = get_remote_cube_version(html)
@@ -106,7 +116,7 @@ for family in check_header_version:
     while(1):
         dl_file = "{}.zip".format(family)
         if download_remote:
-            with urllib.request.urlopen(cube_dl_url[family]) as response, \
+            with urllib.request.urlopen(urllib.request.Request(cube_dl_url[family], headers=hdr)) as response, \
                                   open(dl_file, "wb") as out_file:
                 shutil.copyfileobj(response, out_file)
         dl_count += 1
