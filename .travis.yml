@@ -6,7 +6,7 @@ addons:
     packages:
       - dos2unix
 
-script: "python update.py -d -f"
+script: "python update.py -vv -d -f"
 
 deploy:
   provider: pages
