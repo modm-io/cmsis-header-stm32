@@ -88,7 +88,9 @@ def get_header_files(family):
     while(dl_count >= 0):
         try:
             with urllib.request.urlopen(urllib.request.Request(cube_furl.format(family), headers=hdr), timeout=30) as response:
-                LOGGER.debug("Homepage size: {:0.0f} kB".format(int(response.getheader('Content-Length'))/1e3))
+                size = response.getheader('Content-Length')
+                if size is not None:
+                    LOGGER.debug("Homepage size: {:0.0f} kB".format(int(size)/1e3))
                 html = response.read().decode("utf-8")
                 # extract remote cube version from website
                 cube_remote_version = get_remote_cube_version(html)
@@ -128,7 +130,9 @@ def get_header_files(family):
             try:
                 with urllib.request.urlopen(urllib.request.Request(cube_dl_url, headers=hdr), timeout=300) as response, \
                      open(dl_file, "wb") as out_file:
-                    LOGGER.debug("Zipfile size: {:0.1f} MB".format(int(response.getheader('Content-Length'))/1e6))
+                    size = response.getheader('Content-Length')
+                    if size is not None:
+                        LOGGER.debug("Zipfile size: {:0.1f} MB".format(int(size)/1e6))
                     shutil.copyfileobj(response, out_file)
                 break
             except timeout:
