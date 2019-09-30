@@ -1,28 +1,28 @@
 ## CMSIS device headers for STM32
 
 This folder includes the CMSIS device headers for all STM32 devices.
-The files located here are part of the `STM32Cube` libraries and can be found inside the `STM32Cube*/Drivers/CMSIS/Device/ST/STM32F*xx/Include` folder.  
+The files located here are part of the `STM32Cube` libraries and can be found inside the `STM32Cube*/Drivers/CMSIS/Device/ST/STM32F*xx/Include` folder.
 
-The files are copied and modified by converting all line endings from Windows to Unix style and removing all trailing whitespace (see `post_script.sh`). If you don't like that, stop complaining and do the work yourself.
+The files are copied and modified by converting all line endings from Windows to Unix style and removing all trailing whitespace (see `post_script.sh`).
 
 Here is the list of the current device header version and release date as well as the Cube release version in braces:
 
-- [L0: v1.9.0 created 26-October-2018 (CubeL0 v1.11.2)](http://www.st.com/en/embedded-software/stm32cubel0.html)
-- [L1: v2.3.0 created 05-April-2019 (CubeL1 v1.9.0)](http://www.st.com/en/embedded-software/stm32cubel1.html)
-- [L4: v1.5.1 created 03-April-2019 (CubeL4 v1.14.0)](http://www.st.com/en/embedded-software/stm32cubel4.html)
-- [F0: v2.3.3 created 25-August-2017 (CubeF0 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubef0.html)
-- [F1: v4.3.1 created 26-June-2019 (CubeF1 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubef1.html)
-- [F2: v2.2.2 created 26-June-2019 (CubeF2 v1.8.0)](http://www.st.com/en/embedded-software/stm32cubef2.html)
-- [F3: v2.3.3 created 11-June-2018 (CubeF3 v1.10.0)](http://www.st.com/en/embedded-software/stm32cubef3.html)
-- [F4: v2.6.2 created 06-October-2017 (CubeF4 v1.24.0)](http://www.st.com/en/embedded-software/stm32cubef4.html)
-- [F7: v1.2.3 created 29-June-2018 (CubeF7 v1.15.0)](http://www.st.com/en/embedded-software/stm32cubef7.html)
-- [G0: v1.3.0 created 25-June-2019 (CubeG0 v1.3.0)](http://www.st.com/en/embedded-software/stm32cubeg0.html)
-- [G4: v1.1.0 created 28-June-2019 (CubeG4 v1.1.0)](http://www.st.com/en/embedded-software/stm32cubeg4.html)
-- [H7: v1.6.0 created 28-June-2019 (CubeH7 v1.5.0)](http://www.st.com/en/embedded-software/stm32cubeh7.html)
-- [WB: v1.2.0 created 26-June-2019 (CubeWB v1.2.0)](http://www.st.com/en/embedded-software/stm32cubewb.html)
+- [L0: v1.9.0 created 26-October-2018](https://github.com/STMicroelectronics/STM32CubeL0)
+- [L1: v2.3.0 created 05-April-2019](https://github.com/STMicroelectronics/STM32CubeL1)
+- [L4: v1.5.1 created 03-April-2019](https://github.com/STMicroelectronics/STM32CubeL4)
+- [F0: v2.3.3 created 25-August-2017](https://github.com/STMicroelectronics/STM32CubeF0)
+- [F1: v4.3.1 created 26-June-2019](https://github.com/STMicroelectronics/STM32CubeF1)
+- [F2: v2.2.2 created 26-June-2019](https://github.com/STMicroelectronics/STM32CubeF2)
+- [F3: v2.3.3 created 11-June-2018](https://github.com/STMicroelectronics/STM32CubeF3)
+- [F4: v2.6.3 created 08-February-2019](https://github.com/STMicroelectronics/STM32CubeF4)
+- [F7: v1.2.4 created 08-February-2019](https://github.com/STMicroelectronics/STM32CubeF7)
+- [G0: v1.3.0 created 25-June-2019](https://github.com/STMicroelectronics/STM32CubeG0)
+- [G4: v1.1.0 created 28-June-2019](https://github.com/STMicroelectronics/STM32CubeG4)
+- [H7: v1.6.0 created 28-June-2019](https://github.com/STMicroelectronics/STM32CubeH7)
+- [WB: v1.2.0 created 26-June-2019](https://github.com/STMicroelectronics/STM32CubeWB)
 
 The Travis CI integration checks these versions daily and will update them automatically.
-However, when our manual patches fail to apply, the CI will fail too: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
+However, when our manual patches fail to apply, the CI will fail: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
 
 The ST header files in this directory are available under the BSD 3-Clause License:
 ```

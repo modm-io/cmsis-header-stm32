@@ -6,6 +6,8 @@ addons:
     packages:
       - dos2unix
 
+install:
+  - pip install svn
 script: "python update.py -vv -d -f"
 
 deploy:
