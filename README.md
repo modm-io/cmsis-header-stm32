@@ -18,7 +18,7 @@ Here is the list of the current device header version and release date as well a
 - [F7: v1.2.4 created 08-February-2019](https://github.com/STMicroelectronics/STM32CubeF7)
 - [G0: v1.3.0 created 25-June-2019](https://github.com/STMicroelectronics/STM32CubeG0)
 - [G4: v1.1.0 created 28-June-2019](https://github.com/STMicroelectronics/STM32CubeG4)
-- [H7: v1.6.0 created 28-June-2019](https://github.com/STMicroelectronics/STM32CubeH7)
+- [H7: v1.7.0 created 06-December-2019](https://github.com/STMicroelectronics/STM32CubeH7)
 - [WB: v1.2.0 created 11-September-2019](https://github.com/STMicroelectronics/STM32CubeWB)
 
 The Travis CI integration checks these versions daily and will update them automatically.
