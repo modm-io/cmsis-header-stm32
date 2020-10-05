@@ -12,7 +12,7 @@ Here is the list of the current device header version and release date as well a
 - [L4: v1.7.0 created 26-June-2020](https://github.com/STMicroelectronics/STM32CubeL4)
 - [L5: v1.0.3 created 26-June-2020](https://github.com/STMicroelectronics/STM32CubeL5)
 - [F0: v2.3.4 created 12-September-2019](https://github.com/STMicroelectronics/STM32CubeF0)
-- [F1: v4.3.1 created 26-June-2019](https://github.com/STMicroelectronics/STM32CubeF1)
+- [F1: v4.3.2 created 07-September-2020](https://github.com/STMicroelectronics/STM32CubeF1)
 - [F2: v2.2.4 created 09-September-2020](https://github.com/STMicroelectronics/STM32CubeF2)
 - [F3: v2.3.4 created 12-September-2019](https://github.com/STMicroelectronics/STM32CubeF3)
 - [F4: v2.6.5 created 10-February-2020](https://github.com/STMicroelectronics/STM32CubeF4)
