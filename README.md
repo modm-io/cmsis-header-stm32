@@ -7,20 +7,20 @@ The files are copied and modified by converting all line endings from Windows to
 
 Here is the list of the current device header version and release date as well as the Cube release version in braces:
 
-- [L0: v1.9.0 created 26-October-2018](https://github.com/STMicroelectronics/STM32CubeL0)
+- [L0: v1.9.1 created 28-October-2020](https://github.com/STMicroelectronics/STM32CubeL0)
 - [L1: v2.3.1 created 24-June-2020](https://github.com/STMicroelectronics/STM32CubeL1)
 - [L4: v1.7.0 created 26-June-2020](https://github.com/STMicroelectronics/STM32CubeL4)
 - [L5: v1.0.3 created 26-June-2020](https://github.com/STMicroelectronics/STM32CubeL5)
-- [F0: v2.3.4 created 12-September-2019](https://github.com/STMicroelectronics/STM32CubeF0)
+- [F0: v2.3.5 created 06-November-2020](https://github.com/STMicroelectronics/STM32CubeF0)
 - [F1: v4.3.2 created 07-September-2020](https://github.com/STMicroelectronics/STM32CubeF1)
 - [F2: v2.2.4 created 09-September-2020](https://github.com/STMicroelectronics/STM32CubeF2)
-- [F3: v2.3.4 created 12-September-2019](https://github.com/STMicroelectronics/STM32CubeF3)
+- [F3: v2.3.5 created 10-November-2020](https://github.com/STMicroelectronics/STM32CubeF3)
 - [F4: v2.6.5 created 10-February-2020](https://github.com/STMicroelectronics/STM32CubeF4)
 - [F7: v1.2.5 created 13-February-2020](https://github.com/STMicroelectronics/STM32CubeF7)
-- [G0: v1.3.0 created 25-June-2019](https://github.com/STMicroelectronics/STM32CubeG0)
+- [G0: v1.4.0 created 29-October-2020](https://github.com/STMicroelectronics/STM32CubeG0)
 - [G4: v1.2.0 created 26-June-2020](https://github.com/STMicroelectronics/STM32CubeG4)
 - [H7: v1.9.0 created 29-May-2020](https://github.com/STMicroelectronics/STM32CubeH7)
-- [WB: v1.2.0 created 05-June-2020](https://github.com/STMicroelectronics/STM32CubeWB)
+- [WB: v1.2.0 created 30-October-2020](https://github.com/STMicroelectronics/STM32CubeWB)
 
 The Travis CI integration checks these versions daily and will update them automatically.
 However, when our manual patches fail to apply, the CI will fail: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
