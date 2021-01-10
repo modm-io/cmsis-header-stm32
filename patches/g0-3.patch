@@ -20,6 +20,7 @@ index a5c40c9..bffa13d 100755
  #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
  #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
 
+
 +#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
 +#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
 +#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
@@ -36,6 +37,7 @@ index a5c40c9..bffa13d 100755
 @@ -4149,6 +4149,12 @@ typedef struct
  #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
  #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
 
 +#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
 +#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
@@ -54,6 +56,7 @@ index a5c40c9..bffa13d 100755
  #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
  #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
 
+
 +#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
 +#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
 +#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
@@ -70,6 +73,7 @@ index a5c40c9..bffa13d 100755
 @@ -4149,6 +4149,12 @@ typedef struct
  #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
  #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
 
 +#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
 +#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
@@ -88,6 +92,7 @@ index c747bb5..01a3ed9 100755
  #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
  #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
 
+
 +#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
 +#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
 +#define RCC_CFGR_PPRE_DIV4             (0x00005000UL)                          /*!< HCLK divided by 4 */
@@ -104,6 +109,7 @@ index 7aa6964..83ef9f2 100755
 @@ -5084,6 +5084,12 @@ typedef struct
  #define RCC_CFGR_PPRE_1                (0x2UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00002000 */
  #define RCC_CFGR_PPRE_2                (0x4UL << RCC_CFGR_PPRE_Pos)            /*!< 0x00004000 */
+
 
 +#define RCC_CFGR_PPRE_DIV1             (0x0UL)                                 /*!< HCLK not divided */
 +#define RCC_CFGR_PPRE_DIV2             (0x00004000UL)                          /*!< HCLK divided by 2 */
