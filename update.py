@@ -17,7 +17,7 @@ stm32_families = [
     "f0", "f1", "f2", "f3", "f4", "f7",
     "g0", "g4",
     "h7",
-    "wb"
+    "wb", "wl",
 ]
 readme = Path("README.md").read_text()
 
@@ -45,7 +45,11 @@ def get_header_files(family):
     header_remote_date = get_header_date(remote_readme_content)
 
     destination_path = Path("stm32{}xx".format(family))
-    header_local_version = get_header_version((destination_path / "Release_Notes.html").read_text(errors="replace"))
+    header_local_version = (destination_path / "Release_Notes.html")
+    if header_local_version.exists():
+        header_local_version = get_header_version(header_local_version.read_text(errors="replace"))
+    else:
+        header_local_version = None
     LOGGER.info("Header v{} -> v{}".format(header_local_version, header_remote_version))
 
     shutil.rmtree(destination_path, ignore_errors=True)
