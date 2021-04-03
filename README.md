@@ -1,11 +1,14 @@
 ## CMSIS device headers for STM32
 
-This folder includes the CMSIS device headers for all STM32 devices.
-The files located here are part of the `STM32Cube` libraries and can be found inside the `STM32Cube*/Drivers/CMSIS/Device/ST/STM32F*xx/Include` folder.
+This folder includes the CMSIS device headers for all STM32 devices. The files
+located here are part of the `STM32Cube` libraries and can be found inside the
+`STM32Cube*/Drivers/CMSIS/Device/ST/STM32F*xx/Include` folder.
 
-The files are copied and modified by converting all line endings from Windows to Unix style and removing all trailing whitespace (see `post_script.sh`).
+The files are copied and modified by converting all line endings from Windows to
+Unix style and removing all trailing whitespace.
 
-Here is the list of the current device header version and release date as well as the Cube release version in braces:
+Here is the list of the current device header version and release date as well
+as the Cube release version in braces:
 
 - [L0: v1.9.1 created 28-October-2020](https://github.com/STMicroelectronics/STM32CubeL0)
 - [L1: v2.3.1 created 24-June-2020](https://github.com/STMicroelectronics/STM32CubeL1)
@@ -23,32 +26,4 @@ Here is the list of the current device header version and release date as well a
 - [WB: v1.2.0 created 09-February-2021](https://github.com/STMicroelectronics/STM32CubeWB)
 - [WL: v1.0.0 created 28-October-2020](https://github.com/STMicroelectronics/STM32CubeWL)
 
-The Travis CI integration checks these versions daily and will update them automatically.
-However, when our manual patches fail to apply, the CI will fail: [![](https://travis-ci.org/modm-io/cmsis-header-stm32.svg?branch=master)](https://travis-ci.org/modm-io/cmsis-header-stm32)
-
-The ST header files in this directory are available under the BSD 3-Clause License:
-```
-COPYRIGHT(c) {year} STMicroelectronics
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-  1. Redistributions of source code must retain the above copyright notice,
-     this list of conditions and the following disclaimer.
-  2. Redistributions in binary form must reproduce the above copyright notice,
-     this list of conditions and the following disclaimer in the documentation
-     and/or other materials provided with the distribution.
-  3. Neither the name of STMicroelectronics nor the names of its contributors
-     may be used to endorse or promote products derived from this software
-     without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-```
+This repository is updated periodically by Github Actions.

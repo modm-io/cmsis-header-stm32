@@ -7,6 +7,7 @@ import shutil
 import logging
 import os, re, sys
 import svn.remote
+import subprocess
 
 from pathlib import Path
 from multiprocessing.pool import ThreadPool
@@ -19,7 +20,6 @@ stm32_families = [
     "h7",
     "wb", "wl",
 ]
-readme = Path("README.md").read_text()
 
 def get_header_version(release_notes):
     vmatch = re.search(r">V([0-9]+\.[0-9]+\.[0-9]+)", release_notes)
@@ -53,15 +53,16 @@ def get_header_files(family):
     LOGGER.info("Header v{} -> v{}".format(header_local_version, header_remote_version))
 
     shutil.rmtree(destination_path, ignore_errors=True)
-    (destination_path / "Include").mkdir(parents=True)
-    shutil.copy(str(remote_readme), str(destination_path / "Release_Notes.html"))
-    for file in remote_path.glob("Include/s*"):
-        shutil.copy(str(file), str(destination_path / "Include" / file.name))
-
-    LOGGER.debug("Normalizing newlines and whitespace...")
-    if os.system("sh ./post_script.sh {} > /dev/null 2>&1".format(destination_path)) != 0:
-        LOGGER.critical("Normalizing newlines and whitespace FAILED...")
-        return None
+    destination_path.mkdir(parents=True)
+    shutil.copy(remote_readme, destination_path / "Release_Notes.html")
+    for path in remote_path.glob("Include/*.h"):
+        if not path.is_file(): continue
+        dest = destination_path / path.relative_to(remote_path)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        # Copy, normalize newline and remove trailing whitespace
+        with path.open("r", newline=None, encoding="utf-8", errors="ignore") as rfile, \
+                           dest.open("w", encoding="utf-8") as wfile:
+            wfile.writelines(l.rstrip()+"\n" for l in rfile.readlines())
 
     for patch in Path('patches').glob("{}*.patch".format(family)):
         LOGGER.info("Applying {}...".format(patch))
@@ -86,7 +87,11 @@ def update_readme(readme, family, new_version, new_date):
 
 for family, versions in zip(stm32_families, family_versions):
     if versions is None or versions[0] is None: continue;
+    readme = Path("README.md").read_text()
     readme = update_readme(readme, family, versions[0], versions[1])
+    Path("README.md").write_text(readme)
+    subprocess.run("git add README.md stm32{}xx".format(family), shell=True)
+    if subprocess.call("git diff-index --quiet HEAD --", shell=True):
+        subprocess.run('git commit -m "Update STM32{} headers to v{}"'.format(family.upper(), versions[0]), shell=True)
 
-Path("README.md").write_text(readme)
 exit(family_versions.count(None))
