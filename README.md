@@ -18,7 +18,7 @@ as the Cube release version in braces:
 - [F1: v4.3.3 created 21-May-2021](https://github.com/STMicroelectronics/STM32CubeF1)
 - [F2: v2.2.5 created 21-May-2021](https://github.com/STMicroelectronics/STM32CubeF2)
 - [F3: v2.3.6 created 23-July-2021](https://github.com/STMicroelectronics/STM32CubeF3)
-- [F4: v2.6.7 created 16-July-2021](https://github.com/STMicroelectronics/STM32CubeF4)
+- [F4: v2.6.8 created 11-February-2022](https://github.com/STMicroelectronics/STM32CubeF4)
 - [F7: v1.2.7 created 22-November-2021](https://github.com/STMicroelectronics/STM32CubeF7)
 - [G0: v1.4.1 created 17-June-2021](https://github.com/STMicroelectronics/STM32CubeG0)
 - [G4: v1.2.2 created 10-November-2021](https://github.com/STMicroelectronics/STM32CubeG4)
