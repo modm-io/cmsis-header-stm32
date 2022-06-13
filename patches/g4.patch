@@ -1,0 +1,268 @@
+From 127da3a34017c06e28a641c3f74f55b2359c2ce3 Mon Sep 17 00:00:00 2001
+From: Niklas Hauser <niklas.hauser@rwth-aachen.de>
+Date: Mon, 13 Jun 2022 12:11:24 +0200
+Subject: [PATCH] patch
+
+---
+ stm32g4xx/Include/stm32g431xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32g441xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32g471xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32g473xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32g474xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32g483xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32g484xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32g491xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32g4a1xx.h | 14 +++++++-------
+ stm32g4xx/Include/stm32gbk1cb.h | 14 +++++++-------
+ 10 files changed, 70 insertions(+), 70 deletions(-)
+
+diff --git a/stm32g4xx/Include/stm32g431xx.h b/stm32g4xx/Include/stm32g431xx.h
+index 7be3c23..787dede 100644
+--- a/stm32g4xx/Include/stm32g431xx.h
++++ b/stm32g4xx/Include/stm32g431xx.h
+@@ -11507,13 +11507,13 @@ typedef struct
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32g441xx.h b/stm32g4xx/Include/stm32g441xx.h
+index 5bc32fa..b5e0b48 100644
+--- a/stm32g4xx/Include/stm32g441xx.h
++++ b/stm32g4xx/Include/stm32g441xx.h
+@@ -11737,13 +11737,13 @@ typedef struct
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32g471xx.h b/stm32g4xx/Include/stm32g471xx.h
+index a9f3457..70f3323 100644
+--- a/stm32g4xx/Include/stm32g471xx.h
++++ b/stm32g4xx/Include/stm32g471xx.h
+@@ -12240,13 +12240,13 @@ typedef struct
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32g473xx.h b/stm32g4xx/Include/stm32g473xx.h
+index 0b53c56..76e24f8 100644
+--- a/stm32g4xx/Include/stm32g473xx.h
++++ b/stm32g4xx/Include/stm32g473xx.h
+@@ -12808,13 +12808,13 @@ typedef struct
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32g474xx.h b/stm32g4xx/Include/stm32g474xx.h
+index 38ddc72..37e55d5 100644
+--- a/stm32g4xx/Include/stm32g474xx.h
++++ b/stm32g4xx/Include/stm32g474xx.h
+@@ -16387,13 +16387,13 @@ typedef struct {
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32g483xx.h b/stm32g4xx/Include/stm32g483xx.h
+index 9300cf2..4965314 100644
+--- a/stm32g4xx/Include/stm32g483xx.h
++++ b/stm32g4xx/Include/stm32g483xx.h
+@@ -13038,13 +13038,13 @@ typedef struct
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32g484xx.h b/stm32g4xx/Include/stm32g484xx.h
+index 2d8eea5..e7f1420 100644
+--- a/stm32g4xx/Include/stm32g484xx.h
++++ b/stm32g4xx/Include/stm32g484xx.h
+@@ -16617,13 +16617,13 @@ typedef struct {
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32g491xx.h b/stm32g4xx/Include/stm32g491xx.h
+index ca9874b..d9b541a 100644
+--- a/stm32g4xx/Include/stm32g491xx.h
++++ b/stm32g4xx/Include/stm32g491xx.h
+@@ -12017,13 +12017,13 @@ typedef struct
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32g4a1xx.h b/stm32g4xx/Include/stm32g4a1xx.h
+index 2fb6e6f..99c9430 100644
+--- a/stm32g4xx/Include/stm32g4a1xx.h
++++ b/stm32g4xx/Include/stm32g4a1xx.h
+@@ -12247,13 +12247,13 @@ typedef struct
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
+diff --git a/stm32g4xx/Include/stm32gbk1cb.h b/stm32g4xx/Include/stm32gbk1cb.h
+index a9d8cf0..4f36eac 100644
+--- a/stm32g4xx/Include/stm32gbk1cb.h
++++ b/stm32g4xx/Include/stm32gbk1cb.h
+@@ -11454,13 +11454,13 @@ typedef struct
+ /*                                                                            */
+ /******************************************************************************/
+ #define USB_EP0R                             USB_BASE                    /*!< endpoint 0 register address */
+-#define USB_EP1R                             (USB_BASE + 0x0x00000004)   /*!< endpoint 1 register address */
+-#define USB_EP2R                             (USB_BASE + 0x0x00000008)   /*!< endpoint 2 register address */
+-#define USB_EP3R                             (USB_BASE + 0x0x0000000C)   /*!< endpoint 3 register address */
+-#define USB_EP4R                             (USB_BASE + 0x0x00000010)   /*!< endpoint 4 register address */
+-#define USB_EP5R                             (USB_BASE + 0x0x00000014)   /*!< endpoint 5 register address */
+-#define USB_EP6R                             (USB_BASE + 0x0x00000018)   /*!< endpoint 6 register address */
+-#define USB_EP7R                             (USB_BASE + 0x0x0000001C)   /*!< endpoint 7 register address */
++#define USB_EP1R                             (USB_BASE + 0x00000004)     /*!< endpoint 1 register address */
++#define USB_EP2R                             (USB_BASE + 0x00000008)     /*!< endpoint 2 register address */
++#define USB_EP3R                             (USB_BASE + 0x0000000C)     /*!< endpoint 3 register address */
++#define USB_EP4R                             (USB_BASE + 0x00000010)     /*!< endpoint 4 register address */
++#define USB_EP5R                             (USB_BASE + 0x00000014)     /*!< endpoint 5 register address */
++#define USB_EP6R                             (USB_BASE + 0x00000018)     /*!< endpoint 6 register address */
++#define USB_EP7R                             (USB_BASE + 0x0000001C)     /*!< endpoint 7 register address */
+ 
+ /* bit positions */
+ #define USB_EP_CTR_RX                            ((uint16_t)0x8000U)           /*!<  EndPoint Correct TRansfer RX */
