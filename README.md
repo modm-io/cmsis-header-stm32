@@ -11,7 +11,7 @@ Here is the list of the current device header version and release date as well
 as the Cube release version in braces:
 
 - [L0: v1.9.3 created 27-January-2023](https://github.com/STMicroelectronics/STM32CubeL0)
-- [L1: v2.3.2 created 21-May-2021](https://github.com/STMicroelectronics/STM32CubeL1)
+- [L1: v2.3.3 created 07-April-2023](https://github.com/STMicroelectronics/STM32CubeL1)
 - [L4: v1.7.2 created 26-November-2021](https://github.com/STMicroelectronics/STM32CubeL4)
 - [L5: v1.0.5 created 04-November-2022](https://github.com/STMicroelectronics/STM32CubeL5)
 - [F0: v2.3.7 created 27-January-2023](https://github.com/STMicroelectronics/STM32CubeF0)
