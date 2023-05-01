@@ -24,3 +24,9 @@ jobs:
       - name: Git push
         run: |
           git push origin master
+      - name: Keep Alive
+        if: always()
+        uses: gautamkrishnar/keepalive-workflow@v1
+        with:
+          committer_username: modm update bot
+          committer_email: bot@modm.io
