@@ -6,7 +6,6 @@ import zipfile
 import shutil
 import logging
 import os, re, sys
-import svn.remote
 import subprocess
 
 from pathlib import Path
@@ -36,10 +35,9 @@ logging.basicConfig(level=logging.DEBUG if "-vv" in sys.argv else logging.INFO)
 def get_header_files(family):
     LOGGER = logging.getLogger(family.upper())
 
-    remote_path = Path("raw/STM32{}xx".format(family.upper()))
-    repo_url = "https://github.com/STMicroelectronics/STM32Cube{0}/trunk/Drivers/CMSIS/Device/ST/STM32{0}xx".format(family.upper())
-    repo = svn.remote.RemoteClient(repo_url)
-    repo.export(str(remote_path))
+    remote_path = Path(f"raw/STM32{family.upper()}xx").absolute()
+    repo_url = f"https://github.com/STMicroelectronics/cmsis_device_{family.lower()}.git"
+    subprocess.run(f"git clone --depth=1 {repo_url} {remote_path}", shell=True)
 
     remote_readme = (remote_path / "Release_Notes.html")
     remote_readme_content = remote_readme.read_text(errors="replace")
@@ -54,6 +52,9 @@ def get_header_files(family):
         header_local_version = None
     LOGGER.info("Header v{} -> v{}".format(header_local_version, header_remote_version))
 
+    if header_local_version == header_remote_version:
+        LOGGER.info("Skipping update...")
+        return (header_remote_version, header_remote_date)
     shutil.rmtree(destination_path, ignore_errors=True)
     destination_path.mkdir(parents=True)
     shutil.copy(remote_readme, destination_path / "Release_Notes.html")
@@ -80,7 +81,7 @@ shutil.rmtree("raw", ignore_errors=True)
 Path("raw").mkdir()
 with ThreadPool(len(stm32_families)) as pool:
     family_versions = pool.map(get_header_files, stm32_families)
-
+# family_versions = [get_header_files(f) for f in stm32_families]
 
 def update_readme(readme, family, new_version, new_date):
     match = r"{0}: v.+? created .+?]".format(family.upper())

@@ -11,9 +11,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          pip3 install svn
       - name: Configure Git
         run: |
           git config --global user.email "bot@modm.io"
