@@ -21,6 +21,9 @@ jobs:
       - name: Git push
         run: |
           git push origin master
+
+      - run: git checkout -b keep-alive
+        if: always()
       - name: Keep Alive
         if: always()
         uses: gautamkrishnar/keepalive-workflow@v1
