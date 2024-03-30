@@ -7,10 +7,10 @@ on:
 
 jobs:
   update:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Configure Git
         run: |
           git config --global user.email "bot@modm.io"
@@ -22,11 +22,11 @@ jobs:
         run: |
           git push origin master
 
-      - run: git checkout -b keep-alive
-        if: always()
-      - name: Keep Alive
-        if: always()
-        uses: gautamkrishnar/keepalive-workflow@v1
-        with:
-          committer_username: modm update bot
-          committer_email: bot@modm.io
+  keep-alive:
+    runs-on: ubuntu-22.04
+    permissions:
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/keepalive-workflow@v2
+
