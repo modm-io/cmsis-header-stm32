@@ -18,8 +18,8 @@ stm32_families = [
     "c0",
     "g0", "g4",
     "h5", "h7",
-    "wb", "wl",
-    "u5",
+    "wb", "wba", "wl",
+    "u0", "u5",
 ]
 
 def get_header_version(release_notes):
