@@ -15,10 +15,9 @@
   * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -4555,15 +4554,15 @@ typedef struct
 #define I2C_CR1_ANFOFF_Pos                  (12U)
 #define I2C_CR1_ANFOFF_Msk                  (0x1UL << I2C_CR1_ANFOFF_Pos)           /*!< 0x00001000 */
 #define I2C_CR1_ANFOFF                      I2C_CR1_ANFOFF_Msk                      /*!< Analog noise filter OFF */
-#define I2C_CR1_SWRST_Pos                   (13U)
-#define I2C_CR1_SWRST_Msk                   (0x1UL << I2C_CR1_SWRST_Pos)            /*!< 0x00002000 */
-#define I2C_CR1_SWRST                       I2C_CR1_SWRST_Msk                       /*!< Software reset */
 #define I2C_CR1_TXDMAEN_Pos                 (14U)
 #define I2C_CR1_TXDMAEN_Msk                 (0x1UL << I2C_CR1_TXDMAEN_Pos)          /*!< 0x00004000 */
 #define I2C_CR1_TXDMAEN                     I2C_CR1_TXDMAEN_Msk                     /*!< DMA transmission requests enable */
 #define I2C_CR1_RXDMAEN_Pos                 (15U)
 #define I2C_CR1_RXDMAEN_Msk                 (0x1UL << I2C_CR1_RXDMAEN_Pos)          /*!< 0x00008000 */
 #define I2C_CR1_RXDMAEN                     I2C_CR1_RXDMAEN_Msk                     /*!< DMA reception requests enable */
+#define I2C_CR1_SBC_Pos                     (16U)
+#define I2C_CR1_SBC_Msk                     (0x1UL << I2C_CR1_SBC_Pos)              /*!< 0x00010000 */
+#define I2C_CR1_SBC                         I2C_CR1_SBC_Msk                         /*!< Slave byte control */
 #define I2C_CR1_NOSTRETCH_Pos               (17U)
 #define I2C_CR1_NOSTRETCH_Msk               (0x1UL << I2C_CR1_NOSTRETCH_Pos)        /*!< 0x00020000 */
 #define I2C_CR1_NOSTRETCH                   I2C_CR1_NOSTRETCH_Msk                   /*!< Clock stretching disable */
