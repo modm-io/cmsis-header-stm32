@@ -10,7 +10,7 @@ Unix style and removing all trailing whitespace.
 Here is the list of the current device header version and release date as well
 as the Cube release version in braces:
 
-- [L0: v1.9.3 created 27-January-2023](https://github.com/STMicroelectronics/STM32CubeL0)
+- [L0: v1.9.4 created 07-March-2025](https://github.com/STMicroelectronics/STM32CubeL0)
 - [L1: v2.3.4 created 21-February-2025](https://github.com/STMicroelectronics/STM32CubeL1)
 - [L4: v1.7.4 created 28-June-2024](https://github.com/STMicroelectronics/STM32CubeL4)
 - [L5: v1.0.6 created 09-February-2024](https://github.com/STMicroelectronics/STM32CubeL5)
