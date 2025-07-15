@@ -2,25 +2,23 @@
 # YOUR MILEAGE MAY VARY
 
 import urllib.request
-import zipfile
 import shutil
 import logging
-import os, re, sys
+import os
+import re
+import sys
 import subprocess
 
 from pathlib import Path
 from multiprocessing.pool import ThreadPool
-from socket import timeout
 
-stm32_families = [
-    "l0", "l1", "l4", "l5",
-    "f0", "f1", "f2", "f3", "f4", "f7",
-    "c0",
-    "g0", "g4",
-    "h5", "h7",
-    "wb", "wba", "wl",
-    "u0", "u5",
-]
+readme = "https://github.com/STMicroelectronics/STM32Cube_MCU_Overall_Offer/raw/refs/heads/master/README.md"
+with urllib.request.urlopen(readme) as f:
+      readme = f.read().decode('utf-8')
+stm32_families = re.findall(r"\(https://github.com/STMicroelectronics/cmsis-device-(.*?)\)", readme)
+
+def replace(text, key, content):
+    return re.sub(r"<!--{0}-->.*?<!--/{0}-->".format(key), "<!--{0}-->\n{1}\n<!--/{0}-->".format(key, content), text, flags=re.DOTALL | re.MULTILINE)
 
 def get_header_version(release_notes):
     vmatch = re.search(r">V([0-9]+\.[0-9]+\.[0-9]+)", release_notes)
@@ -36,7 +34,7 @@ def get_header_files(family):
     LOGGER = logging.getLogger(family.upper())
 
     remote_path = Path(f"raw/STM32{family.upper()}xx").absolute()
-    repo_url = f"https://github.com/STMicroelectronics/cmsis_device_{family.lower()}.git"
+    repo_url = f"https://github.com/STMicroelectronics/cmsis-device-{family.lower()}.git"
     subprocess.run(f"git clone --depth=1 {repo_url} {remote_path}", shell=True)
 
     remote_readme = (remote_path / "Release_Notes.html")
@@ -83,16 +81,14 @@ with ThreadPool(len(stm32_families)) as pool:
     family_versions = pool.map(get_header_files, stm32_families)
 # family_versions = [get_header_files(f) for f in stm32_families]
 
-def update_readme(readme, family, new_version, new_date):
-    match = r"{0}: v.+? created .+?]".format(family.upper())
-    replace = "{0}: v{1} created {2}]".format(family.upper(), new_version, new_date)
-    return re.sub(match, replace, readme)
+readme = Path("README.md").read_text()
+table = [f"- [STM32{family.upper()}: v{version} created {date}](https://github.com/STMicroelectronics/STM32Cube{family.upper()})"
+         for family, (version, date) in zip(stm32_families, family_versions)]
+readme = replace(readme, "table", "\n".join(table))
+Path("README.md").write_text(readme)
 
 for family, versions in zip(stm32_families, family_versions):
     if versions is None or versions[0] is None: continue;
-    readme = Path("README.md").read_text()
-    readme = update_readme(readme, family, versions[0], versions[1])
-    Path("README.md").write_text(readme)
     subprocess.run("git add README.md stm32{}xx".format(family), shell=True)
     if subprocess.call("git diff-index --quiet HEAD --", shell=True):
         subprocess.run('git commit -m "Update STM32{} headers to v{}"'.format(family.upper(), versions[0]), shell=True)

@@ -7,9 +7,9 @@ located here are part of the `STM32Cube` libraries and can be found inside the
 The files are copied and modified by converting all line endings from Windows to
 Unix style and removing all trailing whitespace.
 
-Here is the list of the current device header version and release date as well
-as the Cube release version in braces:
+Here is the list of the current device header version and release date:
 
+<!--table-->
 - [L0: v1.9.4 created 07-March-2025](https://github.com/STMicroelectronics/STM32CubeL0)
 - [L1: v2.3.4 created 21-February-2025](https://github.com/STMicroelectronics/STM32CubeL1)
 - [L4: v1.7.4 created 28-June-2024](https://github.com/STMicroelectronics/STM32CubeL4)
@@ -30,5 +30,6 @@ as the Cube release version in braces:
 - [WL: v1.2.0 created 09-November-2022](https://github.com/STMicroelectronics/STM32CubeWL)
 - [U0: v1.3.0 created 04-June-2025](https://github.com/STMicroelectronics/STM32CubeU0)
 - [U5: v1.4.2 created 04-June-2025](https://github.com/STMicroelectronics/STM32CubeU5)
+<!--/table-->
 
 This repository is updated periodically by Github Actions.
