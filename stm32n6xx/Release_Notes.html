@@ -42,14 +42,21 @@
 <div class="col-sm-12 col-lg-8">
 <h1 id="update-history">Update history</h1>
 <div class="collapse">
-<input type="checkbox" id="collapse-section3" checked aria-hidden="true"> <label for="collapse-section3" checked aria-hidden="true"><strong>V1.2.0 / 04-June-2025</strong></label>
+<input type="checkbox" id="collapse-section4" checked aria-hidden="true"> <label for="collapse-section4" checked aria-hidden="true"><strong>V1.3.0 / 29-October-2025</strong></label>
 <div>
 <h2 id="main-changes">Main Changes</h2>
-<h3 id="second-maintenance-release-of-cmsis-devices-drivers-for-stm32n6xx-series">Second maintenance release of <strong>CMSIS devices drivers</strong> for <strong>STM32N6xx</strong> series</h3>
+<h3 id="third-maintenance-release-of-cmsis-devices-drivers-for-stm32n6xx-series">Third maintenance release of <strong>CMSIS devices drivers</strong> for <strong>STM32N6xx</strong> series</h3>
 <h2 id="contents">Contents</h2>
 <ul>
-<li>Fix Misra-C:2012 Rule 12.2 warnings in defining xxx_Pos constants as unsigned long</li>
-<li>Fix typo affecting IWDG_IRQHandler definition in CubeIDE start-up files</li>
+<li>Add missing defines in stm32n6xx.h</li>
+<li>Fix gcc linker files to ensure that
+<ul>
+<li>Non-Secure Callable (NSC) functions are mapped in NSC area</li>
+<li>a ROM area is always defined</li>
+</ul></li>
+<li>Correct REVID_BASE_NS and REVID_BASE_S definitions</li>
+<li>Correct DLYB_TypeDef structure definition</li>
+<li>Update SystemInit() in system_stm32n6xx_fsbl.c to set compensation cells according to Errata Sheet ES0620</li>
 </ul>
 <h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
 <ul>
@@ -72,15 +79,14 @@
 </div>
 </div>
 <div class="collapse">
-<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" checked aria-hidden="true"><strong>V1.1.0 / 05-February-2025</strong></label>
+<input type="checkbox" id="collapse-section3"  aria-hidden="true"> <label for="collapse-section3" checked aria-hidden="true"><strong>V1.2.0 / 04-June-2025</strong></label>
 <div>
 <h2 id="main-changes-1">Main Changes</h2>
-<h3 id="first-maintenance-release-of-cmsis-devices-drivers-for-stm32n6xx-series">First maintenance release of <strong>CMSIS devices drivers</strong> for <strong>STM32N6xx</strong> series</h3>
+<h3 id="second-maintenance-release-of-cmsis-devices-drivers-for-stm32n6xx-series">Second maintenance release of <strong>CMSIS devices drivers</strong> for <strong>STM32N6xx</strong> series</h3>
 <h2 id="contents-1">Contents</h2>
 <ul>
-<li>Fix compensation cell registers SYSCFG VDDIOiCCCR/VDDIOiCCSR indices order</li>
-<li>Remove useless FDCAN_Config_TypeDef structure</li>
-<li>FPGA-related code removal</li>
+<li>Fix Misra-C:2012 Rule 12.2 warnings in defining xxx_Pos constants as unsigned long</li>
+<li>Fix typo affecting IWDG_IRQHandler definition in CubeIDE start-up files</li>
 </ul>
 <h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
 <ul>
@@ -103,19 +109,21 @@
 </div>
 </div>
 <div class="collapse">
-<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" checked aria-hidden="true"><strong>V1.0.0 / 30-October-2024</strong></label>
+<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" checked aria-hidden="true"><strong>V1.1.0 / 05-February-2025</strong></label>
 <div>
-<h2 id="first-release">First Release</h2>
-<h3 id="first-official-release-of-stm32cuben6-firmware-package-supporting-stm32n6xx-devices">First official release of <strong>STM32CubeN6</strong> firmware package supporting <strong>STM32N6xx</strong> devices</h3>
+<h2 id="main-changes-2">Main Changes</h2>
+<h3 id="first-maintenance-release-of-cmsis-devices-drivers-for-stm32n6xx-series">First maintenance release of <strong>CMSIS devices drivers</strong> for <strong>STM32N6xx</strong> series</h3>
 <h2 id="contents-2">Contents</h2>
 <ul>
-<li>First official release of <strong>CMSIS devices drivers</strong> for <strong>STM32N6xx</strong> series</li>
+<li>Fix compensation cell registers SYSCFG VDDIOiCCCR/VDDIOiCCSR indices order</li>
+<li>Remove useless FDCAN_Config_TypeDef structure</li>
+<li>FPGA-related code removal</li>
 </ul>
 <h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
 <ul>
 <li>IAR Embedded Workbench for ARM (EWARM) toolchain V9.40.1</li>
 <li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.39</li>
-<li>STM32CubeIDE 1.17.0</li>
+<li>STM32CubeIDE 1.18.0</li>
 </ul>
 <h2 id="known-limitations-2">Known Limitations</h2>
 <ul>
@@ -126,6 +134,35 @@
 <li>None</li>
 </ul>
 <h2 id="notes-2">Notes</h2>
+<ul>
+<li>None</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" checked aria-hidden="true"><strong>V1.0.0 / 30-October-2024</strong></label>
+<div>
+<h2 id="first-release">First Release</h2>
+<h3 id="first-official-release-of-stm32cuben6-firmware-package-supporting-stm32n6xx-devices">First official release of <strong>STM32CubeN6</strong> firmware package supporting <strong>STM32N6xx</strong> devices</h3>
+<h2 id="contents-3">Contents</h2>
+<ul>
+<li>First official release of <strong>CMSIS devices drivers</strong> for <strong>STM32N6xx</strong> series</li>
+</ul>
+<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V9.40.1</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.39</li>
+<li>STM32CubeIDE 1.17.0</li>
+</ul>
+<h2 id="known-limitations-3">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="dependencies-3">Dependencies</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="notes-3">Notes</h2>
 <ul>
 <li>None</li>
 </ul>
