@@ -18,7 +18,7 @@ Here is the list of the current device header version and release date:
 - [STM32F4: v2.6.11 created 25-April-2025](https://github.com/STMicroelectronics/STM32CubeF4)
 - [STM32F7: v1.2.10 created 25-April-2025](https://github.com/STMicroelectronics/STM32CubeF7)
 - [STM32G0: v1.4.4 created 15-December-2023](https://github.com/STMicroelectronics/STM32CubeG0)
-- [STM32G4: v1.2.5 created 25-September-2024](https://github.com/STMicroelectronics/STM32CubeG4)
+- [STM32G4: v1.2.6 created 06-February-2026](https://github.com/STMicroelectronics/STM32CubeG4)
 - [STM32H5: v1.4.0 created 05-February-2025](https://github.com/STMicroelectronics/STM32CubeH5)
 - [STM32H7: v1.10.6 created 06-December-2024](https://github.com/STMicroelectronics/STM32CubeH7)
 - [STM32H7RS: v1.2.1 created 29-October-2025](https://github.com/STMicroelectronics/STM32CubeH7RS)
@@ -32,7 +32,7 @@ Here is the list of the current device header version and release date:
 - [STM32U5: v1.4.2 created 04-June-2025](https://github.com/STMicroelectronics/STM32CubeU5)
 - [STM32WB: v1.12.3 created 04-June-2025](https://github.com/STMicroelectronics/STM32CubeWB)
 - [STM32WB0: v1.4.0 created 29-October-2025](https://github.com/STMicroelectronics/STM32CubeWB0)
-- [STM32WBA: v1.8.0 created 23-May-2025](https://github.com/STMicroelectronics/STM32CubeWBA)
+- [STM32WBA: v1.9.0 created 20-January-2026](https://github.com/STMicroelectronics/STM32CubeWBA)
 - [STM32WL: v1.3.0 created 29-October-2025](https://github.com/STMicroelectronics/STM32CubeWL)
 - [STM32WL3: v1.3.1 created 20-November-2025](https://github.com/STMicroelectronics/STM32CubeWL3)
 <!--/table-->
