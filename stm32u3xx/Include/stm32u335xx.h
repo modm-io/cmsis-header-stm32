@@ -131,7 +131,7 @@ typedef enum
   COMP_IRQn                   = 72,     /*!< COMP1 and COMP2 through EXTI Lines interrupts                            */
   USB_FS_IRQn                 = 73,     /*!< USB FS global interrupt                                                  */
   CRS_IRQn                    = 74,     /*!< CRS global interrupt                                                     */
-  QUADSPI1_IRQn               = 76,     /*!< QuadSPI1 global interrupt                                                */
+  OCTOSPI1_IRQn               = 76,     /*!< OctoSPI1 global interrupt                                                */
   GPDMA1_Channel8_IRQn        = 80,     /*!< GPDMA1 Channel 8 global interrupt                                        */
   GPDMA1_Channel9_IRQn        = 81,     /*!< GPDMA1 Channel 9 global interrupt                                        */
   GPDMA1_Channel10_IRQn       = 82,     /*!< GPDMA1 Channel 10 global interrupt                                       */
@@ -242,9 +242,9 @@ typedef struct
   __IO uint32_t AWD2HTR;          /*!< ADC analog watchdog 2 high threshold register,            Address offset: 0xB4 */
   __IO uint32_t AWD3LTR;          /*!< ADC analog watchdog 3 low threshold register,             Address offset: 0xB8 */
   __IO uint32_t AWD3HTR;          /*!< ADC analog watchdog 3 high threshold register,            Address offset: 0xBC */
-  __IO uint32_t DIFSEL;           /*!< ADC differential mode selection register,                 Address offset: 0xC0 */
+       uint32_t RESERVED5;        /*!< Reserved,                                                 Address offset: 0xC0 */
   __IO uint32_t CALFACT;          /*!< ADC calibration factors,                                  Address offset: 0xC4 */
-  uint32_t      RESERVED5[2];     /*!< Reserved,                                                 Address offset: 0xC8 */
+  uint32_t      RESERVED6[2];     /*!< Reserved,                                                 Address offset: 0xC8 */
   __IO uint32_t OR;               /*!< ADC option register,                                      Address offset: 0xD0 */
 } ADC_TypeDef;
 
@@ -330,16 +330,28 @@ typedef struct
   */
 typedef struct
 {
-  __IO uint32_t IDCODE;           /*!< MCU device ID code,                 Address offset: 0x00 */
-  __IO uint32_t CR;               /*!< Debug MCU configuration register,   Address offset: 0x04 */
-  __IO uint32_t APB1FZR1;         /*!< Debug MCU APB1 freeze register 1,   Address offset: 0x08 */
-  __IO uint32_t APB1FZR2;         /*!< Debug MCU APB1 freeze register 2,   Address offset: 0x0C */
-  __IO uint32_t APB2FZR;          /*!< Debug MCU APB2 freeze register,     Address offset: 0x10 */
-  __IO uint32_t APB3FZR;          /*!< Debug MCU APB3 freeze register,     Address offset: 0x14 */
-       uint32_t RESERVED1[2];     /*!< Reserved,                                    0x18 - 0x1C */
-  __IO uint32_t AHB1FZR;          /*!< Debug MCU AHB1 freeze register,     Address offset: 0x20 */
-       uint32_t RESERVED2;        /*!< Reserved,                                           0x24 */
-  __IO uint32_t AHB3FZR;          /*!< Debug MCU AHB3 freeze register,     Address offset: 0x28 */
+  __IO uint32_t IDCODE;           /*!< MCU device ID code,                            Address offset: 0x00 */
+  __IO uint32_t CR;               /*!< Debug MCU configuration register,              Address offset: 0x04 */
+  __IO uint32_t APB1LFZR;         /*!< Debug MCU APB1L freeze register,               Address offset: 0x08 */
+  __IO uint32_t APB1HFZR;         /*!< Debug MCU APB1H freeze register,               Address offset: 0x0C */
+  __IO uint32_t APB2FZR;          /*!< Debug MCU APB2 freeze register,                Address offset: 0x10 */
+  __IO uint32_t APB3FZR;          /*!< Debug MCU APB3 freeze register,                Address offset: 0x14 */
+       uint32_t RESERVED1[2];     /*!< Reserved,                                               0x18 - 0x20 */
+  __IO uint32_t AHB1FZR;          /*!< Debug MCU AHB1 freeze register,                      Address offset: 0x20 */
+       uint32_t RESERVED2[54];    /*!< Reserved,                                               0x24 - 0xFC */
+  __IO uint32_t SR;               /*!< Debug MCU status register,                           Address offset: 0xFC */
+  __IO uint32_t DGB_AUTH_HOST;    /*!< Debug MCU debug host authentication register,        Address offset: 0x100 */
+  __IO uint32_t DGB_AUTH_DEVICE;  /*!< Debug MCU debug device authentication register,      Address offset: 0x104 */
+       uint32_t RESERVED3[946];    /*!< Reserved,                                               0x108 - 0xFD0 */
+  __IO uint32_t PIDR4;            /*!< Debug MCU CoreSight peripheral identity register 4,  Address offset: 0xFD0 */
+  __IO uint32_t PIDR0;            /*!< Debug MCU CoreSight peripheral identity register 0,  Address offset: 0xFE0 */
+  __IO uint32_t PIDR1;            /*!< Debug MCU CoreSight peripheral identity register 1,  Address offset: 0xFE4 */
+  __IO uint32_t PIDR2;            /*!< Debug MCU CoreSight peripheral identity register 2,  Address offset: 0xFE8 */
+  __IO uint32_t PIDR3;            /*!< Debug MCU CoreSight peripheral identity register 3,  Address offset: 0xFEC */
+  __IO uint32_t CIDR0;            /*!< Debug MCU CoreSight component identity register 0,   Address offset: 0xFF0 */
+  __IO uint32_t CIDR1;            /*!< Debug MCU CoreSight component identity register 1,   Address offset: 0xFF4 */
+  __IO uint32_t CIDR2;            /*!< Debug MCU CoreSight component identity register 2,   Address offset: 0xFF8 */
+  __IO uint32_t CIDR3;            /*!< Debug MCU CoreSight component identity register 3,   Address offset: 0xFFC */
 } DBGMCU_TypeDef;
 
 /**
@@ -1243,7 +1255,7 @@ typedef struct
   __IO uint32_t HLCR;             /*!< XSPI Hyperbus Latency Configuration register,     Address offset: 0x200 */
 } XSPI_TypeDef;
 
-typedef  XSPI_TypeDef QUADSPI_TypeDef;
+typedef  XSPI_TypeDef OCTOSPI_TypeDef;
 
 /**
   * @brief Serial Peripheral Interface IO Manager
@@ -1254,7 +1266,7 @@ typedef struct
   __IO uint32_t PCR[8];           /*!< OCTOSPIM IO Manager Port[1:8] Configuration register, Address offset: 0x04-0x20 */
 } XSPIM_TypeDef;
 
-typedef  XSPIM_TypeDef QUADSPIM_TypeDef;
+typedef  XSPIM_TypeDef OCTOSPIM_TypeDef;
 
 /*@}*/ /* end of group STM32U3xx_peripherals */
 
@@ -1399,16 +1411,14 @@ typedef  XSPIM_TypeDef QUADSPIM_TypeDef;
 #define GPIOB_BASE_NS                   (AHB2PERIPH_BASE_NS + 0x00000400UL)
 #define GPIOC_BASE_NS                   (AHB2PERIPH_BASE_NS + 0x00000800UL)
 #define GPIOD_BASE_NS                   (AHB2PERIPH_BASE_NS + 0x00000C00UL)
-#define GPIOE_BASE_NS                   (AHB2PERIPH_BASE_NS + 0x00001000UL)
-#define GPIOG_BASE_NS                   (AHB2PERIPH_BASE_NS + 0x00001800UL)
 #define GPIOH_BASE_NS                   (AHB2PERIPH_BASE_NS + 0x00001C00UL)
 #define ADC1_BASE_NS                    (AHB2PERIPH_BASE_NS + 0x00008000UL)
 #define DAC1_BASE_NS                    (AHB2PERIPH_BASE_NS + 0x00008400UL)
 #define HASH_BASE_NS                    (AHB2PERIPH_BASE_NS + 0x000A0400UL)
 #define HASH_DIGEST_BASE_NS             (AHB2PERIPH_BASE_NS + 0x000A0710UL)
 #define RNG_BASE_NS                     (AHB2PERIPH_BASE_NS + 0x000A0800UL)
-#define DLYB_QUADSPI1_BASE_NS           (AHB2PERIPH_BASE_NS + 0x000AF000UL)
-#define QUADSPI1_R_BASE_NS              (AHB2PERIPH_BASE_NS + 0x000B1400UL)
+#define DLYB_OCTOSPI1_BASE_NS           (AHB2PERIPH_BASE_NS + 0x000AF000UL)
+#define OCTOSPI1_R_BASE_NS              (AHB2PERIPH_BASE_NS + 0x000B1400UL)
 
 #if defined(CPU_IN_SECURE_STATE)
 /*!< Flash, Peripheral and internal SRAMs base addresses - secure */
@@ -1504,20 +1514,18 @@ typedef  XSPIM_TypeDef QUADSPIM_TypeDef;
 #define GPIOB_BASE_S                    (AHB2PERIPH_BASE_S + 0x00000400UL)
 #define GPIOC_BASE_S                    (AHB2PERIPH_BASE_S + 0x00000800UL)
 #define GPIOD_BASE_S                    (AHB2PERIPH_BASE_S + 0x00000C00UL)
-#define GPIOE_BASE_S                    (AHB2PERIPH_BASE_S + 0x00001000UL)
-#define GPIOG_BASE_S                    (AHB2PERIPH_BASE_S + 0x00001800UL)
 #define GPIOH_BASE_S                    (AHB2PERIPH_BASE_S + 0x00001C00UL)
 #define ADC1_BASE_S                     (AHB2PERIPH_BASE_S + 0x00008000UL)
 #define DAC1_BASE_S                     (AHB2PERIPH_BASE_S + 0x00008400UL)
 #define HASH_BASE_S                     (AHB2PERIPH_BASE_S + 0x000A0400UL)
 #define HASH_DIGEST_BASE_S              (AHB2PERIPH_BASE_S + 0x000A0710UL)
 #define RNG_BASE_S                      (AHB2PERIPH_BASE_S + 0x000A0800UL)
-#define DLYB_QUADSPI1_BASE_S            (AHB2PERIPH_BASE_S + 0x000AF000UL)
-#define QUADSPI1_R_BASE_S               (AHB2PERIPH_BASE_S + 0x000B1400UL)
+#define DLYB_OCTOSPI1_BASE_S            (AHB2PERIPH_BASE_S + 0x000AF000UL)
+#define OCTOSPI1_R_BASE_S               (AHB2PERIPH_BASE_S + 0x000B1400UL)
 #endif /* CPU_IN_SECURE_STATE */
 
 /*!< External memories base addresses - Not aliased */
-#define QUADSPI1_BASE                   EXTRAM_BASE_NS
+#define OCTOSPI1_BASE                   EXTRAM_BASE_NS
 
 /*!< DBGMCU base addresses - Not aliased */
 #define DBGMCU_BASE                     (EPPB_BASE + 0x00004000UL)
@@ -1646,7 +1654,7 @@ typedef struct
 #define CRC_NS                          ((CRC_TypeDef *) CRC_BASE_NS)
 #define CRS_NS                          ((CRS_TypeDef *) CRS_BASE_NS)
 #define DAC1_NS                         ((DAC_TypeDef *) DAC1_BASE_NS)
-#define DLYB_QUADSPI1_NS                ((DLYB_TypeDef *) DLYB_QUADSPI1_BASE_NS)
+#define DLYB_OCTOSPI1_NS                ((DLYB_TypeDef *) DLYB_OCTOSPI1_BASE_NS)
 #define EXTI_NS                         ((EXTI_TypeDef *) EXTI_BASE_NS)
 #define FDCAN1_NS                       ((FDCAN_GlobalTypeDef *) FDCAN1_BASE_NS)
 #define FDCAN_CONFIG_NS                 ((FDCAN_Config_TypeDef *) FDCAN_CONFIG_BASE_NS)
@@ -1668,8 +1676,6 @@ typedef struct
 #define GPIOB_NS                        ((GPIO_TypeDef *) GPIOB_BASE_NS)
 #define GPIOC_NS                        ((GPIO_TypeDef *) GPIOC_BASE_NS)
 #define GPIOD_NS                        ((GPIO_TypeDef *) GPIOD_BASE_NS)
-#define GPIOE_NS                        ((GPIO_TypeDef *) GPIOE_BASE_NS)
-#define GPIOG_NS                        ((GPIO_TypeDef *) GPIOG_BASE_NS)
 #define GPIOH_NS                        ((GPIO_TypeDef *) GPIOH_BASE_NS)
 #define GTZC_MPCBB1_NS                  ((GTZC_MPCBB_TypeDef *) GTZC_MPCBB1_BASE_NS)
 #define GTZC_MPCBB2_NS                  ((GTZC_MPCBB_TypeDef *) GTZC_MPCBB2_BASE_NS)
@@ -1686,7 +1692,7 @@ typedef struct
 #define LPTIM3_NS                       ((LPTIM_TypeDef *) LPTIM3_BASE_NS)
 #define LPTIM4_NS                       ((LPTIM_TypeDef *) LPTIM4_BASE_NS)
 #define LPUART1_NS                      ((USART_TypeDef *) LPUART1_BASE_NS)
-#define QUADSPI1_NS                     ((QUADSPI_TypeDef *) QUADSPI1_R_BASE_NS)
+#define OCTOSPI1_NS                     ((OCTOSPI_TypeDef *) OCTOSPI1_R_BASE_NS)
 #define OPAMP1_NS                       ((OPAMP_TypeDef *) OPAMP1_BASE_NS)
 #define OPAMP2_NS                       ((OPAMP_TypeDef *) OPAMP2_BASE_NS)
 #define OPAMP12_COMMON_NS               ((OPAMP_Common_TypeDef *) OPAMP1_BASE_NS)
@@ -1730,7 +1736,7 @@ typedef struct
 #define CRC_S                           ((CRC_TypeDef *) CRC_BASE_S)
 #define CRS_S                           ((CRS_TypeDef *) CRS_BASE_S)
 #define DAC1_S                          ((DAC_TypeDef *) DAC1_BASE_S)
-#define DLYB_QUADSPI1_S                 ((DLYB_TypeDef *) DLYB_QUADSPI1_BASE_S)
+#define DLYB_OCTOSPI1_S                 ((DLYB_TypeDef *) DLYB_OCTOSPI1_BASE_S)
 #define EXTI_S                          ((EXTI_TypeDef *) EXTI_BASE_S)
 #define FDCAN1_S                        ((FDCAN_GlobalTypeDef *) FDCAN1_BASE_S)
 #define FDCAN_CONFIG_S                  ((FDCAN_Config_TypeDef *) FDCAN_CONFIG_BASE_S)
@@ -1752,8 +1758,6 @@ typedef struct
 #define GPIOB_S                         ((GPIO_TypeDef *) GPIOB_BASE_S)
 #define GPIOC_S                         ((GPIO_TypeDef *) GPIOC_BASE_S)
 #define GPIOD_S                         ((GPIO_TypeDef *) GPIOD_BASE_S)
-#define GPIOE_S                         ((GPIO_TypeDef *) GPIOE_BASE_S)
-#define GPIOG_S                         ((GPIO_TypeDef *) GPIOG_BASE_S)
 #define GPIOH_S                         ((GPIO_TypeDef *) GPIOH_BASE_S)
 #define GTZC_TZSC1_S                    ((GTZC_TZSC_TypeDef *) GTZC_TZSC1_BASE_S)
 #define GTZC_TZIC1_S                    ((GTZC_TZIC_TypeDef *) GTZC_TZIC1_BASE_S)
@@ -1771,7 +1775,7 @@ typedef struct
 #define LPTIM3_S                        ((LPTIM_TypeDef *) LPTIM3_BASE_S)
 #define LPTIM4_S                        ((LPTIM_TypeDef *) LPTIM4_BASE_S)
 #define LPUART1_S                       ((USART_TypeDef *) LPUART1_BASE_S)
-#define QUADSPI1_S                      ((QUADSPI_TypeDef *) QUADSPI1_R_BASE_S)
+#define OCTOSPI1_S                      ((OCTOSPI_TypeDef *) OCTOSPI1_R_BASE_S)
 #define OPAMP1_S                        ((OPAMP_TypeDef *) OPAMP1_BASE_S)
 #define OPAMP2_S                        ((OPAMP_TypeDef *) OPAMP2_BASE_S)
 #define OPAMP12_COMMON_S                ((OPAMP_Common_TypeDef *) OPAMP1_BASE_S)
@@ -1827,8 +1831,8 @@ typedef struct
 #define CRS_BASE                        CRS_BASE_S
 #define DAC1                            DAC1_S
 #define DAC1_BASE                       DAC1_BASE_S
-#define DLYB_QUADSPI1                   DLYB_QUADSPI1_S
-#define DLYB_QUADSPI1_BASE              DLYB_QUADSPI1_BASE_S
+#define DLYB_OCTOSPI1                   DLYB_OCTOSPI1_S
+#define DLYB_OCTOSPI1_BASE              DLYB_OCTOSPI1_BASE_S
 #define EXTI                            EXTI_S
 #define EXTI_BASE                       EXTI_BASE_S
 #define FDCAN1                          FDCAN1_S
@@ -1871,10 +1875,6 @@ typedef struct
 #define GPIOC_BASE                      GPIOC_BASE_S
 #define GPIOD                           GPIOD_S
 #define GPIOD_BASE                      GPIOD_BASE_S
-#define GPIOE                           GPIOE_S
-#define GPIOE_BASE                      GPIOE_BASE_S
-#define GPIOG                           GPIOG_S
-#define GPIOG_BASE                      GPIOG_BASE_S
 #define GPIOH                           GPIOH_S
 #define GPIOH_BASE                      GPIOH_BASE_S
 #define GTZC_MPCBB1                     GTZC_MPCBB1_S
@@ -1909,8 +1909,8 @@ typedef struct
 #define LPTIM4_BASE                     LPTIM4_BASE_S
 #define LPUART1                         LPUART1_S
 #define LPUART1_BASE                    LPUART1_BASE_S
-#define QUADSPI1                        QUADSPI1_S
-#define QUADSPI1_R_BASE                 QUADSPI1_R_BASE_S
+#define OCTOSPI1                        OCTOSPI1_S
+#define OCTOSPI1_R_BASE                 OCTOSPI1_R_BASE_S
 #define OPAMP1                          OPAMP1_S
 #define OPAMP1_BASE                     OPAMP1_BASE_S
 #define OPAMP2                          OPAMP2_S
@@ -1996,8 +1996,8 @@ typedef struct
 #define CRS_BASE                        CRS_BASE_NS
 #define DAC1                            DAC1_NS
 #define DAC1_BASE                       DAC1_BASE_NS
-#define DLYB_QUADSPI1                   DLYB_QUADSPI1_NS
-#define DLYB_QUADSPI1_BASE              DLYB_QUADSPI1_BASE_NS
+#define DLYB_OCTOSPI1                   DLYB_OCTOSPI1_NS
+#define DLYB_OCTOSPI1_BASE              DLYB_OCTOSPI1_BASE_NS
 #define EXTI                            EXTI_NS
 #define EXTI_BASE                       EXTI_BASE_NS
 #define FDCAN1                          FDCAN1_NS
@@ -2040,10 +2040,6 @@ typedef struct
 #define GPIOC_BASE                      GPIOC_BASE_NS
 #define GPIOD                           GPIOD_NS
 #define GPIOD_BASE                      GPIOD_BASE_NS
-#define GPIOE                           GPIOE_NS
-#define GPIOE_BASE                      GPIOE_BASE_NS
-#define GPIOG                           GPIOG_NS
-#define GPIOG_BASE                      GPIOG_BASE_NS
 #define GPIOH                           GPIOH_NS
 #define GPIOH_BASE                      GPIOH_BASE_NS
 #define GTZC_MPCBB1                     GTZC_MPCBB1_NS
@@ -2076,8 +2072,8 @@ typedef struct
 #define LPTIM4_BASE                     LPTIM4_BASE_NS
 #define LPUART1                         LPUART1_NS
 #define LPUART1_BASE                    LPUART1_BASE_NS
-#define QUADSPI1                        QUADSPI1_NS
-#define QUADSPI1_R_BASE                 QUADSPI1_R_BASE_NS
+#define OCTOSPI1                        OCTOSPI1_NS
+#define OCTOSPI1_R_BASE                 OCTOSPI1_R_BASE_NS
 #define OPAMP1                          OPAMP1_NS
 #define OPAMP1_BASE                     OPAMP1_BASE_NS
 #define OPAMP2                          OPAMP2_NS
@@ -2162,7 +2158,6 @@ typedef struct
 /******************************************************************************/
 
 /* Specific device feature definitions */
-#define ADC_MULTIMODE_SUPPORT         /*!< ADC feature available only on specific devices: multimode available on devices with several ADC instances */
 
 /********************  Bit definition for ADC_ISR register  *******************/
 #define ADC_ISR_ADRDY_Pos                   (0UL)
@@ -3420,31 +3415,6 @@ typedef struct
 #define ADC_AWD3HTR_HTR_21                  (0x200000UL << ADC_AWD3HTR_HTR_Pos)     /*!< 0x00200000 */
 #define ADC_AWD3HTR_HTR_22                  (0x400000UL << ADC_AWD3HTR_HTR_Pos)     /*!< 0x00400000 */
 
-/********************  Bit definition for ADC_DIFSEL register  ****************/
-#define ADC_DIFSEL_DIFSEL_Pos               (0UL)
-#define ADC_DIFSEL_DIFSEL_Msk               (0xFFFFFUL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x000FFFFF */
-#define ADC_DIFSEL_DIFSEL                   ADC_DIFSEL_DIFSEL_Msk                   /*!< ADC channel differential or single-ended mode selection */
-#define ADC_DIFSEL_DIFSEL_0                 (0x00001UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000001 */
-#define ADC_DIFSEL_DIFSEL_1                 (0x00002UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000002 */
-#define ADC_DIFSEL_DIFSEL_2                 (0x00004UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000004 */
-#define ADC_DIFSEL_DIFSEL_3                 (0x00008UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000008 */
-#define ADC_DIFSEL_DIFSEL_4                 (0x00010UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000010 */
-#define ADC_DIFSEL_DIFSEL_5                 (0x00020UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000020 */
-#define ADC_DIFSEL_DIFSEL_6                 (0x00040UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000040 */
-#define ADC_DIFSEL_DIFSEL_7                 (0x00080UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000080 */
-#define ADC_DIFSEL_DIFSEL_8                 (0x00100UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000100 */
-#define ADC_DIFSEL_DIFSEL_9                 (0x00200UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000200 */
-#define ADC_DIFSEL_DIFSEL_10                (0x00400UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000400 */
-#define ADC_DIFSEL_DIFSEL_11                (0x00800UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000800 */
-#define ADC_DIFSEL_DIFSEL_12                (0x01000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00001000 */
-#define ADC_DIFSEL_DIFSEL_13                (0x02000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00002000 */
-#define ADC_DIFSEL_DIFSEL_14                (0x04000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00004000 */
-#define ADC_DIFSEL_DIFSEL_15                (0x08000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00008000 */
-#define ADC_DIFSEL_DIFSEL_16                (0x10000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00010000 */
-#define ADC_DIFSEL_DIFSEL_17                (0x20000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00020000 */
-#define ADC_DIFSEL_DIFSEL_18                (0x40000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00040000 */
-#define ADC_DIFSEL_DIFSEL_19                (0x80000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00080000 */
-
 /********************  Bit definition for ADC_CALFACT register  ***************/
 
 #define ADC_CALFACT_CALFACT_Pos             (0UL)
@@ -3795,6 +3765,7 @@ typedef struct
 #define COMP_CSR_BLANKSEL_2                 (0x4UL << COMP_CSR_BLANKSEL_Pos)        /*!< 0x04000000 */
 #define COMP_CSR_BLANKSEL_3                 (0x8UL << COMP_CSR_BLANKSEL_Pos)        /*!< 0x08000000 */
 #define COMP_CSR_BLANKSEL_4                 (0x10UL << COMP_CSR_BLANKSEL_Pos)       /*!< 0x01000000 */
+#define COMP2_CSR_BLANKSEL_2                COMP_CSR_BLANKSEL_2                     /*!< COMP2 blanking source selection bit 2 */
 #define COMP_CSR_VALUE_Pos                  (30UL)
 #define COMP_CSR_VALUE_Msk                  (0x1UL << COMP_CSR_VALUE_Pos)           /*!< 0x00000001 */
 #define COMP_CSR_VALUE                      COMP_CSR_VALUE_Msk                      /*!< COMPx enable bit */
@@ -4116,42 +4087,42 @@ typedef struct
 #define DBGMCU_CR_TRACE_MODE_0              (0x1UL << DBGMCU_CR_TRACE_MODE_Pos)     /*!< 0x00000040 */
 #define DBGMCU_CR_TRACE_MODE_1              (0x2UL << DBGMCU_CR_TRACE_MODE_Pos)     /*!< 0x00000080 */
 
-/********************  Bit definition for DBGMCU_APB1FZR1 register  ***********/
-#define DBGMCU_APB1FZR1_DBG_TIM2_STOP_Pos   (0UL)
-#define DBGMCU_APB1FZR1_DBG_TIM2_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM2_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM2_STOP       DBGMCU_APB1FZR1_DBG_TIM2_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM3_STOP_Pos   (1UL)
-#define DBGMCU_APB1FZR1_DBG_TIM3_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM3_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM3_STOP       DBGMCU_APB1FZR1_DBG_TIM3_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM4_STOP_Pos   (2UL)
-#define DBGMCU_APB1FZR1_DBG_TIM4_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM4_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM4_STOP       DBGMCU_APB1FZR1_DBG_TIM4_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM6_STOP_Pos   (4UL)
-#define DBGMCU_APB1FZR1_DBG_TIM6_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM6_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM6_STOP       DBGMCU_APB1FZR1_DBG_TIM6_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM7_STOP_Pos   (5UL)
-#define DBGMCU_APB1FZR1_DBG_TIM7_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM7_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM7_STOP       DBGMCU_APB1FZR1_DBG_TIM7_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_WWDG_STOP_Pos   (11UL)
-#define DBGMCU_APB1FZR1_DBG_WWDG_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_WWDG_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_WWDG_STOP       DBGMCU_APB1FZR1_DBG_WWDG_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_IWDG_STOP_Pos   (12UL)
-#define DBGMCU_APB1FZR1_DBG_IWDG_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_IWDG_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_IWDG_STOP       DBGMCU_APB1FZR1_DBG_IWDG_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_I2C1_STOP_Pos   (21UL)
-#define DBGMCU_APB1FZR1_DBG_I2C1_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_I2C1_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_I2C1_STOP       DBGMCU_APB1FZR1_DBG_I2C1_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_I3C1_STOP_Pos   (23UL)
-#define DBGMCU_APB1FZR1_DBG_I3C1_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_I3C1_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_I3C1_STOP       DBGMCU_APB1FZR1_DBG_I3C1_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_RTC_STOP_Pos    (30UL)
-#define DBGMCU_APB1FZR1_DBG_RTC_STOP_Msk    (0x1UL << DBGMCU_APB1FZR1_DBG_RTC_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_RTC_STOP        DBGMCU_APB1FZR1_DBG_RTC_STOP_Msk
+/********************  Bit definition for DBGMCU_APB1LFZR register  ***********/
+#define DBGMCU_APB1LFZR_DBG_TIM2_STOP_Pos   (0UL)
+#define DBGMCU_APB1LFZR_DBG_TIM2_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM2_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM2_STOP       DBGMCU_APB1LFZR_DBG_TIM2_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_TIM3_STOP_Pos   (1UL)
+#define DBGMCU_APB1LFZR_DBG_TIM3_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM3_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM3_STOP       DBGMCU_APB1LFZR_DBG_TIM3_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_TIM4_STOP_Pos   (2UL)
+#define DBGMCU_APB1LFZR_DBG_TIM4_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM4_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM4_STOP       DBGMCU_APB1LFZR_DBG_TIM4_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_TIM6_STOP_Pos   (4UL)
+#define DBGMCU_APB1LFZR_DBG_TIM6_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM6_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM6_STOP       DBGMCU_APB1LFZR_DBG_TIM6_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_TIM7_STOP_Pos   (5UL)
+#define DBGMCU_APB1LFZR_DBG_TIM7_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM7_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM7_STOP       DBGMCU_APB1LFZR_DBG_TIM7_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_WWDG_STOP_Pos   (11UL)
+#define DBGMCU_APB1LFZR_DBG_WWDG_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_WWDG_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_WWDG_STOP       DBGMCU_APB1LFZR_DBG_WWDG_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_IWDG_STOP_Pos   (12UL)
+#define DBGMCU_APB1LFZR_DBG_IWDG_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_IWDG_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_IWDG_STOP       DBGMCU_APB1LFZR_DBG_IWDG_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_I2C1_STOP_Pos   (21UL)
+#define DBGMCU_APB1LFZR_DBG_I2C1_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_I2C1_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_I2C1_STOP       DBGMCU_APB1LFZR_DBG_I2C1_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_I3C1_STOP_Pos   (23UL)
+#define DBGMCU_APB1LFZR_DBG_I3C1_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_I3C1_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_I3C1_STOP       DBGMCU_APB1LFZR_DBG_I3C1_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_RTC_STOP_Pos    (30UL)
+#define DBGMCU_APB1LFZR_DBG_RTC_STOP_Msk    (0x1UL << DBGMCU_APB1LFZR_DBG_RTC_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_RTC_STOP        DBGMCU_APB1LFZR_DBG_RTC_STOP_Msk
 
-/********************  Bit definition for DBGMCU_APB1FZR2 register  ***********/
-#define DBGMCU_APB1FZR2_DBG_LPTIM2_STOP_Pos (5UL)
-#define DBGMCU_APB1FZR2_DBG_LPTIM2_STOP_Msk (0x1UL << DBGMCU_APB1FZR2_DBG_LPTIM2_STOP_Pos)
-#define DBGMCU_APB1FZR2_DBG_LPTIM2_STOP     DBGMCU_APB1FZR2_DBG_LPTIM2_STOP_Msk
+/********************  Bit definition for DBGMCU_APB1HFZR register  ***********/
+#define DBGMCU_APB1HFZR_DBG_LPTIM2_STOP_Pos (5UL)
+#define DBGMCU_APB1HFZR_DBG_LPTIM2_STOP_Msk (0x1UL << DBGMCU_APB1HFZR_DBG_LPTIM2_STOP_Pos)
+#define DBGMCU_APB1HFZR_DBG_LPTIM2_STOP     DBGMCU_APB1HFZR_DBG_LPTIM2_STOP_Msk
 
 /********************  Bit definition for DBGMCU_APB2FZR register  ***********/
 #define DBGMCU_APB2FZR_DBG_TIM1_STOP_Pos    (11UL)
@@ -4218,6 +4189,87 @@ typedef struct
 #define DBGMCU_AHB1FZR_DBG_GPDMA11_STOP_Pos (11UL)
 #define DBGMCU_AHB1FZR_DBG_GPDMA11_STOP_Msk (0x1UL << DBGMCU_AHB1FZR_DBG_GPDMA11_STOP_Pos)
 #define DBGMCU_AHB1FZR_DBG_GPDMA11_STOP     DBGMCU_AHB1FZR_DBG_GPDMA11_STOP_Msk
+
+/********************  Bit definition for DBGMCU_SR register  ***********/
+#define DBGMCU_SR_DBG_AP_ENABLED_Pos     (0UL)
+#define DBGMCU_SR_DBG_AP_ENABLED_Msk     (0xFFFFUL << DBGMCU_SR_DBG_AP_ENABLED_Pos)
+#define DBGMCU_SR_DBG_AP_ENABLED         DBGMCU_SR_DBG_AP_ENABLED_Msk
+#define DBGMCU_SR_DBG_AP_PRESENT_Pos     (16UL)
+#define DBGMCU_SR_DBG_AP_PRESENT_Msk     (0xFFFFUL << DBGMCU_SR_DBG_AP_PRESENT_Pos)
+#define DBGMCU_SR_DBG_AP_PRESENT         DBGMCU_SR_DBG_AP_PRESENT_Msk
+
+/********************  Bit definition for DBGMCU_DGB_AUTH_HOST register  ***********/
+#define DBGMCU_DBG_AUTH_HOST_AUTH_KEY_Pos     (0UL)
+#define DBGMCU_DBG_AUTH_HOST_AUTH_KEY_Msk     (0xFFFFFFFFUL << DBGMCU_DBG_AUTH_HOST_AUTH_KEY_Pos)
+#define DBGMCU_DBG_AUTH_HOST_AUTH_KEY         DBGMCU_DBG_AUTH_HOST_AUTH_KEY_Msk
+
+/********************  Bit definition for DBGMCU_DGB_AUTH_DEVICE register  ***********/
+#define DBGMCU_DBG_AUTH_DEVICE_AUTH_ID_Pos    (0UL)
+#define DBGMCU_DBG_AUTH_DEVICE_AUTH_ID_Msk    (0xFFFFFFFFUL << DBGMCU_DBG_AUTH_DEVICE_AUTH_ID_Pos)
+#define DBGMCU_DBG_AUTH_DEVICE_AUTH_ID        DBGMCU_DBG_AUTH_DEVICE_AUTH_ID_Msk
+
+/********************  Bit definition for DBGMCU_PIDR4 register ***********/
+#define DBGMCU_PIDR4_JEP106CON_Pos    (0UL)
+#define DBGMCU_PIDR4_JEP106CON_Msk    (0xFUL << DBGMCU_PIDR4_JEP106CON_Pos)
+#define DBGMCU_PIDR4_JEP106CON        DBGMCU_PIDR4_JEP106CON_Msk
+#define DBGMCU_PIDR4_SIZE_Pos         (4UL)
+#define DBGMCU_PIDR4_SIZE_Msk         (0xFUL << DBGMCU_PIDR4_JEP106CON_Pos)
+#define DBGMCU_PIDR4_SIZE             DBGMCU_PIDR4_SIZE_Msk
+
+/********************  Bit definition for DBGMCU_PIDR0 register ***********/
+#define DBGMCU_PIDR0_PARTNUM_Pos    (0UL)
+#define DBGMCU_PIDR0_PARTNUM_Msk    (0xFFUL << DBGMCU_PIDR0_PARTNUM_Pos)
+#define DBGMCU_PIDR0_PARTNUM        DBGMCU_PIDR0_PARTNUM_Msk
+
+/********************  Bit definition for DBGMCU_PIDR1 register ***********/
+#define DBGMCU_PIDR1_PARTNUM_Pos    (0UL)
+#define DBGMCU_PIDR1_PARTNUM_Msk    (0xFUL << DBGMCU_PIDR1_PARTNUM_Pos)
+#define DBGMCU_PIDR1_PARTNUM        DBGMCU_PIDR1_PARTNUM_Msk
+#define DBGMCU_PIDR1_JEP106ID_Pos   (4UL)
+#define DBGMCU_PIDR1_JEP106ID_Msk   (0xFUL << DBGMCU_PIDR1_JEP106ID_Pos)
+#define DBGMCU_PIDR1_JEP106ID       DBGMCU_PIDR1_JEP106ID_Msk
+
+/********************  Bit definition for DBGMCU_PIDR2 register ***********/
+#define DBGMCU_PIDR2_JEP106ID_Pos   (0UL)
+#define DBGMCU_PIDR2_JEP106ID_Msk   (0x7UL << DBGMCU_PIDR2_JEP106ID_Pos)
+#define DBGMCU_PIDR2_JEP106ID       DBGMCU_PIDR2_JEP106ID_Msk
+#define DBGMCU_PIDR2_JEDEC_Pos      (3UL)
+#define DBGMCU_PIDR2_JEDEC_Msk      (0x1UL << DBGMCU_PIDR2_JEDEC_Pos)
+#define DBGMCU_PIDR2_JEDEC          DBGMCU_PIDR2_JEDEC_Msk
+#define DBGMCU_PIDR2_REVISION_Pos   (4UL)
+#define DBGMCU_PIDR2_REVISION_Msk   (0xFUL << DBGMCU_PIDR2_REVISION_Pos)
+#define DBGMCU_PIDR2_REVISION       DBGMCU_PIDR2_REVISION_Msk
+
+/********************  Bit definition for DBGMCU_PIDR3 register ***********/
+#define DBGMCU_PIDR3_CMOD_Pos    (0UL)
+#define DBGMCU_PIDR3_CMOD_Msk    (0xFUL << DBGMCU_PIDR3_CMOD_Pos)
+#define DBGMCU_PIDR3_CMOD        DBGMCU_PIDR3_CMOD_Msk
+#define DBGMCU_PIDR3_REVAND_Pos  (4UL)
+#define DBGMCU_PIDR3_REVAND_Msk  (0xFUL << DBGMCU_PIDR3_REVAND_Pos)
+#define DBGMCU_PIDR3_REVAND      DBGMCU_PIDR3_REVAND_Msk
+
+/********************  Bit definition for DBGMCU_CIDR0 register ***********/
+#define DBGMCU_CIDR0_PREAMBLE_Pos    (0UL)
+#define DBGMCU_CIDR0_PREAMBLE_Msk    (0xFFUL << DBGMCU_CIDR0_PREAMBLE_Pos)
+#define DBGMCU_CIDR0_PREAMBLE        DBGMCU_CIDR0_PREAMBLE_Msk
+
+/********************  Bit definition for DBGMCU_CIDR1 register ***********/
+#define DBGMCU_CIDR1_PREAMBLE_Pos    (0UL)
+#define DBGMCU_CIDR1_PREAMBLE_Msk    (0xFUL << DBGMCU_CIDR1_PREAMBLE_Pos)
+#define DBGMCU_CIDR1_PREAMBLE        DBGMCU_CIDR1_PREAMBLE_Msk
+#define DBGMCU_CIDR1_CLASS_Pos       (4UL)
+#define DBGMCU_CIDR1_CLASS_Msk       (0xFUL << DBGMCU_CIDR1_CLASS_Pos)
+#define DBGMCU_CIDR1_CLASS           DBGMCU_CIDR1_CLASS_Msk
+
+/********************  Bit definition for DBGMCU_CIDR2 register ***********/
+#define DBGMCU_CIDR2_PREAMBLE_Pos    (0UL)
+#define DBGMCU_CIDR2_PREAMBLE_Msk    (0xFFUL << DBGMCU_CIDR2_PREAMBLE_Pos)
+#define DBGMCU_CIDR2_PREAMBLE        DBGMCU_CIDR2_PREAMBLE_Msk
+
+/********************  Bit definition for DBGMCU_CIDR3 register ***********/
+#define DBGMCU_CIDR3_PREAMBLE_Pos    (0UL)
+#define DBGMCU_CIDR3_PREAMBLE_Msk    (0xFFUL << DBGMCU_CIDR3_PREAMBLE_Pos)
+#define DBGMCU_CIDR3_PREAMBLE        DBGMCU_CIDR3_PREAMBLE_Msk
 
 /******************************************************************************/
 /*                                                                            */
@@ -6413,15 +6465,15 @@ typedef struct
 
 /*****************  Bits definition for FLASH_SECWM1R1 register  **************/
 #define FLASH_SECWM1R1_SECWM1_STRT_Pos      (0UL)
-#define FLASH_SECWM1R1_SECWM1_STRT_Msk      (0x7FUL << FLASH_SECWM1R1_SECWM1_STRT_Pos) /*!< 0x0000007F */
+#define FLASH_SECWM1R1_SECWM1_STRT_Msk      (0x1FUL << FLASH_SECWM1R1_SECWM1_STRT_Pos) /*!< 0x0000001F */
 #define FLASH_SECWM1R1_SECWM1_STRT          FLASH_SECWM1R1_SECWM1_STRT_Msk             /*!< Start page of first secure area */
 #define FLASH_SECWM1R1_SECWM1_END_Pos       (16UL)
-#define FLASH_SECWM1R1_SECWM1_END_Msk       (0x7FUL << FLASH_SECWM1R1_SECWM1_END_Pos)  /*!< 0x007F0000 */
+#define FLASH_SECWM1R1_SECWM1_END_Msk       (0x1FUL << FLASH_SECWM1R1_SECWM1_END_Pos)  /*!< 0x001F0000 */
 #define FLASH_SECWM1R1_SECWM1_END           FLASH_SECWM1R1_SECWM1_END_Msk              /*!< End page of first secure area */
 
 /*****************  Bits definition for FLASH_SECWM1R2 register  **************/
 #define FLASH_SECWM1R2_HDP1_END_Pos         (16UL)
-#define FLASH_SECWM1R2_HDP1_END_Msk         (0x7FUL << FLASH_SECWM1R2_HDP1_END_Pos) /*!< 0x007F0000 */
+#define FLASH_SECWM1R2_HDP1_END_Msk         (0x1FUL << FLASH_SECWM1R2_HDP1_END_Pos) /*!< 0x001F0000 */
 #define FLASH_SECWM1R2_HDP1_END             FLASH_SECWM1R2_HDP1_END_Msk             /*!< End page of first hide protection area */
 #define FLASH_SECWM1R2_HDP1EN_Pos           (24UL)
 #define FLASH_SECWM1R2_HDP1EN_Msk           (0xFFUL << FLASH_SECWM1R2_HDP1EN_Pos)   /*!< 0xFF000000 */
@@ -6429,10 +6481,10 @@ typedef struct
 
 /******************  Bits definition for FLASH_WRP1AR register  ***************/
 #define FLASH_WRP1AR_STRT_Pos               (0UL)
-#define FLASH_WRP1AR_STRT_Msk               (0x7FUL << FLASH_WRP1AR_STRT_Pos)       /*!< 0x0000007F */
+#define FLASH_WRP1AR_STRT_Msk               (0x1FUL << FLASH_WRP1AR_STRT_Pos)       /*!< 0x0000001F */
 #define FLASH_WRP1AR_STRT                   FLASH_WRP1AR_STRT_Msk                   /*!< Bank 1 WRP first area A start page */
 #define FLASH_WRP1AR_END_Pos                (16UL)
-#define FLASH_WRP1AR_END_Msk                (0x7FUL << FLASH_WRP1AR_END_Pos)        /*!< 0x007F0000 */
+#define FLASH_WRP1AR_END_Msk                (0x1FUL << FLASH_WRP1AR_END_Pos)        /*!< 0x001F0000 */
 #define FLASH_WRP1AR_END                    FLASH_WRP1AR_END_Msk                    /*!< Bank 1 WRP first area A end page */
 #define FLASH_WRP1AR_UNLOCK_Pos             (31UL)
 #define FLASH_WRP1AR_UNLOCK_Msk             (0x1UL << FLASH_WRP1AR_UNLOCK_Pos)      /*!< 0x80000000 */
@@ -9036,8 +9088,8 @@ typedef struct
 #define GTZC_CFGR3_HASH_Msk                 (0x01UL << GTZC_CFGR3_HASH_Pos)         /*!< 0x00001000 */
 #define GTZC_CFGR3_RNG_Pos                  (13UL)
 #define GTZC_CFGR3_RNG_Msk                  (0x01UL << GTZC_CFGR3_RNG_Pos)          /*!< 0x00002000 */
-#define GTZC_CFGR3_QUADSPI1_REG_Pos         (20UL)
-#define GTZC_CFGR3_QUADSPI1_REG_Msk         (0x01UL << GTZC_CFGR3_QUADSPI1_REG_Pos) /*!< 0x00080000 */
+#define GTZC_CFGR3_OCTOSPI1_REG_Pos         (20UL)
+#define GTZC_CFGR3_OCTOSPI1_REG_Msk         (0x01UL << GTZC_CFGR3_OCTOSPI1_REG_Pos) /*!< 0x00080000 */
 #define GTZC_CFGR3_RAMCFG_Pos               (22UL)
 #define GTZC_CFGR3_RAMCFG_Msk               (0x01UL << GTZC_CFGR3_RAMCFG_Pos)       /*!< 0x00400000 */
 #define GTZC_CFGR3_DAC1_Pos                 (23UL)
@@ -9152,8 +9204,8 @@ typedef struct
 #define GTZC_TZSC1_SECCFGR3_HASH_Msk            GTZC_CFGR3_HASH_Msk
 #define GTZC_TZSC1_SECCFGR3_RNG_Pos             GTZC_CFGR3_RNG_Pos
 #define GTZC_TZSC1_SECCFGR3_RNG_Msk             GTZC_CFGR3_RNG_Msk
-#define GTZC_TZSC1_SECCFGR3_QUADSPI1_REG_Pos    GTZC_CFGR3_QUADSPI1_REG_Pos
-#define GTZC_TZSC1_SECCFGR3_QUADSPI1_REG_Msk    GTZC_CFGR3_QUADSPI1_REG_Msk
+#define GTZC_TZSC1_SECCFGR3_OCTOSPI1_REG_Pos    GTZC_CFGR3_OCTOSPI1_REG_Pos
+#define GTZC_TZSC1_SECCFGR3_OCTOSPI1_REG_Msk    GTZC_CFGR3_OCTOSPI1_REG_Msk
 #define GTZC_TZSC1_SECCFGR3_RAMCFG_Pos          GTZC_CFGR3_RAMCFG_Pos
 #define GTZC_TZSC1_SECCFGR3_RAMCFG_Msk          GTZC_CFGR3_RAMCFG_Msk
 #define GTZC_TZSC1_SECCFGR3_DAC1_Pos            GTZC_CFGR3_DAC1_Pos
@@ -9236,8 +9288,8 @@ typedef struct
 #define GTZC_TZSC1_PRIVCFGR3_HASH_Msk           GTZC_CFGR3_HASH_Msk
 #define GTZC_TZSC1_PRIVCFGR3_RNG_Pos            GTZC_CFGR3_RNG_Pos
 #define GTZC_TZSC1_PRIVCFGR3_RNG_Msk            GTZC_CFGR3_RNG_Msk
-#define GTZC_TZSC1_PRIVCFGR3_QUADSPI1_REG_Pos   GTZC_CFGR3_QUADSPI1_REG_Pos
-#define GTZC_TZSC1_PRIVCFGR3_QUADSPI1_REG_Msk   GTZC_CFGR3_QUADSPI1_REG_Msk
+#define GTZC_TZSC1_PRIVCFGR3_OCTOSPI1_REG_Pos   GTZC_CFGR3_OCTOSPI1_REG_Pos
+#define GTZC_TZSC1_PRIVCFGR3_OCTOSPI1_REG_Msk   GTZC_CFGR3_OCTOSPI1_REG_Msk
 #define GTZC_TZSC1_PRIVCFGR3_RAMCFG_Pos         GTZC_CFGR3_RAMCFG_Pos
 #define GTZC_TZSC1_PRIVCFGR3_RAMCFG_Msk         GTZC_CFGR3_RAMCFG_Msk
 #define GTZC_TZSC1_PRIVCFGR3_DAC1_Pos           GTZC_CFGR3_DAC1_Pos
@@ -9320,8 +9372,8 @@ typedef struct
 #define GTZC_TZIC1_IER3_HASH_Msk                GTZC_CFGR3_HASH_Msk
 #define GTZC_TZIC1_IER3_RNG_Pos                 GTZC_CFGR3_RNG_Pos
 #define GTZC_TZIC1_IER3_RNG_Msk                 GTZC_CFGR3_RNG_Msk
-#define GTZC_TZIC1_IER3_QUADSPI1_REG_Pos        GTZC_CFGR3_QUADSPI1_REG_Pos
-#define GTZC_TZIC1_IER3_QUADSPI1_REG_Msk        GTZC_CFGR3_QUADSPI1_REG_Msk
+#define GTZC_TZIC1_IER3_OCTOSPI1_REG_Pos        GTZC_CFGR3_OCTOSPI1_REG_Pos
+#define GTZC_TZIC1_IER3_OCTOSPI1_REG_Msk        GTZC_CFGR3_OCTOSPI1_REG_Msk
 #define GTZC_TZIC1_IER3_RAMCFG_Pos              GTZC_CFGR3_RAMCFG_Pos
 #define GTZC_TZIC1_IER3_RAMCFG_Msk              GTZC_CFGR3_RAMCFG_Msk
 #define GTZC_TZIC1_IER3_DAC1_Pos                GTZC_CFGR3_DAC1_Pos
@@ -9436,8 +9488,8 @@ typedef struct
 #define GTZC_TZIC1_SR3_HASH_Msk                 GTZC_CFGR3_HASH_Msk
 #define GTZC_TZIC1_SR3_RNG_Pos                  GTZC_CFGR3_RNG_Pos
 #define GTZC_TZIC1_SR3_RNG_Msk                  GTZC_CFGR3_RNG_Msk
-#define GTZC_TZIC1_SR3_QUADSPI1_REG_Pos         GTZC_CFGR3_QUADSPI1_REG_Pos
-#define GTZC_TZIC1_SR3_QUADSPI1_REG_Msk         GTZC_CFGR3_QUADSPI1_REG_Msk
+#define GTZC_TZIC1_SR3_OCTOSPI1_REG_Pos         GTZC_CFGR3_OCTOSPI1_REG_Pos
+#define GTZC_TZIC1_SR3_OCTOSPI1_REG_Msk         GTZC_CFGR3_OCTOSPI1_REG_Msk
 #define GTZC_TZIC1_SR3_RAMCFG_Pos               GTZC_CFGR3_RAMCFG_Pos
 #define GTZC_TZIC1_SR3_RAMCFG_Msk               GTZC_CFGR3_RAMCFG_Msk
 #define GTZC_TZIC1_SR3_DAC1_Pos                 GTZC_CFGR3_DAC1_Pos
@@ -9552,8 +9604,8 @@ typedef struct
 #define GTZC_TZIC1_FCR3_HASH_Msk                GTZC_CFGR3_HASH_Msk
 #define GTZC_TZIC1_FCR3_RNG_Pos                 GTZC_CFGR3_RNG_Pos
 #define GTZC_TZIC1_FCR3_RNG_Msk                 GTZC_CFGR3_RNG_Msk
-#define GTZC_TZIC1_FCR3_QUADSPI1_REG_Pos        GTZC_CFGR3_QUADSPI1_REG_Pos
-#define GTZC_TZIC1_FCR3_QUADSPI1_REG_Msk        GTZC_CFGR3_QUADSPI1_REG_Msk
+#define GTZC_TZIC1_FCR3_OCTOSPI1_REG_Pos        GTZC_CFGR3_OCTOSPI1_REG_Pos
+#define GTZC_TZIC1_FCR3_OCTOSPI1_REG_Msk        GTZC_CFGR3_OCTOSPI1_REG_Msk
 #define GTZC_TZIC1_FCR3_RAMCFG_Pos              GTZC_CFGR3_RAMCFG_Pos
 #define GTZC_TZIC1_FCR3_RAMCFG_Msk              GTZC_CFGR3_RAMCFG_Msk
 #define GTZC_TZIC1_FCR3_DAC1_Pos                GTZC_CFGR3_DAC1_Pos
@@ -13461,12 +13513,6 @@ typedef struct
 #define RCC_AHB2RSTR1_GPIODRST_Pos          (3UL)
 #define RCC_AHB2RSTR1_GPIODRST_Msk          (0x1UL << RCC_AHB2RSTR1_GPIODRST_Pos)     /*!< 0x00000008 */
 #define RCC_AHB2RSTR1_GPIODRST              RCC_AHB2RSTR1_GPIODRST_Msk                /*!< IO port D Reset */
-#define RCC_AHB2RSTR1_GPIOERST_Pos          (4UL)
-#define RCC_AHB2RSTR1_GPIOERST_Msk          (0x1UL << RCC_AHB2RSTR1_GPIOERST_Pos)     /*!< 0x00000010 */
-#define RCC_AHB2RSTR1_GPIOERST              RCC_AHB2RSTR1_GPIOERST_Msk                /*!< IO port E Reset */
-#define RCC_AHB2RSTR1_GPIOGRST_Pos          (6UL)
-#define RCC_AHB2RSTR1_GPIOGRST_Msk          (0x1UL << RCC_AHB2RSTR1_GPIOGRST_Pos)     /*!< 0x00000040 */
-#define RCC_AHB2RSTR1_GPIOGRST              RCC_AHB2RSTR1_GPIOGRST_Msk                /*!< IO port G Reset */
 #define RCC_AHB2RSTR1_GPIOHRST_Pos          (7UL)
 #define RCC_AHB2RSTR1_GPIOHRST_Msk          (0x1UL << RCC_AHB2RSTR1_GPIOHRST_Pos)     /*!< 0x00000080 */
 #define RCC_AHB2RSTR1_GPIOHRST              RCC_AHB2RSTR1_GPIOHRST_Msk                /*!< IO port H Reset */
@@ -13481,9 +13527,9 @@ typedef struct
 #define RCC_AHB2RSTR1_RNGRST                RCC_AHB2RSTR1_RNGRST_Msk                  /*!< RNG Reset */
 
 /********************  Bit definition for RCC_AHB2RSTR2 register  **************/
-#define RCC_AHB2RSTR2_QUADSPI1RST_Pos       (4UL)
-#define RCC_AHB2RSTR2_QUADSPI1RST_Msk       (0x1UL << RCC_AHB2RSTR2_QUADSPI1RST_Pos)  /*!< 0x00000010 */
-#define RCC_AHB2RSTR2_QUADSPI1RST           RCC_AHB2RSTR2_QUADSPI1RST_Msk             /*!< QUADSPI1 Reset */
+#define RCC_AHB2RSTR2_OCTOSPI1RST_Pos       (4UL)
+#define RCC_AHB2RSTR2_OCTOSPI1RST_Msk       (0x1UL << RCC_AHB2RSTR2_OCTOSPI1RST_Pos)  /*!< 0x00000010 */
+#define RCC_AHB2RSTR2_OCTOSPI1RST           RCC_AHB2RSTR2_OCTOSPI1RST_Msk             /*!< OCTOSPI1 Reset */
 
 /********************  Bit definition for RCC_APB1RSTR1 register  **************/
 #define RCC_APB1RSTR1_TIM2RST_Pos           (0UL)
@@ -13619,12 +13665,6 @@ typedef struct
 #define RCC_AHB2ENR1_GPIODEN_Pos            (3UL)
 #define RCC_AHB2ENR1_GPIODEN_Msk            (0x1UL << RCC_AHB2ENR1_GPIODEN_Pos)       /*!< 0x00000008 */
 #define RCC_AHB2ENR1_GPIODEN                RCC_AHB2ENR1_GPIODEN_Msk                  /*!< IO port D Enable */
-#define RCC_AHB2ENR1_GPIOEEN_Pos            (4UL)
-#define RCC_AHB2ENR1_GPIOEEN_Msk            (0x1UL << RCC_AHB2ENR1_GPIOEEN_Pos)       /*!< 0x00000010 */
-#define RCC_AHB2ENR1_GPIOEEN                RCC_AHB2ENR1_GPIOEEN_Msk                  /*!< IO port E Enable */
-#define RCC_AHB2ENR1_GPIOGEN_Pos            (6UL)
-#define RCC_AHB2ENR1_GPIOGEN_Msk            (0x1UL << RCC_AHB2ENR1_GPIOGEN_Pos)       /*!< 0x00000040 */
-#define RCC_AHB2ENR1_GPIOGEN                RCC_AHB2ENR1_GPIOGEN_Msk                  /*!< IO port G Enable */
 #define RCC_AHB2ENR1_GPIOHEN_Pos            (7UL)
 #define RCC_AHB2ENR1_GPIOHEN_Msk            (0x1UL << RCC_AHB2ENR1_GPIOHEN_Pos)       /*!< 0x00000080 */
 #define RCC_AHB2ENR1_GPIOHEN                RCC_AHB2ENR1_GPIOHEN_Msk                  /*!< IO port H Enable */
@@ -13642,9 +13682,9 @@ typedef struct
 #define RCC_AHB2ENR1_SRAM2EN                RCC_AHB2ENR1_SRAM2EN_Msk                  /*!< SRAM2 Enable */
 
 /********************  Bit definition for RCC_AHB2ENR2 register  **************/
-#define RCC_AHB2ENR2_QUADSPI1EN_Pos         (4UL)
-#define RCC_AHB2ENR2_QUADSPI1EN_Msk         (0x1UL << RCC_AHB2ENR2_QUADSPI1EN_Pos)    /*!< 0x00000010 */
-#define RCC_AHB2ENR2_QUADSPI1EN             RCC_AHB2ENR2_QUADSPI1EN_Msk               /*!< QUADSPI1 Enable */
+#define RCC_AHB2ENR2_OCTOSPI1EN_Pos         (4UL)
+#define RCC_AHB2ENR2_OCTOSPI1EN_Msk         (0x1UL << RCC_AHB2ENR2_OCTOSPI1EN_Pos)    /*!< 0x00000010 */
+#define RCC_AHB2ENR2_OCTOSPI1EN             RCC_AHB2ENR2_OCTOSPI1EN_Msk               /*!< OCTOSPI1 Enable */
 
 /********************  Bit definition for RCC_AHB1ENR2 register  **************/
 #define RCC_AHB1ENR2_PWREN_Pos              (2UL)
@@ -13794,12 +13834,6 @@ typedef struct
 #define RCC_AHB2SLPENR1_GPIODSLPEN_Pos      (3UL)
 #define RCC_AHB2SLPENR1_GPIODSLPEN_Msk      (0x1UL << RCC_AHB2SLPENR1_GPIODSLPEN_Pos)     /*!< 0x00000008 */
 #define RCC_AHB2SLPENR1_GPIODSLPEN          RCC_AHB2SLPENR1_GPIODSLPEN_Msk                /*!< IO port D Sleep Mode Enable */
-#define RCC_AHB2SLPENR1_GPIOESLPEN_Pos      (4UL)
-#define RCC_AHB2SLPENR1_GPIOESLPEN_Msk      (0x1UL << RCC_AHB2SLPENR1_GPIOESLPEN_Pos)     /*!< 0x00000010 */
-#define RCC_AHB2SLPENR1_GPIOESLPEN          RCC_AHB2SLPENR1_GPIOESLPEN_Msk                /*!< IO port E Sleep Mode Enable */
-#define RCC_AHB2SLPENR1_GPIOGSLPEN_Pos      (6UL)
-#define RCC_AHB2SLPENR1_GPIOGSLPEN_Msk      (0x1UL << RCC_AHB2SLPENR1_GPIOGSLPEN_Pos)     /*!< 0x00000040 */
-#define RCC_AHB2SLPENR1_GPIOGSLPEN          RCC_AHB2SLPENR1_GPIOGSLPEN_Msk                /*!< IO port G Sleep Mode Enable */
 #define RCC_AHB2SLPENR1_GPIOHSLPEN_Pos      (7UL)
 #define RCC_AHB2SLPENR1_GPIOHSLPEN_Msk      (0x1UL << RCC_AHB2SLPENR1_GPIOHSLPEN_Pos)     /*!< 0x00000080 */
 #define RCC_AHB2SLPENR1_GPIOHSLPEN          RCC_AHB2SLPENR1_GPIOHSLPEN_Msk                /*!< IO port H Sleep Mode Enable */
@@ -13817,9 +13851,9 @@ typedef struct
 #define RCC_AHB2SLPENR1_SRAM2SLPEN          RCC_AHB2SLPENR1_SRAM2SLPEN_Msk                /*!< SRAM2 Sleep Mode Enable */
 
 /********************  Bit definition for RCC_AHB2SLPENR2 register  **************/
-#define RCC_AHB2SLPENR2_QUADSPI1SLPEN_Pos   (4UL)
-#define RCC_AHB2SLPENR2_QUADSPI1SLPEN_Msk   (0x1UL << RCC_AHB2SLPENR2_QUADSPI1SLPEN_Pos)  /*!< 0x00000010 */
-#define RCC_AHB2SLPENR2_QUADSPI1SLPEN       RCC_AHB2SLPENR2_QUADSPI1SLPEN_Msk             /*!< QUADSPI1 Sleep Mode Enable */
+#define RCC_AHB2SLPENR2_OCTOSPI1SLPEN_Pos   (4UL)
+#define RCC_AHB2SLPENR2_OCTOSPI1SLPEN_Msk   (0x1UL << RCC_AHB2SLPENR2_OCTOSPI1SLPEN_Pos)  /*!< 0x00000010 */
+#define RCC_AHB2SLPENR2_OCTOSPI1SLPEN       RCC_AHB2SLPENR2_OCTOSPI1SLPEN_Msk             /*!< OCTOSPI1 Sleep Mode Enable */
 
 /********************  Bit definition for RCC_AHB1SLPENR2 register  **************/
 #define RCC_AHB1SLPENR2_PWRSLPEN_Pos        (2UL)
@@ -13960,12 +13994,6 @@ typedef struct
 #define RCC_AHB2STPENR1_GPIODSTPEN_Pos      (3UL)
 #define RCC_AHB2STPENR1_GPIODSTPEN_Msk      (0x1UL << RCC_AHB2STPENR1_GPIODSTPEN_Pos)     /*!< 0x00000008 */
 #define RCC_AHB2STPENR1_GPIODSTPEN          RCC_AHB2STPENR1_GPIODSTPEN_Msk                /*!< IO port D Clock Enable in Stop Mode */
-#define RCC_AHB2STPENR1_GPIOESTPEN_Pos      (4UL)
-#define RCC_AHB2STPENR1_GPIOESTPEN_Msk      (0x1UL << RCC_AHB2STPENR1_GPIOESTPEN_Pos)     /*!< 0x00000010 */
-#define RCC_AHB2STPENR1_GPIOESTPEN          RCC_AHB2STPENR1_GPIOESTPEN_Msk                /*!< IO port E Clock Enable in Stop Mode */
-#define RCC_AHB2STPENR1_GPIOGSTPEN_Pos      (6UL)
-#define RCC_AHB2STPENR1_GPIOGSTPEN_Msk      (0x1UL << RCC_AHB2STPENR1_GPIOGSTPEN_Pos)     /*!< 0x00000040 */
-#define RCC_AHB2STPENR1_GPIOGSTPEN          RCC_AHB2STPENR1_GPIOGSTPEN_Msk                /*!< IO port G Clock Enable in Stop Mode */
 #define RCC_AHB2STPENR1_GPIOHSTPEN_Pos      (7UL)
 #define RCC_AHB2STPENR1_GPIOHSTPEN_Msk      (0x1UL << RCC_AHB2STPENR1_GPIOHSTPEN_Pos)     /*!< 0x00000080 */
 #define RCC_AHB2STPENR1_GPIOHSTPEN          RCC_AHB2STPENR1_GPIOHSTPEN_Msk                /*!< IO port H Clock Enable in Stop Mode */
@@ -14112,9 +14140,9 @@ typedef struct
 #define RCC_CCIPR2_DAC1SHSEL_Pos            (19UL)
 #define RCC_CCIPR2_DAC1SHSEL_Msk            (0x1UL << RCC_CCIPR2_DAC1SHSEL_Pos)     /*!< 0x00080000 */
 #define RCC_CCIPR2_DAC1SHSEL                RCC_CCIPR2_DAC1SHSEL_Msk                /*!< DACSEL: DAC1 Sample and Hold Clock Source Selection */
-#define RCC_CCIPR2_QUADSPISEL_Pos           (20UL)
-#define RCC_CCIPR2_QUADSPISEL_Msk           (0x1UL << RCC_CCIPR2_QUADSPISEL_Pos)    /*!< 0x00100000 */
-#define RCC_CCIPR2_QUADSPISEL               RCC_CCIPR2_QUADSPISEL_Msk               /*!< QUADSPISEL: QUADSPI1 Kernel Clock Source Selection */
+#define RCC_CCIPR2_OCTOSPISEL_Pos           (20UL)
+#define RCC_CCIPR2_OCTOSPISEL_Msk           (0x1UL << RCC_CCIPR2_OCTOSPISEL_Pos)    /*!< 0x00100000 */
+#define RCC_CCIPR2_OCTOSPISEL               RCC_CCIPR2_OCTOSPISEL_Msk               /*!< OCTOSPISEL: OCTOSPI1 Kernel Clock Source Selection */
 
 /********************  Bit definition for RCC_CCIPR3 register  ***************/
 #define RCC_CCIPR3_LPUART1SEL_Pos           (0UL)
@@ -17411,9 +17439,6 @@ typedef struct
 #define TSC_IOGCSR_G7E_Pos       (6UL)
 #define TSC_IOGCSR_G7E_Msk       (0x1UL << TSC_IOGCSR_G7E_Pos)                 /*!< 0x00000040 */
 #define TSC_IOGCSR_G7E           TSC_IOGCSR_G7E_Msk                            /*!<Analog IO GROUP7 enable */
-#define TSC_IOGCSR_G8E_Pos       (7UL)
-#define TSC_IOGCSR_G8E_Msk       (0x1UL << TSC_IOGCSR_G8E_Pos)                 /*!< 0x00000080 */
-#define TSC_IOGCSR_G8E           TSC_IOGCSR_G8E_Msk                            /*!<Analog IO GROUP8 enable */
 #define TSC_IOGCSR_G1S_Pos       (16UL)
 #define TSC_IOGCSR_G1S_Msk       (0x1UL << TSC_IOGCSR_G1S_Pos)                 /*!< 0x00010000 */
 #define TSC_IOGCSR_G1S           TSC_IOGCSR_G1S_Msk                            /*!<Analog IO GROUP1 status */
@@ -18337,9 +18362,9 @@ typedef struct
 #define XSPI_DCR1_FRCK_Pos               (1UL)
 #define XSPI_DCR1_FRCK_Msk               (0x1UL << XSPI_DCR1_FRCK_Pos)                    /*!< 0x00000002 */
 #define XSPI_DCR1_FRCK                   XSPI_DCR1_FRCK_Msk                               /*!< Free Running Clock */
-#define XSPI_QUADSPI_DCR1_DLYBYP_Pos     (3UL)
-#define XSPI_QUADSPI_DCR1_DLYBYP_Msk     (0x1UL << XSPI_QUADSPI_DCR1_DLYBYP_Pos)          /*!< 0x00000008 */
-#define XSPI_QUADSPI_DCR1_DLYBYP         XSPI_QUADSPI_DCR1_DLYBYP_Msk                     /*!< Delay Block Bypass only for QUADSPI */
+#define XSPI_OCTOSPI_DCR1_DLYBYP_Pos     (3UL)
+#define XSPI_OCTOSPI_DCR1_DLYBYP_Msk     (0x1UL << XSPI_OCTOSPI_DCR1_DLYBYP_Pos)          /*!< 0x00000008 */
+#define XSPI_OCTOSPI_DCR1_DLYBYP         XSPI_OCTOSPI_DCR1_DLYBYP_Msk                     /*!< Delay Block Bypass only for OCTOSPI */
 #define XSPI_DCR1_CSHT_Pos               (8UL)
 #define XSPI_DCR1_CSHT_Msk               (0x3FUL << XSPI_DCR1_CSHT_Pos)                   /*!< 0x00003F00 */
 #define XSPI_DCR1_CSHT                   XSPI_DCR1_CSHT_Msk                               /*!< Chip Select High Time */
@@ -18365,9 +18390,9 @@ typedef struct
 #define XSPI_DCR2_WRAPSIZE_2             (0x4UL << XSPI_DCR2_WRAPSIZE_Pos)                /*!< 0x00040000 */
 
 /****************  Bit definition for XSPI_DCR3 register  ********************/
-#define XSPI_QUADSPI_DCR3_MAXTRAN_Pos    (0UL)
-#define XSPI_QUADSPI_DCR3_MAXTRAN_Msk    (0xFFUL << XSPI_QUADSPI_DCR3_MAXTRAN_Pos)        /*!< 0x000000FF */
-#define XSPI_QUADSPI_DCR3_MAXTRAN        XSPI_QUADSPI_DCR3_MAXTRAN_Msk                    /*!< Maximum transfer only for QUADSPI */
+#define XSPI_OCTOSPI_DCR3_MAXTRAN_Pos    (0UL)
+#define XSPI_OCTOSPI_DCR3_MAXTRAN_Msk    (0xFFUL << XSPI_OCTOSPI_DCR3_MAXTRAN_Pos)        /*!< 0x000000FF */
+#define XSPI_OCTOSPI_DCR3_MAXTRAN        XSPI_OCTOSPI_DCR3_MAXTRAN_Msk                    /*!< Maximum transfer only for OCTOSPI */
 #define XSPI_DCR3_CSBOUND_Pos            (16UL)
 #define XSPI_DCR3_CSBOUND_Msk            (0x1FUL << XSPI_DCR3_CSBOUND_Pos)                /*!< 0x001F0000 */
 #define XSPI_DCR3_CSBOUND                XSPI_DCR3_CSBOUND_Msk                            /*!< Maximum transfer */
@@ -18723,8 +18748,8 @@ typedef struct
 #define IS_DAC_ALL_INSTANCE(INSTANCE) (((INSTANCE) == DAC1_NS) || ((INSTANCE) == DAC1_S))
 
 /******************************* DELAYBLOCK Instances *******************************/
-#define IS_DLYB_ALL_INSTANCE(INSTANCE)  (((INSTANCE) == DLYB_QUADSPI1_NS) || \
-                                         ((INSTANCE) == DLYB_QUADSPI1_S))
+#define IS_DLYB_ALL_INSTANCE(INSTANCE)  (((INSTANCE) == DLYB_OCTOSPI1_NS) || \
+                                         ((INSTANCE) == DLYB_OCTOSPI1_S))
 
 /******************************** DMA Instances *******************************/
 #define IS_DMA_ALL_INSTANCE(INSTANCE) (((INSTANCE) == GPDMA1_Channel0_NS)  || ((INSTANCE) == GPDMA1_Channel0_S)  || \
@@ -18764,8 +18789,6 @@ typedef struct
                                              ((INSTANCE) == GPIOB_NS) || ((INSTANCE) == GPIOB_S) || \
                                              ((INSTANCE) == GPIOC_NS) || ((INSTANCE) == GPIOC_S) || \
                                              ((INSTANCE) == GPIOD_NS) || ((INSTANCE) == GPIOD_S) || \
-                                             ((INSTANCE) == GPIOE_NS) || ((INSTANCE) == GPIOE_S) || \
-                                             ((INSTANCE) == GPIOG_NS) || ((INSTANCE) == GPIOG_S) || \
                                              ((INSTANCE) == GPIOH_NS) || ((INSTANCE) == GPIOH_S))
 
   /******************************* GPIO AF Instances ****************************/
@@ -18799,7 +18822,7 @@ typedef struct
                                          ((INSTANCE) == OPAMP2_NS) || ((INSTANCE) == OPAMP2_S))
 
 /******************************* OSPI Instances *******************************/
-#define IS_OSPI_ALL_INSTANCE(INSTANCE) (((INSTANCE) == QUADSPI1_NS) || ((INSTANCE) == QUADSPI1_S))
+#define IS_OSPI_ALL_INSTANCE(INSTANCE) (((INSTANCE) == OCTOSPI1_NS) || ((INSTANCE) == OCTOSPI1_S))
 
 /****************************** RAMCFG Instances ********************************/
 #define IS_RAMCFG_ALL_INSTANCE(INSTANCE) (((INSTANCE) == RAMCFG_SRAM1_NS) || ((INSTANCE) == RAMCFG_SRAM1_S)  || \
@@ -19269,7 +19292,7 @@ typedef struct
 
 #else /* CPU_IN_SECURE_STATE */
 /******************************* ADC Instances ********************************/
-#define IS_ADC_ALL_INSTANCE(INSTANCE) (((INSTANCE) == ADC1_NS) || ((INSTANCE) == ADC2_NS))
+#define IS_ADC_ALL_INSTANCE(INSTANCE) ((INSTANCE) == ADC1_NS)
 
 #define IS_ADC_MULTIMODE_MASTER_INSTANCE(INSTANCE) ((INSTANCE) == ADC1_NS)
 
@@ -19293,7 +19316,7 @@ typedef struct
 #define IS_DAC_ALL_INSTANCE(INSTANCE) ((INSTANCE) == DAC1_NS)
 
 /******************************* DELAYBLOCK Instances *************************/
-#define IS_DLYB_ALL_INSTANCE(INSTANCE)  (((INSTANCE) == DLYB_QUADSPI1_NS))
+#define IS_DLYB_ALL_INSTANCE(INSTANCE)  (((INSTANCE) == DLYB_OCTOSPI1_NS))
 
 /******************************** DMA Instances *******************************/
 #define IS_DMA_ALL_INSTANCE(INSTANCE) (((INSTANCE) == GPDMA1_Channel0_NS)  || \
@@ -19331,7 +19354,6 @@ typedef struct
 /******************************* GPIO Instances *******************************/
 #define IS_GPIO_ALL_INSTANCE(INSTANCE)      (((INSTANCE) == GPIOA_NS) || ((INSTANCE) == GPIOB_NS) || \
                                              ((INSTANCE) == GPIOC_NS) || ((INSTANCE) == GPIOD_NS) || \
-                                             ((INSTANCE) == GPIOE_NS) || ((INSTANCE) == GPIOG_NS) || \
                                              ((INSTANCE) == GPIOH_NS))
 
   /******************************* GPIO AF Instances ****************************/
@@ -19364,7 +19386,7 @@ typedef struct
 #define IS_OPAMP_ALL_INSTANCE(INSTANCE) (((INSTANCE) == OPAMP1_NS) || ((INSTANCE) == OPAMP2_NS))
 
 /******************************* OSPI Instances *******************************/
-#define IS_OSPI_ALL_INSTANCE(INSTANCE)  ((INSTANCE) == QUADSPI1_NS)
+#define IS_OSPI_ALL_INSTANCE(INSTANCE)  ((INSTANCE) == OCTOSPI1_NS)
 
 /****************************** RAMCFG Instances ********************************/
 #define IS_RAMCFG_ALL_INSTANCE(INSTANCE) (((INSTANCE) == RAMCFG_SRAM1_NS) || \

@@ -246,9 +246,9 @@ typedef struct
   __IO uint32_t AWD2HTR;          /*!< ADC analog watchdog 2 high threshold register,            Address offset: 0xB4 */
   __IO uint32_t AWD3LTR;          /*!< ADC analog watchdog 3 low threshold register,             Address offset: 0xB8 */
   __IO uint32_t AWD3HTR;          /*!< ADC analog watchdog 3 high threshold register,            Address offset: 0xBC */
-  __IO uint32_t DIFSEL;           /*!< ADC differential mode selection register,                 Address offset: 0xC0 */
+       uint32_t RESERVED5;        /*!< Reserved,                                                 Address offset: 0xC0 */
   __IO uint32_t CALFACT;          /*!< ADC calibration factors,                                  Address offset: 0xC4 */
-  uint32_t      RESERVED5[2];     /*!< Reserved,                                                 Address offset: 0xC8 */
+  uint32_t      RESERVED6[2];     /*!< Reserved,                                                 Address offset: 0xC8 */
   __IO uint32_t OR;               /*!< ADC option register,                                      Address offset: 0xD0 */
 } ADC_TypeDef;
 
@@ -379,16 +379,28 @@ typedef struct
   */
 typedef struct
 {
-  __IO uint32_t IDCODE;           /*!< MCU device ID code,                 Address offset: 0x00 */
-  __IO uint32_t CR;               /*!< Debug MCU configuration register,   Address offset: 0x04 */
-  __IO uint32_t APB1FZR1;         /*!< Debug MCU APB1 freeze register 1,   Address offset: 0x08 */
-  __IO uint32_t APB1FZR2;         /*!< Debug MCU APB1 freeze register 2,   Address offset: 0x0C */
-  __IO uint32_t APB2FZR;          /*!< Debug MCU APB2 freeze register,     Address offset: 0x10 */
-  __IO uint32_t APB3FZR;          /*!< Debug MCU APB3 freeze register,     Address offset: 0x14 */
-       uint32_t RESERVED1[2];     /*!< Reserved,                                    0x18 - 0x1C */
-  __IO uint32_t AHB1FZR;          /*!< Debug MCU AHB1 freeze register,     Address offset: 0x20 */
-       uint32_t RESERVED2;        /*!< Reserved,                                           0x24 */
-  __IO uint32_t AHB3FZR;          /*!< Debug MCU AHB3 freeze register,     Address offset: 0x28 */
+  __IO uint32_t IDCODE;           /*!< MCU device ID code,                            Address offset: 0x00 */
+  __IO uint32_t CR;               /*!< Debug MCU configuration register,              Address offset: 0x04 */
+  __IO uint32_t APB1LFZR;         /*!< Debug MCU APB1L freeze register,               Address offset: 0x08 */
+  __IO uint32_t APB1HFZR;         /*!< Debug MCU APB1H freeze register,               Address offset: 0x0C */
+  __IO uint32_t APB2FZR;          /*!< Debug MCU APB2 freeze register,                Address offset: 0x10 */
+  __IO uint32_t APB3FZR;          /*!< Debug MCU APB3 freeze register,                Address offset: 0x14 */
+       uint32_t RESERVED1[2];     /*!< Reserved,                                               0x18 - 0x20 */
+  __IO uint32_t AHB1FZR;          /*!< Debug MCU AHB1 freeze register,                      Address offset: 0x20 */
+       uint32_t RESERVED2[54];    /*!< Reserved,                                               0x24 - 0xFC */
+  __IO uint32_t SR;               /*!< Debug MCU status register,                           Address offset: 0xFC */
+  __IO uint32_t DGB_AUTH_HOST;    /*!< Debug MCU debug host authentication register,        Address offset: 0x100 */
+  __IO uint32_t DGB_AUTH_DEVICE;  /*!< Debug MCU debug device authentication register,      Address offset: 0x104 */
+       uint32_t RESERVED3[946];    /*!< Reserved,                                               0x108 - 0xFD0 */
+  __IO uint32_t PIDR4;            /*!< Debug MCU CoreSight peripheral identity register 4,  Address offset: 0xFD0 */
+  __IO uint32_t PIDR0;            /*!< Debug MCU CoreSight peripheral identity register 0,  Address offset: 0xFE0 */
+  __IO uint32_t PIDR1;            /*!< Debug MCU CoreSight peripheral identity register 1,  Address offset: 0xFE4 */
+  __IO uint32_t PIDR2;            /*!< Debug MCU CoreSight peripheral identity register 2,  Address offset: 0xFE8 */
+  __IO uint32_t PIDR3;            /*!< Debug MCU CoreSight peripheral identity register 3,  Address offset: 0xFEC */
+  __IO uint32_t CIDR0;            /*!< Debug MCU CoreSight component identity register 0,   Address offset: 0xFF0 */
+  __IO uint32_t CIDR1;            /*!< Debug MCU CoreSight component identity register 1,   Address offset: 0xFF4 */
+  __IO uint32_t CIDR2;            /*!< Debug MCU CoreSight component identity register 2,   Address offset: 0xFF8 */
+  __IO uint32_t CIDR3;            /*!< Debug MCU CoreSight component identity register 3,   Address offset: 0xFFC */
 } DBGMCU_TypeDef;
 
 /**
@@ -3525,31 +3537,6 @@ typedef struct
 #define ADC_AWD3HTR_HTR_21                  (0x200000UL << ADC_AWD3HTR_HTR_Pos)     /*!< 0x00200000 */
 #define ADC_AWD3HTR_HTR_22                  (0x400000UL << ADC_AWD3HTR_HTR_Pos)     /*!< 0x00400000 */
 
-/********************  Bit definition for ADC_DIFSEL register  ****************/
-#define ADC_DIFSEL_DIFSEL_Pos               (0UL)
-#define ADC_DIFSEL_DIFSEL_Msk               (0xFFFFFUL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x000FFFFF */
-#define ADC_DIFSEL_DIFSEL                   ADC_DIFSEL_DIFSEL_Msk                   /*!< ADC channel differential or single-ended mode selection */
-#define ADC_DIFSEL_DIFSEL_0                 (0x00001UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000001 */
-#define ADC_DIFSEL_DIFSEL_1                 (0x00002UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000002 */
-#define ADC_DIFSEL_DIFSEL_2                 (0x00004UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000004 */
-#define ADC_DIFSEL_DIFSEL_3                 (0x00008UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000008 */
-#define ADC_DIFSEL_DIFSEL_4                 (0x00010UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000010 */
-#define ADC_DIFSEL_DIFSEL_5                 (0x00020UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000020 */
-#define ADC_DIFSEL_DIFSEL_6                 (0x00040UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000040 */
-#define ADC_DIFSEL_DIFSEL_7                 (0x00080UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000080 */
-#define ADC_DIFSEL_DIFSEL_8                 (0x00100UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000100 */
-#define ADC_DIFSEL_DIFSEL_9                 (0x00200UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000200 */
-#define ADC_DIFSEL_DIFSEL_10                (0x00400UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000400 */
-#define ADC_DIFSEL_DIFSEL_11                (0x00800UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00000800 */
-#define ADC_DIFSEL_DIFSEL_12                (0x01000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00001000 */
-#define ADC_DIFSEL_DIFSEL_13                (0x02000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00002000 */
-#define ADC_DIFSEL_DIFSEL_14                (0x04000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00004000 */
-#define ADC_DIFSEL_DIFSEL_15                (0x08000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00008000 */
-#define ADC_DIFSEL_DIFSEL_16                (0x10000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00010000 */
-#define ADC_DIFSEL_DIFSEL_17                (0x20000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00020000 */
-#define ADC_DIFSEL_DIFSEL_18                (0x40000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00040000 */
-#define ADC_DIFSEL_DIFSEL_19                (0x80000UL << ADC_DIFSEL_DIFSEL_Pos)    /*!< 0x00080000 */
-
 /********************  Bit definition for ADC_CALFACT register  ***************/
 
 #define ADC_CALFACT_CALFACT_Pos             (0UL)
@@ -3948,6 +3935,9 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 
+/* Specific device feature definitions */
+#define  HW_SANITY_CHECK_SUPPORT         /*!< CCB feature available only on specific devices: HW Sanity check is available on U3 2M devices */
+
 /*******************  Bit definition for CCB_CR register     ******************/
 #define CCB_CR_CCOP_Pos                     (0UL)
 #define CCB_CR_CCOP_Msk                     (0xFFUL << CCB_CR_CCOP_Pos)             /*!< 0x000000FF */
@@ -4176,6 +4166,7 @@ typedef struct
 #define COMP_CSR_BLANKSEL_2                 (0x4UL << COMP_CSR_BLANKSEL_Pos)        /*!< 0x04000000 */
 #define COMP_CSR_BLANKSEL_3                 (0x8UL << COMP_CSR_BLANKSEL_Pos)        /*!< 0x08000000 */
 #define COMP_CSR_BLANKSEL_4                 (0x10UL << COMP_CSR_BLANKSEL_Pos)       /*!< 0x01000000 */
+#define COMP2_CSR_BLANKSEL_2                COMP_CSR_BLANKSEL_2                     /*!< COMP2 blanking source selection bit 2 */
 #define COMP_CSR_VALUE_Pos                  (30UL)
 #define COMP_CSR_VALUE_Msk                  (0x1UL << COMP_CSR_VALUE_Pos)           /*!< 0x00000001 */
 #define COMP_CSR_VALUE                      COMP_CSR_VALUE_Msk                      /*!< COMPx enable bit */
@@ -4497,42 +4488,42 @@ typedef struct
 #define DBGMCU_CR_TRACE_MODE_0              (0x1UL << DBGMCU_CR_TRACE_MODE_Pos)     /*!< 0x00000040 */
 #define DBGMCU_CR_TRACE_MODE_1              (0x2UL << DBGMCU_CR_TRACE_MODE_Pos)     /*!< 0x00000080 */
 
-/********************  Bit definition for DBGMCU_APB1FZR1 register  ***********/
-#define DBGMCU_APB1FZR1_DBG_TIM2_STOP_Pos   (0UL)
-#define DBGMCU_APB1FZR1_DBG_TIM2_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM2_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM2_STOP       DBGMCU_APB1FZR1_DBG_TIM2_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM3_STOP_Pos   (1UL)
-#define DBGMCU_APB1FZR1_DBG_TIM3_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM3_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM3_STOP       DBGMCU_APB1FZR1_DBG_TIM3_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM4_STOP_Pos   (2UL)
-#define DBGMCU_APB1FZR1_DBG_TIM4_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM4_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM4_STOP       DBGMCU_APB1FZR1_DBG_TIM4_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM6_STOP_Pos   (4UL)
-#define DBGMCU_APB1FZR1_DBG_TIM6_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM6_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM6_STOP       DBGMCU_APB1FZR1_DBG_TIM6_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM7_STOP_Pos   (5UL)
-#define DBGMCU_APB1FZR1_DBG_TIM7_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_TIM7_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_TIM7_STOP       DBGMCU_APB1FZR1_DBG_TIM7_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_WWDG_STOP_Pos   (11UL)
-#define DBGMCU_APB1FZR1_DBG_WWDG_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_WWDG_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_WWDG_STOP       DBGMCU_APB1FZR1_DBG_WWDG_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_IWDG_STOP_Pos   (12UL)
-#define DBGMCU_APB1FZR1_DBG_IWDG_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_IWDG_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_IWDG_STOP       DBGMCU_APB1FZR1_DBG_IWDG_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_I2C1_STOP_Pos   (21UL)
-#define DBGMCU_APB1FZR1_DBG_I2C1_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_I2C1_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_I2C1_STOP       DBGMCU_APB1FZR1_DBG_I2C1_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_I3C1_STOP_Pos   (23UL)
-#define DBGMCU_APB1FZR1_DBG_I3C1_STOP_Msk   (0x1UL << DBGMCU_APB1FZR1_DBG_I3C1_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_I3C1_STOP       DBGMCU_APB1FZR1_DBG_I3C1_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_RTC_STOP_Pos    (30UL)
-#define DBGMCU_APB1FZR1_DBG_RTC_STOP_Msk    (0x1UL << DBGMCU_APB1FZR1_DBG_RTC_STOP_Pos)
-#define DBGMCU_APB1FZR1_DBG_RTC_STOP        DBGMCU_APB1FZR1_DBG_RTC_STOP_Msk
+/********************  Bit definition for DBGMCU_APB1LFZR register  ***********/
+#define DBGMCU_APB1LFZR_DBG_TIM2_STOP_Pos   (0UL)
+#define DBGMCU_APB1LFZR_DBG_TIM2_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM2_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM2_STOP       DBGMCU_APB1LFZR_DBG_TIM2_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_TIM3_STOP_Pos   (1UL)
+#define DBGMCU_APB1LFZR_DBG_TIM3_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM3_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM3_STOP       DBGMCU_APB1LFZR_DBG_TIM3_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_TIM4_STOP_Pos   (2UL)
+#define DBGMCU_APB1LFZR_DBG_TIM4_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM4_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM4_STOP       DBGMCU_APB1LFZR_DBG_TIM4_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_TIM6_STOP_Pos   (4UL)
+#define DBGMCU_APB1LFZR_DBG_TIM6_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM6_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM6_STOP       DBGMCU_APB1LFZR_DBG_TIM6_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_TIM7_STOP_Pos   (5UL)
+#define DBGMCU_APB1LFZR_DBG_TIM7_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_TIM7_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_TIM7_STOP       DBGMCU_APB1LFZR_DBG_TIM7_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_WWDG_STOP_Pos   (11UL)
+#define DBGMCU_APB1LFZR_DBG_WWDG_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_WWDG_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_WWDG_STOP       DBGMCU_APB1LFZR_DBG_WWDG_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_IWDG_STOP_Pos   (12UL)
+#define DBGMCU_APB1LFZR_DBG_IWDG_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_IWDG_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_IWDG_STOP       DBGMCU_APB1LFZR_DBG_IWDG_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_I2C1_STOP_Pos   (21UL)
+#define DBGMCU_APB1LFZR_DBG_I2C1_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_I2C1_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_I2C1_STOP       DBGMCU_APB1LFZR_DBG_I2C1_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_I3C1_STOP_Pos   (23UL)
+#define DBGMCU_APB1LFZR_DBG_I3C1_STOP_Msk   (0x1UL << DBGMCU_APB1LFZR_DBG_I3C1_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_I3C1_STOP       DBGMCU_APB1LFZR_DBG_I3C1_STOP_Msk
+#define DBGMCU_APB1LFZR_DBG_RTC_STOP_Pos    (30UL)
+#define DBGMCU_APB1LFZR_DBG_RTC_STOP_Msk    (0x1UL << DBGMCU_APB1LFZR_DBG_RTC_STOP_Pos)
+#define DBGMCU_APB1LFZR_DBG_RTC_STOP        DBGMCU_APB1LFZR_DBG_RTC_STOP_Msk
 
-/********************  Bit definition for DBGMCU_APB1FZR2 register  ***********/
-#define DBGMCU_APB1FZR2_DBG_LPTIM2_STOP_Pos (5UL)
-#define DBGMCU_APB1FZR2_DBG_LPTIM2_STOP_Msk (0x1UL << DBGMCU_APB1FZR2_DBG_LPTIM2_STOP_Pos)
-#define DBGMCU_APB1FZR2_DBG_LPTIM2_STOP     DBGMCU_APB1FZR2_DBG_LPTIM2_STOP_Msk
+/********************  Bit definition for DBGMCU_APB1HFZR register  ***********/
+#define DBGMCU_APB1HFZR_DBG_LPTIM2_STOP_Pos (5UL)
+#define DBGMCU_APB1HFZR_DBG_LPTIM2_STOP_Msk (0x1UL << DBGMCU_APB1HFZR_DBG_LPTIM2_STOP_Pos)
+#define DBGMCU_APB1HFZR_DBG_LPTIM2_STOP     DBGMCU_APB1HFZR_DBG_LPTIM2_STOP_Msk
 
 /********************  Bit definition for DBGMCU_APB2FZR register  ***********/
 #define DBGMCU_APB2FZR_DBG_TIM1_STOP_Pos    (11UL)
@@ -4599,6 +4590,87 @@ typedef struct
 #define DBGMCU_AHB1FZR_DBG_GPDMA11_STOP_Pos (11UL)
 #define DBGMCU_AHB1FZR_DBG_GPDMA11_STOP_Msk (0x1UL << DBGMCU_AHB1FZR_DBG_GPDMA11_STOP_Pos)
 #define DBGMCU_AHB1FZR_DBG_GPDMA11_STOP     DBGMCU_AHB1FZR_DBG_GPDMA11_STOP_Msk
+
+/********************  Bit definition for DBGMCU_SR register  ***********/
+#define DBGMCU_SR_DBG_AP_ENABLED_Pos     (0UL)
+#define DBGMCU_SR_DBG_AP_ENABLED_Msk     (0xFFFFUL << DBGMCU_SR_DBG_AP_ENABLED_Pos)
+#define DBGMCU_SR_DBG_AP_ENABLED         DBGMCU_SR_DBG_AP_ENABLED_Msk
+#define DBGMCU_SR_DBG_AP_PRESENT_Pos     (16UL)
+#define DBGMCU_SR_DBG_AP_PRESENT_Msk     (0xFFFFUL << DBGMCU_SR_DBG_AP_PRESENT_Pos)
+#define DBGMCU_SR_DBG_AP_PRESENT         DBGMCU_SR_DBG_AP_PRESENT_Msk
+
+/********************  Bit definition for DBGMCU_DGB_AUTH_HOST register  ***********/
+#define DBGMCU_DBG_AUTH_HOST_AUTH_KEY_Pos     (0UL)
+#define DBGMCU_DBG_AUTH_HOST_AUTH_KEY_Msk     (0xFFFFFFFFUL << DBGMCU_DBG_AUTH_HOST_AUTH_KEY_Pos)
+#define DBGMCU_DBG_AUTH_HOST_AUTH_KEY         DBGMCU_DBG_AUTH_HOST_AUTH_KEY_Msk
+
+/********************  Bit definition for DBGMCU_DGB_AUTH_DEVICE register  ***********/
+#define DBGMCU_DBG_AUTH_DEVICE_AUTH_ID_Pos    (0UL)
+#define DBGMCU_DBG_AUTH_DEVICE_AUTH_ID_Msk    (0xFFFFFFFFUL << DBGMCU_DBG_AUTH_DEVICE_AUTH_ID_Pos)
+#define DBGMCU_DBG_AUTH_DEVICE_AUTH_ID        DBGMCU_DBG_AUTH_DEVICE_AUTH_ID_Msk
+
+/********************  Bit definition for DBGMCU_PIDR4 register ***********/
+#define DBGMCU_PIDR4_JEP106CON_Pos    (0UL)
+#define DBGMCU_PIDR4_JEP106CON_Msk    (0xFUL << DBGMCU_PIDR4_JEP106CON_Pos)
+#define DBGMCU_PIDR4_JEP106CON        DBGMCU_PIDR4_JEP106CON_Msk
+#define DBGMCU_PIDR4_SIZE_Pos         (4UL)
+#define DBGMCU_PIDR4_SIZE_Msk         (0xFUL << DBGMCU_PIDR4_JEP106CON_Pos)
+#define DBGMCU_PIDR4_SIZE             DBGMCU_PIDR4_SIZE_Msk
+
+/********************  Bit definition for DBGMCU_PIDR0 register ***********/
+#define DBGMCU_PIDR0_PARTNUM_Pos    (0UL)
+#define DBGMCU_PIDR0_PARTNUM_Msk    (0xFFUL << DBGMCU_PIDR0_PARTNUM_Pos)
+#define DBGMCU_PIDR0_PARTNUM        DBGMCU_PIDR0_PARTNUM_Msk
+
+/********************  Bit definition for DBGMCU_PIDR1 register ***********/
+#define DBGMCU_PIDR1_PARTNUM_Pos    (0UL)
+#define DBGMCU_PIDR1_PARTNUM_Msk    (0xFUL << DBGMCU_PIDR1_PARTNUM_Pos)
+#define DBGMCU_PIDR1_PARTNUM        DBGMCU_PIDR1_PARTNUM_Msk
+#define DBGMCU_PIDR1_JEP106ID_Pos   (4UL)
+#define DBGMCU_PIDR1_JEP106ID_Msk   (0xFUL << DBGMCU_PIDR1_JEP106ID_Pos)
+#define DBGMCU_PIDR1_JEP106ID       DBGMCU_PIDR1_JEP106ID_Msk
+
+/********************  Bit definition for DBGMCU_PIDR2 register ***********/
+#define DBGMCU_PIDR2_JEP106ID_Pos   (0UL)
+#define DBGMCU_PIDR2_JEP106ID_Msk   (0x7UL << DBGMCU_PIDR2_JEP106ID_Pos)
+#define DBGMCU_PIDR2_JEP106ID       DBGMCU_PIDR2_JEP106ID_Msk
+#define DBGMCU_PIDR2_JEDEC_Pos      (3UL)
+#define DBGMCU_PIDR2_JEDEC_Msk      (0x1UL << DBGMCU_PIDR2_JEDEC_Pos)
+#define DBGMCU_PIDR2_JEDEC          DBGMCU_PIDR2_JEDEC_Msk
+#define DBGMCU_PIDR2_REVISION_Pos   (4UL)
+#define DBGMCU_PIDR2_REVISION_Msk   (0xFUL << DBGMCU_PIDR2_REVISION_Pos)
+#define DBGMCU_PIDR2_REVISION       DBGMCU_PIDR2_REVISION_Msk
+
+/********************  Bit definition for DBGMCU_PIDR3 register ***********/
+#define DBGMCU_PIDR3_CMOD_Pos    (0UL)
+#define DBGMCU_PIDR3_CMOD_Msk    (0xFUL << DBGMCU_PIDR3_CMOD_Pos)
+#define DBGMCU_PIDR3_CMOD        DBGMCU_PIDR3_CMOD_Msk
+#define DBGMCU_PIDR3_REVAND_Pos  (4UL)
+#define DBGMCU_PIDR3_REVAND_Msk  (0xFUL << DBGMCU_PIDR3_REVAND_Pos)
+#define DBGMCU_PIDR3_REVAND      DBGMCU_PIDR3_REVAND_Msk
+
+/********************  Bit definition for DBGMCU_CIDR0 register ***********/
+#define DBGMCU_CIDR0_PREAMBLE_Pos    (0UL)
+#define DBGMCU_CIDR0_PREAMBLE_Msk    (0xFFUL << DBGMCU_CIDR0_PREAMBLE_Pos)
+#define DBGMCU_CIDR0_PREAMBLE        DBGMCU_CIDR0_PREAMBLE_Msk
+
+/********************  Bit definition for DBGMCU_CIDR1 register ***********/
+#define DBGMCU_CIDR1_PREAMBLE_Pos    (0UL)
+#define DBGMCU_CIDR1_PREAMBLE_Msk    (0xFUL << DBGMCU_CIDR1_PREAMBLE_Pos)
+#define DBGMCU_CIDR1_PREAMBLE        DBGMCU_CIDR1_PREAMBLE_Msk
+#define DBGMCU_CIDR1_CLASS_Pos       (4UL)
+#define DBGMCU_CIDR1_CLASS_Msk       (0xFUL << DBGMCU_CIDR1_CLASS_Pos)
+#define DBGMCU_CIDR1_CLASS           DBGMCU_CIDR1_CLASS_Msk
+
+/********************  Bit definition for DBGMCU_CIDR2 register ***********/
+#define DBGMCU_CIDR2_PREAMBLE_Pos    (0UL)
+#define DBGMCU_CIDR2_PREAMBLE_Msk    (0xFFUL << DBGMCU_CIDR2_PREAMBLE_Pos)
+#define DBGMCU_CIDR2_PREAMBLE        DBGMCU_CIDR2_PREAMBLE_Msk
+
+/********************  Bit definition for DBGMCU_CIDR3 register ***********/
+#define DBGMCU_CIDR3_PREAMBLE_Pos    (0UL)
+#define DBGMCU_CIDR3_PREAMBLE_Msk    (0xFFUL << DBGMCU_CIDR3_PREAMBLE_Pos)
+#define DBGMCU_CIDR3_PREAMBLE        DBGMCU_CIDR3_PREAMBLE_Msk
 
 /******************************************************************************/
 /*                                                                            */
@@ -13589,6 +13661,11 @@ typedef struct
 
 /********************  Bits definition for RTC_SSR register  ******************/
 #define RTC_SSR_SS_Pos                      (0UL)
+#define RTC_SSR_SS_0                        (0x1UL  << RTC_SSR_SS_Pos)              /*!< 0x00000001 */
+#define RTC_SSR_SS_1                        (0x2UL  << RTC_SSR_SS_Pos)              /*!< 0x00000002 */
+#define RTC_SSR_SS_2                        (0x4UL  << RTC_SSR_SS_Pos)              /*!< 0x00000004 */
+#define RTC_SSR_SS_3                        (0x8UL  << RTC_SSR_SS_Pos)              /*!< 0x00000008 */
+#define RTC_SSR_SS_4                        (0x10UL << RTC_SSR_SS_Pos)              /*!< 0x00000010 */
 #define RTC_SSR_SS_Msk                      (0xFFFFFFFFUL << RTC_SSR_SS_Pos)        /*!< 0xFFFFFFFF */
 #define RTC_SSR_SS                          RTC_SSR_SS_Msk
 
@@ -17296,9 +17373,6 @@ typedef struct
 #define TSC_IOGCSR_G7E_Pos       (6UL)
 #define TSC_IOGCSR_G7E_Msk       (0x1UL << TSC_IOGCSR_G7E_Pos)                 /*!< 0x00000040 */
 #define TSC_IOGCSR_G7E           TSC_IOGCSR_G7E_Msk                            /*!<Analog IO GROUP7 enable */
-#define TSC_IOGCSR_G8E_Pos       (7UL)
-#define TSC_IOGCSR_G8E_Msk       (0x1UL << TSC_IOGCSR_G8E_Pos)                 /*!< 0x00000080 */
-#define TSC_IOGCSR_G8E           TSC_IOGCSR_G8E_Msk                            /*!<Analog IO GROUP8 enable */
 #define TSC_IOGCSR_G1S_Pos       (16UL)
 #define TSC_IOGCSR_G1S_Msk       (0x1UL << TSC_IOGCSR_G1S_Pos)                 /*!< 0x00010000 */
 #define TSC_IOGCSR_G1S           TSC_IOGCSR_G1S_Msk                            /*!<Analog IO GROUP1 status */
@@ -18481,7 +18555,7 @@ typedef struct
 #define VREFBUF_CSR_VRS         VREFBUF_CSR_VRS_Msk                                 /*!<Voltage reference scale         */
 #define VREFBUF_CSR_VRS_0       (0x01UL<< VREFBUF_CSR_VRS_Pos)                      /*!< 0x000O0010 */
 #define VREFBUF_CSR_VRS_1       (0x02UL<< VREFBUF_CSR_VRS_Pos)                      /*!< 0x00000020 */
-#define VREFBUF_CSR_VRS_2       (0x04UL<< VREFBUF_CSR_VRS_Pos)                      /*!< 0x00000030 */
+#define VREFBUF_CSR_VRS_2       (0x03UL<< VREFBUF_CSR_VRS_Pos)                      /*!< 0x00000030 */
 #define VREFBUF_CSR_VRR_Pos     (3UL)
 #define VREFBUF_CSR_VRR_Msk     (0x1UL << VREFBUF_CSR_VRR_Pos)                      /*!< 0x00000008 */
 #define VREFBUF_CSR_VRR         VREFBUF_CSR_VRR_Msk                                 /*!<Voltage reference buffer ready  */
@@ -19118,6 +19192,8 @@ typedef struct
                                         ((INSTANCE) == SPI2_NS) || ((INSTANCE) == SPI2_S))
 
 #define IS_SPI_GRP2_INSTANCE(INSTANCE)  (((INSTANCE) == SPI3_NS) || ((INSTANCE) == SPI3_S))
+/****************** LCD Instances : All supported instances *****************/
+#define IS_LCD_ALL_INSTANCE(INSTANCE)    (((INSTANCE) == LCD_NS) || ((INSTANCE) == LCD_S))
 
 /****************** LPTIM Instances : All supported instances *****************/
 #define IS_LPTIM_INSTANCE(INSTANCE)     (((INSTANCE) == LPTIM1_NS) || ((INSTANCE) == LPTIM1_S) ||\
@@ -19702,6 +19778,8 @@ typedef struct
                                         ((INSTANCE) == SPI2_NS))
 
 #define IS_SPI_GRP2_INSTANCE(INSTANCE) ((INSTANCE) == SPI3_NS)
+/****************** LCD Instances : All supported instances *****************/
+#define IS_LCD_ALL_INSTANCE(INSTANCE)    ((INSTANCE) == LCD_NS)
 
 /****************** LPTIM Instances : All supported instances *****************/
 #define IS_LPTIM_INSTANCE(INSTANCE)     (((INSTANCE) == LPTIM1_NS) ||\
