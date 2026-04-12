@@ -62,19 +62,13 @@ STM32CubeIDE©.</li>
 <section id="update-history" class="col-sm-12 col-lg-8">
 <h1>Update History</h1>
 <div class="collapse">
-<input type="checkbox" id="collapse-section5" checked aria-hidden="true">
-<label for="collapse-section5" aria-hidden="true"><strong>V1.3.0 /
-29-October-2025</strong></label>
+<input type="checkbox" id="collapse-section6" checked aria-hidden="true">
+<label for="collapse-section6" aria-hidden="true"><strong>V1.4.0 /
+04-February-2026</strong></label>
 <div>
 <h2 id="main-changes">Main Changes</h2>
 <ul>
-<li>Update STM32CubeIDE projects to fix the location of .size directive
-in startup code to allow proper size information of vector table</li>
-<li>Change addresses of ROM symbols in <em><em>sram</em></em>.icf
-template files to code region alias in order to increase performance
-while running code from SRAM</li>
-<li>Allow redefinition of the macro ‘VECT_TAB_OFFSET’ externally from
-the IDE, makefile, or command line.</li>
+<li>Fix MISRA C:2012 Rule 12.2 violations</li>
 </ul>
 <h2 id="known-limitations">Known Limitations</h2>
 <p>None</p>
@@ -85,16 +79,19 @@ the IDE, makefile, or command line.</li>
 </div>
 </div>
 <div class="collapse">
-<input type="checkbox" id="collapse-section4" aria-hidden="true">
-<label for="collapse-section4" aria-hidden="true"><strong>V1.2.0 /
-09-November-2022</strong></label>
+<input type="checkbox" id="collapse-section5" aria-hidden="true">
+<label for="collapse-section5" aria-hidden="true"><strong>V1.3.0 /
+29-October-2025</strong></label>
 <div>
 <h2 id="main-changes-1">Main Changes</h2>
 <ul>
-<li>Add new device STM32WL5Mxx</li>
-<li>Rename ADC_TRx to ADC_AWDxTR to match with Reference Manual</li>
-<li>Fix inconsistent IRQn_Type enumeration for supervisor call exception
-with alias for compatibility</li>
+<li>Update STM32CubeIDE projects to fix the location of .size directive
+in startup code to allow proper size information of vector table</li>
+<li>Change addresses of ROM symbols in <em><em>sram</em></em>.icf
+template files to code region alias in order to increase performance
+while running code from SRAM</li>
+<li>Allow redefinition of the macro ‘VECT_TAB_OFFSET’ externally from
+the IDE, makefile, or command line.</li>
 </ul>
 <h2 id="known-limitations-1">Known Limitations</h2>
 <p>None</p>
@@ -105,14 +102,16 @@ with alias for compatibility</li>
 </div>
 </div>
 <div class="collapse">
-<input type="checkbox" id="collapse-section3" aria-hidden="true">
-<label for="collapse-section3" aria-hidden="true"><strong>V1.1.1 /
-4-February-2022</strong></label>
+<input type="checkbox" id="collapse-section4" aria-hidden="true">
+<label for="collapse-section4" aria-hidden="true"><strong>V1.2.0 /
+09-November-2022</strong></label>
 <div>
 <h2 id="main-changes-2">Main Changes</h2>
 <ul>
-<li>All source files and templates: update disclaimer to add reference
-to the new license agreement</li>
+<li>Add new device STM32WL5Mxx</li>
+<li>Rename ADC_TRx to ADC_AWDxTR to match with Reference Manual</li>
+<li>Fix inconsistent IRQn_Type enumeration for supervisor call exception
+with alias for compatibility</li>
 </ul>
 <h2 id="known-limitations-2">Known Limitations</h2>
 <p>None</p>
@@ -123,11 +122,29 @@ to the new license agreement</li>
 </div>
 </div>
 <div class="collapse">
+<input type="checkbox" id="collapse-section3" aria-hidden="true">
+<label for="collapse-section3" aria-hidden="true"><strong>V1.1.1 /
+4-February-2022</strong></label>
+<div>
+<h2 id="main-changes-3">Main Changes</h2>
+<ul>
+<li>All source files and templates: update disclaimer to add reference
+to the new license agreement</li>
+</ul>
+<h2 id="known-limitations-3">Known Limitations</h2>
+<p>None</p>
+<h2 id="dependencies-3">Dependencies</h2>
+<p>None</p>
+<h2 id="notes-3">Notes</h2>
+<p>None</p>
+</div>
+</div>
+<div class="collapse">
 <input type="checkbox" id="collapse-section2" aria-hidden="true">
 <label for="collapse-section2" aria-hidden="true"><strong>V1.1.0 /
 16-June-2021</strong></label>
 <div>
-<h2 id="main-changes-3">Main Changes</h2>
+<h2 id="main-changes-4">Main Changes</h2>
 <ul>
 <li>Add atomic register access services:
 <ul>
@@ -141,11 +158,11 @@ ATOMIC_MODIFYH_BIT()</li>
 <li>Add reference to user manual for customization of CubeIDE linker
 files</li>
 </ul>
-<h2 id="known-limitations-3">Known Limitations</h2>
+<h2 id="known-limitations-4">Known Limitations</h2>
 <p>None</p>
-<h2 id="dependencies-3">Dependencies</h2>
+<h2 id="dependencies-4">Dependencies</h2>
 <p>None</p>
-<h2 id="notes-3">Notes</h2>
+<h2 id="notes-4">Notes</h2>
 <p>None</p>
 </div>
 </div>
@@ -154,15 +171,15 @@ files</li>
 <label for="collapse-section1" aria-hidden="true"><strong>V1.0.0 /
 28-October-2020</strong></label>
 <div>
-<h2 id="main-changes-4">Main Changes</h2>
+<h2 id="main-changes-5">Main Changes</h2>
 <p><strong>First Official Release</strong></p>
 <h2 id="contents">Contents</h2>
 <p>First official release of CMSIS drivers for STM32WLxx lines</p>
-<h2 id="known-limitations-4">Known Limitations</h2>
+<h2 id="known-limitations-5">Known Limitations</h2>
 <p>None</p>
-<h2 id="dependencies-4">Dependencies</h2>
+<h2 id="dependencies-5">Dependencies</h2>
 <p>None</p>
-<h2 id="notes-4">Notes</h2>
+<h2 id="notes-5">Notes</h2>
 <p>None</p>
 </div>
 </div>
