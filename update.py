@@ -12,10 +12,7 @@ import subprocess
 from pathlib import Path
 from multiprocessing.pool import ThreadPool
 
-readme = "https://github.com/STMicroelectronics/STM32Cube_MCU_Overall_Offer/raw/refs/heads/master/README.md"
-with urllib.request.urlopen(readme) as f:
-      readme = f.read().decode('utf-8')
-stm32_families = re.findall(r"\(https://github.com/STMicroelectronics/cmsis-device-(.*?)\)", readme)
+logging.basicConfig(level=logging.DEBUG if "-vv" in sys.argv else logging.INFO)
 
 def replace(text, key, content):
     return re.sub(r"<!--{0}-->.*?<!--/{0}-->".format(key), "<!--{0}-->\n{1}\n<!--/{0}-->".format(key, content), text, flags=re.DOTALL | re.MULTILINE)
@@ -27,8 +24,6 @@ def get_header_version(release_notes):
 def get_header_date(release_notes):
     vmatch = re.search(r">V.+?/.*?(\d{2}-[A-Z][a-z]+?-20\d{2}).*?<", release_notes, flags=re.DOTALL | re.MULTILINE)
     return vmatch.group(1) if vmatch else None
-
-logging.basicConfig(level=logging.DEBUG if "-vv" in sys.argv else logging.INFO)
 
 def get_header_files(family):
     LOGGER = logging.getLogger(family.upper())
@@ -77,6 +72,12 @@ def get_header_files(family):
 
 shutil.rmtree("raw", ignore_errors=True)
 Path("raw").mkdir()
+subprocess.run(f"git clone --depth=1 https://github.com/STMicroelectronics/STM32Cube_MCU_Overall_Offer.git raw/STM32Cube_MCU_Overall_Offer", shell=True)
+readme = "".join(p.read_text() for p in Path("raw/STM32Cube_MCU_Overall_Offer").glob("**/*.md"))
+stm32_families = re.findall(r"\(https://github.com/STMicroelectronics/cmsis-device-(.+?)\)", readme)
+stm32_dfp = re.findall(r"\(https://github.com/STMicroelectronics/stm32(.+?)x+-dfp\)", readme)
+# print(stm32_families, stm32_dfp)
+
 with ThreadPool(len(stm32_families)) as pool:
     family_versions = pool.map(get_header_files, stm32_families)
 # family_versions = [get_header_files(f) for f in stm32_families]
