@@ -7,7 +7,7 @@
   *          The file is the unique include file that the application programmer
   *          is using in the C source code, usually in main.c. This file contains:
   *           - Configuration section that allows to select:
-  *              - The STM32WBxx device used in the target application
+  *              - The device used in the target application (STM32WL3xx or STM32WL3Rx)
   *              - To use or not the peripheral's drivers in application code(i.e.
   *                code will be based on direct access to peripheral's registers
   *                rather than drivers API), this option is controlled by
@@ -88,8 +88,8 @@
   * @brief CMSIS Device version number
   */
 #define __STM32WL3x_CMSIS_VERSION_MAIN   (0x01U) /*!< [31:24] main version */
-#define __STM32WL3x_CMSIS_VERSION_SUB1   (0x03U) /*!< [23:16] sub1 version */
-#define __STM32WL3x_CMSIS_VERSION_SUB2   (0x01U) /*!< [15:8]  sub2 version */
+#define __STM32WL3x_CMSIS_VERSION_SUB1   (0x05U) /*!< [23:16] sub1 version */
+#define __STM32WL3x_CMSIS_VERSION_SUB2   (0x00U) /*!< [15:8]  sub2 version */
 #define __STM32WL3x_CMSIS_VERSION_RC     (0x00U) /*!< [7:0]  release candidate */
 #define __STM32WL3x_CMSIS_VERSION       ((__STM32WL3x_CMSIS_VERSION_MAIN << 24U)\
                                        |(__STM32WL3x_CMSIS_VERSION_SUB1 << 16U)\

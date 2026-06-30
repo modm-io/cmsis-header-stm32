@@ -406,7 +406,7 @@ typedef struct{ /*!< PWR Structure  */
   __IO  uint32_t RESERVED2[10];
   __IO uint32_t DBGR;      /*!< (@ 0x00000084) DBGR register                */
   __IO uint32_t EXTSRR;    /*!< (@ 0x00000088) EXTSRR register              */
-  __IO  uint32_t RESERVED3;
+  __IO uint32_t DBGSMPS;   /*!< (@ 0x0000008C) DBGSMPS register             */
   __IO  uint32_t TRIMR;     /*!< (@ 0x00000090) TRIMR register               */
   __IO uint32_t ENGTRIM;   /*!< (@ 0x00000094) ENGTRIM register             */
   __IO  uint32_t RESERVED4[2];
@@ -804,7 +804,7 @@ typedef struct{ /*!< MR_SUBG_RADIO Structure  */
   __IO uint32_t IQC_CTRL1;             /*!< (@ 0x00000044) IQC_CTRL1 register                      */
   __IO uint32_t IQC_CTRL2;             /*!< (@ 0x00000048) IQC_CTRL2 register                      */
   __IO uint32_t IQC_CTRL3;             /*!< (@ 0x0000004C) IQC_CTRL3 register                      */
-  __IO  uint32_t RESERVED;
+  __IO uint32_t AGC_ANA_ENG;           /*!< (@ 0x00000050) AGC_ANA_ENG register                    */
   __IO uint32_t AGC0_CTRL;             /*!< (@ 0x00000054) AGC0_CTRL register                      */
   __IO uint32_t AGC1_CTRL;             /*!< (@ 0x00000058) AGC1_CTRL register                      */
   __IO uint32_t AGC2_CTRL;             /*!< (@ 0x0000005C) AGC2_CTRL register                      */
@@ -1031,9 +1031,9 @@ typedef struct{ /*!< LPAWUR Structure  */
 
 /*!< Peripheral memory map */
 #define APB0PERIPH_BASE        PERIPH_BASE
-#define APB1PERIPH_BASE       (PERIPH_BASE + 0x01000000LU)
-#define AHBPERIPH_BASE        (PERIPH_BASE + 0x08000000LU)
-#define APB2PERIPH_BASE       (PERIPH_BASE + 0x09000000LU)
+#define APB1PERIPH_BASE       (PERIPH_BASE + 0x01000000UL)
+#define AHBPERIPH_BASE        (PERIPH_BASE + 0x08000000UL)
+#define APB2PERIPH_BASE       (PERIPH_BASE + 0x09000000UL)
 
 
 /*!< APB0 peripherals */
@@ -8475,6 +8475,19 @@ typedef struct{ /*!< LPAWUR Structure  */
 #define PWR_EXTSRR_DEEPSTOPF_Msk                                           (0x200UL)        /*!< PWR EXTSRR: DEEPSTOPF (Bitfield-Mask: 0x01) */
 #define PWR_EXTSRR_DEEPSTOPF                                               PWR_EXTSRR_DEEPSTOPF_Msk
 
+/* =====================================================    DBGSMPS    =====================================================*/
+#define PWR_DBGSMPS_BOF_CUR_SEL_Pos                                        (14UL)        /*!<PWR DBGSMPS: BOF_CUR_SEL (Bit 14) */
+#define PWR_DBGSMPS_BOF_CUR_SEL_Msk                                        (0xc000UL)        /*!< PWR DBGSMPS: BOF_CUR_SEL (Bitfield-Mask: 0x03) */
+#define PWR_DBGSMPS_BOF_CUR_SEL                                            PWR_DBGSMPS_BOF_CUR_SEL_Msk
+#define PWR_DBGSMPS_BOF_CUR_SEL_0                                          (0x1U << PWR_DBGSMPS_BOF_CUR_SEL_Pos)
+#define PWR_DBGSMPS_BOF_CUR_SEL_1                                          (0x2U << PWR_DBGSMPS_BOF_CUR_SEL_Pos)
+#define PWR_DBGSMPS_ILIM_BOOST_Pos                                         (13UL)        /*!<PWR DBGSMPS: ILIM_BOOST (Bit 13) */
+#define PWR_DBGSMPS_ILIM_BOOST_Msk                                         (0x2000UL)        /*!< PWR DBGSMPS: ILIM_BOOST (Bitfield-Mask: 0x01) */
+#define PWR_DBGSMPS_ILIM_BOOST                                             PWR_DBGSMPS_ILIM_BOOST_Msk
+#define PWR_DBGSMPS_DIS_ILIM_Pos                                           (12UL)        /*!<PWR DBGSMPS: DIS_ILIM (Bit 12) */
+#define PWR_DBGSMPS_DIS_ILIM_Msk                                           (0x1000UL)        /*!< PWR DBGSMPS: DIS_ILIM (Bitfield-Mask: 0x01) */
+#define PWR_DBGSMPS_DIS_ILIM                                               PWR_DBGSMPS_DIS_ILIM_Msk
+
 /* =====================================================    TRIMR    =====================================================*/
 #define PWR_TRIMR_SMPS_TRIM_Pos                                            (8UL)        /*!<PWR TRIMR: SMPS_TRIM (Bit 8) */
 #define PWR_TRIMR_SMPS_TRIM_Msk                                            (0x700UL)        /*!< PWR TRIMR: SMPS_TRIM (Bitfield-Mask: 0x07) */
@@ -8525,18 +8538,6 @@ typedef struct{ /*!< LPAWUR Structure  */
 #define PWR_ENGTRIM_TRIMRFDREGEN_Pos                                       (0UL)        /*!<PWR ENGTRIM: TRIMRFDREGEN (Bit 0) */
 #define PWR_ENGTRIM_TRIMRFDREGEN_Msk                                       (0x1UL)        /*!< PWR ENGTRIM: TRIMRFDREGEN (Bitfield-Mask: 0x01) */
 #define PWR_ENGTRIM_TRIMRFDREGEN                                           PWR_ENGTRIM_TRIMRFDREGEN_Msk
-
-/* =====================================================    ENGTRIM2    =====================================================*/
-#define PWR_ENGTRIM2_BOF_TRIM_Pos                                          (1UL)        /*!<PWR ENGTRIM2: BOF_TRIM (Bit 1) */
-#define PWR_ENGTRIM2_BOF_TRIM_Msk                                          (0xeUL)        /*!< PWR ENGTRIM2: BOF_TRIM (Bitfield-Mask: 0x07) */
-#define PWR_ENGTRIM2_BOF_TRIM                                              PWR_ENGTRIM2_BOF_TRIM_Msk
-#define PWR_ENGTRIM2_BOF_TRIM_0                                            (0x1U << PWR_ENGTRIM2_BOF_TRIM_Pos)
-#define PWR_ENGTRIM2_BOF_TRIM_1                                            (0x2U << PWR_ENGTRIM2_BOF_TRIM_Pos)
-#define PWR_ENGTRIM2_BOF_TRIM_2                                            (0x4U << PWR_ENGTRIM2_BOF_TRIM_Pos)
-#define PWR_ENGTRIM2_BOFTRIMEN_Pos                                         (0UL)        /*!<PWR ENGTRIM2: BOFTRIMEN (Bit 0) */
-#define PWR_ENGTRIM2_BOFTRIMEN_Msk                                         (0x1UL)        /*!< PWR ENGTRIM2: BOFTRIMEN (Bitfield-Mask: 0x01) */
-#define PWR_ENGTRIM2_BOFTRIMEN                                             PWR_ENGTRIM2_BOFTRIMEN_Msk
-
 
 /* ============================================================================================================================*/
 /*=====================                                        RNG                                        =====================*/
@@ -10311,9 +10312,9 @@ typedef struct{ /*!< LPAWUR Structure  */
 #define MR_SUBG_GLOB_DYNAMIC_VCO_CAL_CONFIG_VCO_CALAMP_EXT_13              (0x2000U << MR_SUBG_GLOB_DYNAMIC_VCO_CAL_CONFIG_VCO_CALAMP_EXT_Pos)
 
 /* =====================================================    RX_TIMER    =====================================================*/
-#define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_OR_nAND_SELECT_Pos                (31UL)        /*!<MR_SUBG_GLOB_DYNAMIC RX_TIMER: RX_OR_nAND_SELECT (Bit 31) */
-#define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_OR_nAND_SELECT_Msk                (0x80000000UL)        /*!< MR_SUBG_GLOB_DYNAMIC RX_TIMER: RX_OR_nAND_SELECT (Bitfield-Mask: 0x01) */
-#define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_OR_nAND_SELECT                    MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_OR_nAND_SELECT_Msk
+#define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_OR_NAND_SELECT_Pos                (31UL)        /*!<MR_SUBG_GLOB_DYNAMIC RX_TIMER: RX_OR_NAND_SELECT (Bit 31) */
+#define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_OR_NAND_SELECT_Msk                (0x80000000UL)        /*!< MR_SUBG_GLOB_DYNAMIC RX_TIMER: RX_OR_NAND_SELECT (Bitfield-Mask: 0x01) */
+#define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_OR_NAND_SELECT                    MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_OR_NAND_SELECT_Msk
 #define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_SQI_TIMEOUT_MASK_Pos              (30UL)        /*!<MR_SUBG_GLOB_DYNAMIC RX_TIMER: RX_SQI_TIMEOUT_MASK (Bit 30) */
 #define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_SQI_TIMEOUT_MASK_Msk              (0x40000000UL)        /*!< MR_SUBG_GLOB_DYNAMIC RX_TIMER: RX_SQI_TIMEOUT_MASK (Bitfield-Mask: 0x01) */
 #define MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_SQI_TIMEOUT_MASK                  MR_SUBG_GLOB_DYNAMIC_RX_TIMER_RX_SQI_TIMEOUT_MASK_Msk
@@ -12163,6 +12164,24 @@ typedef struct{ /*!< LPAWUR Structure  */
 #define MR_SUBG_RADIO_IQC_CTRL3_FAST_TIME_2                                (0x4U << MR_SUBG_RADIO_IQC_CTRL3_FAST_TIME_Pos)
 #define MR_SUBG_RADIO_IQC_CTRL3_FAST_TIME_3                                (0x8U << MR_SUBG_RADIO_IQC_CTRL3_FAST_TIME_Pos)
 
+/* =====================================================    AGC_ANA_ENG    =====================================================*/
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_Pos                   (5UL)        /*!<MR_SUBG_RADIO AGC_ANA_ENG: RFD_RX_PGA_AGCGAIN (Bit 5) */
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_Msk                   (0xe0UL)        /*!< MR_SUBG_RADIO AGC_ANA_ENG: RFD_RX_PGA_AGCGAIN (Bitfield-Mask: 0x07) */
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN                       MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_Msk
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_0                     (0x1U << MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_Pos)
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_1                     (0x2U << MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_Pos)
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_2                     (0x4U << MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_PGA_AGCGAIN_Pos)
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_Pos                 (1UL)        /*!<MR_SUBG_RADIO AGC_ANA_ENG: RFD_RX_ATTEN_AGCGAIN (Bit 1) */
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_Msk                 (0x1eUL)        /*!< MR_SUBG_RADIO AGC_ANA_ENG: RFD_RX_ATTEN_AGCGAIN (Bitfield-Mask: 0x0f) */
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN                     MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_Msk
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_0                   (0x1U << MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_Pos)
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_1                   (0x2U << MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_Pos)
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_2                   (0x4U << MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_Pos)
+#define MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_3                   (0x8U << MR_SUBG_RADIO_AGC_ANA_ENG_RFD_RX_ATTEN_AGCGAIN_Pos)
+#define MR_SUBG_RADIO_AGC_ANA_ENG_FORCE_AGC_GAINS_Pos                      (0UL)        /*!<MR_SUBG_RADIO AGC_ANA_ENG: FORCE_AGC_GAINS (Bit 0) */
+#define MR_SUBG_RADIO_AGC_ANA_ENG_FORCE_AGC_GAINS_Msk                      (0x1UL)        /*!< MR_SUBG_RADIO AGC_ANA_ENG: FORCE_AGC_GAINS (Bitfield-Mask: 0x01) */
+#define MR_SUBG_RADIO_AGC_ANA_ENG_FORCE_AGC_GAINS                          MR_SUBG_RADIO_AGC_ANA_ENG_FORCE_AGC_GAINS_Msk
+
 /* =====================================================    AGC0_CTRL    =====================================================*/
 #define MR_SUBG_RADIO_AGC0_CTRL_AGC_EN_Pos                                 (7UL)        /*!<MR_SUBG_RADIO AGC0_CTRL: AGC_EN (Bit 7) */
 #define MR_SUBG_RADIO_AGC0_CTRL_AGC_EN_Msk                                 (0x80UL)        /*!< MR_SUBG_RADIO AGC0_CTRL: AGC_EN (Bitfield-Mask: 0x01) */
@@ -12822,7 +12841,7 @@ typedef struct{ /*!< LPAWUR Structure  */
 /******************************* LCD Instances ********************************/
 #define IS_LCD_ALL_INSTANCE(INSTANCE)  ((INSTANCE) == LCD)
 
-/** @} */ /* End of group STM32WBL3x_Peripheral_Exported_macros */
+/** @} */ /* End of group STM32WL3x_Peripheral_Exported_macros */
 
 /** @} */ /* End of group STM32WL3x */
 
