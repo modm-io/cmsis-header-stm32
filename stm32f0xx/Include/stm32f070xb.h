@@ -523,7 +523,6 @@ typedef struct
 #define FLASH_R_BASE          (AHBPERIPH_BASE + 0x00002000UL) /*!< FLASH registers base address */
 #define OB_BASE               0x1FFFF800UL       /*!< FLASH Option Bytes base address */
 #define FLASHSIZE_BASE        0x1FFFF7CCUL       /*!< FLASH Size register base address */
-#define UID_BASE              0x1FFFF7ACUL       /*!< Unique device ID register base address */
 #define CRC_BASE              (AHBPERIPH_BASE + 0x00003000UL)
 
 /*!< AHB2 peripherals */
