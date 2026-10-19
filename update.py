@@ -4,7 +4,6 @@
 import urllib.request
 import shutil
 import logging
-import os
 import re
 import sys
 import subprocess
@@ -59,12 +58,6 @@ def get_header_files(family):
         with path.open("r", newline=None, encoding="utf-8", errors="ignore") as rfile, \
                            dest.open("w", encoding="utf-8") as wfile:
             wfile.writelines(l.rstrip()+"\n" for l in rfile.readlines())
-
-    for patch in Path('patches').glob("{}*.patch".format(family)):
-        LOGGER.info("Applying {}...".format(patch))
-        if os.system("git apply -v --ignore-whitespace {}".format(patch)) != 0:
-            LOGGER.critical("Applying {} FAILED...".format(patch))
-            return None
 
     LOGGER.info("Successful update")
     return (header_remote_version, header_remote_date)
