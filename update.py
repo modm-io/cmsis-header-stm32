@@ -17,19 +17,29 @@ def replace(text, key, content):
     return re.sub(r"<!--{0}-->.*?<!--/{0}-->".format(key), "<!--{0}-->\n{1}\n<!--/{0}-->".format(key, content), text, flags=re.DOTALL | re.MULTILINE)
 
 def get_header_version(release_notes):
-    vmatch = re.search(r">V([0-9]+\.[0-9]+\.[0-9]+)", release_notes)
+    vmatch = re.search(r">V([0-9]+\.[0-9]+\.[0-9]+)", release_notes) or \
+             re.search(r">([0-9]+\.[0-9]+\.[0-9]+) */", release_notes)
     return vmatch.group(1) if vmatch else None
 
 def get_header_date(release_notes):
-    vmatch = re.search(r">V.+?/.*?(\d{2}-[A-Z][a-z]+?-20\d{2}).*?<", release_notes, flags=re.DOTALL | re.MULTILINE)
+    vmatch = re.search(r">V.+?/.*?(\d{2}-[A-Z][a-z]+?-20\d{2}).*?<", release_notes, flags=re.DOTALL | re.MULTILINE) or \
+             re.search(r">[0-9]+\.[0-9]+\.[0-9]+ */.*?(\d{2}-[A-Z][a-z]+?-20\d{2}).*?<", release_notes, flags=re.DOTALL)
     return vmatch.group(1) if vmatch else None
+
+def repo_url(family):
+    if family in stm32_dfp:
+        return f"https://github.com/STMicroelectronics/stm32{family}xx-dfp"
+    return f"https://github.com/STMicroelectronics/STM32Cube{family.upper()}"
 
 def get_header_files(family):
     LOGGER = logging.getLogger(family.upper())
 
     remote_path = Path(f"raw/STM32{family.upper()}xx").absolute()
-    repo_url = f"https://github.com/STMicroelectronics/cmsis-device-{family.lower()}.git"
-    subprocess.run(f"git clone --depth=1 {repo_url} {remote_path}", shell=True)
+    if family in stm32_dfp:
+        clone_url = f"https://github.com/STMicroelectronics/stm32{family}xx-dfp.git"
+    else:
+        clone_url = f"https://github.com/STMicroelectronics/cmsis-device-{family.lower()}.git"
+    subprocess.run(f"git clone --depth=1 {clone_url} {remote_path}", shell=True)
 
     remote_readme = (remote_path / "Release_Notes.html")
     remote_readme_content = remote_readme.read_text(errors="replace")
@@ -68,7 +78,8 @@ Path("raw").mkdir()
 subprocess.run(f"git clone --depth=1 https://github.com/STMicroelectronics/STM32Cube_MCU_Overall_Offer.git raw/STM32Cube_MCU_Overall_Offer", shell=True)
 readme = "".join(p.read_text() for p in Path("raw/STM32Cube_MCU_Overall_Offer").glob("**/*.md"))
 stm32_families = re.findall(r"\(https://github.com/STMicroelectronics/cmsis-device-(.+?)\)", readme)
-stm32_dfp = re.findall(r"\(https://github.com/STMicroelectronics/stm32(.+?)x+-dfp\)", readme)
+stm32_dfp = [f.lower() for f in re.findall(r"\(https://github.com/STMicroelectronics/stm32(.+?)x+-dfp\)", readme, flags=re.IGNORECASE)]
+stm32_families = sorted(stm32_families + stm32_dfp)
 # print(stm32_families, stm32_dfp)
 
 with ThreadPool(len(stm32_families)) as pool:
@@ -81,7 +92,7 @@ rows = {f.lower(): row for row, f in re.findall(r"^(- \[STM32(\w+?):.*)$", readm
 for family, versions in zip(stm32_families, family_versions):
     if versions is None or versions[0] is None: continue;
     # Update only this family's row, so that each commit contains only its own README change
-    rows[family] = f"- [STM32{family.upper()}: v{versions[0]} created {versions[1]}](https://github.com/STMicroelectronics/STM32Cube{family.upper()})"
+    rows[family] = f"- [STM32{family.upper()}: v{versions[0]} created {versions[1]}]({repo_url(family)})"
     readme = replace(readme, "table", "\n".join(rows[f] for f in stm32_families if f in rows))
     Path("README.md").write_text(readme)
     subprocess.run("git add README.md stm32{}xx".format(family), shell=True)
