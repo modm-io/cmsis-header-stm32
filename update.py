@@ -76,13 +76,14 @@ with ThreadPool(len(stm32_families)) as pool:
 # family_versions = [get_header_files(f) for f in stm32_families]
 
 readme = Path("README.md").read_text()
-table = [f"- [STM32{family.upper()}: v{version} created {date}](https://github.com/STMicroelectronics/STM32Cube{family.upper()})"
-         for family, (version, date) in zip(stm32_families, family_versions)]
-readme = replace(readme, "table", "\n".join(table))
-Path("README.md").write_text(readme)
+rows = {f.lower(): row for row, f in re.findall(r"^(- \[STM32(\w+?):.*)$", readme, flags=re.MULTILINE)}
 
 for family, versions in zip(stm32_families, family_versions):
     if versions is None or versions[0] is None: continue;
+    # Update only this family's row, so that each commit contains only its own README change
+    rows[family] = f"- [STM32{family.upper()}: v{versions[0]} created {versions[1]}](https://github.com/STMicroelectronics/STM32Cube{family.upper()})"
+    readme = replace(readme, "table", "\n".join(rows[f] for f in stm32_families if f in rows))
+    Path("README.md").write_text(readme)
     subprocess.run("git add README.md stm32{}xx".format(family), shell=True)
     if subprocess.call("git diff-index --quiet HEAD --", shell=True):
         subprocess.run('git commit -m "Update STM32{} headers to v{}"'.format(family.upper(), versions[0]), shell=True)
