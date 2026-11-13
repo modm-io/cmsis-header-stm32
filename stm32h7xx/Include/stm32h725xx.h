@@ -24122,7 +24122,9 @@ typedef struct
    ((INSTANCE) == TIM3)    || \
    ((INSTANCE) == TIM4)    || \
    ((INSTANCE) == TIM5)    || \
-   ((INSTANCE) == TIM8))
+   ((INSTANCE) == TIM8)    || \
+   ((INSTANCE) == TIM23)   || \
+   ((INSTANCE) == TIM24))
 
 /****************** TIM Instances : supporting repetition counter *************/
 #define IS_TIM_REPETITION_COUNTER_INSTANCE(INSTANCE)\

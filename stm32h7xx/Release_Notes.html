@@ -30,9 +30,23 @@
 <div class="col-sm-12 col-lg-8">
 <h1 id="update-history"><strong>Update History</strong></h1>
 <div class="collapse">
-<input type="checkbox" id="collapse-section19" checked aria-hidden="true"> <label for="collapse-section19" aria-hidden="true"><strong>V1.10.7 / 04-February-2026</strong></label>
+<input type="checkbox" id="collapse-section20" checked aria-hidden="true"> <label for="collapse-section20" aria-hidden="true"><strong>V1.10.8 / 26-October-2026</strong></label>
 <div>
 <h2 id="main-changes">Main Changes</h2>
+<ul>
+<li>Exclude optimization from instruction of ExitRun0Mode() function in system_stm32h7xx.h file for Clang compilers</li>
+<li>Set default VTOR to the internal Flash base address if ‘USER_VECT_TAB_ADDRESS’ is not defined to ensure correct IRQ dispatch</li>
+<li>STM32H723/H725/H730/H733/H735 devices header files:
+<ul>
+<li>Update IS_TIM_COUNTER_MODE_SELECT_INSTANCE() macro to support the missing TIM23 and TIM24 instances</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section19" aria-hidden="true"> <label for="collapse-section19" aria-hidden="true"><strong>V1.10.7 / 04-February-2026</strong></label>
+<div>
+<h2 id="main-changes-1">Main Changes</h2>
 <ul>
 <li>Fix typos in GPIO MODER bit naming definitions (no need to add legacy defines).</li>
 <li>Add QUADSPI_CCR_FRCM bit definitions.</li>
@@ -45,7 +59,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section18" aria-hidden="true"> <label for="collapse-section18" aria-hidden="true"><strong>V1.10.6 / 06-December-2024</strong></label>
 <div>
-<h2 id="main-changes-1">Main Changes</h2>
+<h2 id="main-changes-2">Main Changes</h2>
 <ul>
 <li><strong>system_stm32h7xx.c template files</strong>
 <ul>
@@ -72,7 +86,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section17" aria-hidden="true"> <label for="collapse-section17" aria-hidden="true"><strong>V1.10.5 / 30-October-2024</strong></label>
 <div>
-<h2 id="main-changes-2">Main Changes</h2>
+<h2 id="main-changes-3">Main Changes</h2>
 <ul>
 <li>Update startup files to safely exit from Run* mode.
 <ul>
@@ -90,7 +104,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section16" aria-hidden="true"> <label for="collapse-section16" aria-hidden="true"><strong>V1.10.4 / 15-March-2024</strong></label>
 <div>
-<h2 id="main-changes-3">Main Changes</h2>
+<h2 id="main-changes-4">Main Changes</h2>
 <ul>
 <li>Update the values of the sensor calibration temperatures for H742, H743, and H753 part numbers.</li>
 <li>Remove the unsupported MDMA BASE channel.</li>
@@ -105,7 +119,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section15" aria-hidden="true"> <label for="collapse-section15" aria-hidden="true"><strong>V1.10.3 / 23-September-2022</strong></label>
 <div>
-<h2 id="main-changes-4">Main Changes</h2>
+<h2 id="main-changes-5">Main Changes</h2>
 <ul>
 <li>General updates to fix known defects and implementation enhancements</li>
 <li>Update system_stm32h7xx_*.c template files to fix typo in comment: the VTOR offset value is multiple of 0x400.</li>
@@ -116,7 +130,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section14" aria-hidden="true"> <label for="collapse-section14" aria-hidden="true"><strong>V1.10.2 / 12-February-2022</strong></label>
 <div>
-<h2 id="main-changes-5">Main Changes</h2>
+<h2 id="main-changes-6">Main Changes</h2>
 <ul>
 <li>General updates to fix known defects and implementation enhancements</li>
 <li>Add support for ADC LDO output voltage ready bit.</li>
@@ -131,7 +145,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section13" aria-hidden="true"> <label for="collapse-section13" aria-hidden="true"><strong>V1.10.1 / 06-December-2021</strong></label>
 <div>
-<h2 id="main-changes-6">Main Changes</h2>
+<h2 id="main-changes-7">Main Changes</h2>
 <ul>
 <li>General updates to fix known defects and implementation enhancements</li>
 <li>All source files: update disclaimer to add reference to the new license agreement.</li>
@@ -157,7 +171,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section12" aria-hidden="true"> <label for="collapse-section12" aria-hidden="true"><strong>V1.10.0 / 12-February-2021</strong></label>
 <div>
-<h2 id="main-changes-7">Main Changes</h2>
+<h2 id="main-changes-8">Main Changes</h2>
 <ul>
 <li>Fix minor issues related to English typo in comments of registers and fields description</li>
 <li>Update STM32H7 devices header files to add GPV registers definition, base address and instance</li>
@@ -175,7 +189,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section11" aria-hidden="true"> <label for="collapse-section11" aria-hidden="true"><strong>V1.9.0 / 29-May-2020</strong></label>
 <div>
-<h2 id="main-changes-8">Main Changes</h2>
+<h2 id="main-changes-9">Main Changes</h2>
 <ul>
 <li>Add support of stm32h723xx, stm32h725xx, stm32h733xx, stm32h735xx, stm32h730xx and stm32h730xxQ devices:
 <ul>
@@ -233,7 +247,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section10" aria-hidden="true"> <label for="collapse-section10" aria-hidden="true"><strong>V1.8.0 / 14-February-2020</strong></label>
 <div>
-<h2 id="main-changes-9">Main Changes</h2>
+<h2 id="main-changes-10">Main Changes</h2>
 <ul>
 <li>General updates to align Bits and registers definitions with the STM32H7 reference manual</li>
 <li>Update “ErrorStatus” enumeration definition in stm32h7xx.h file with SUCCESS set to numerical value zero</li>
@@ -254,7 +268,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section9" aria-hidden="true"> <label for="collapse-section9" aria-hidden="true"><strong>V1.7.0 / 06-December-2019</strong></label>
 <div>
-<h2 id="main-changes-10">Main Changes</h2>
+<h2 id="main-changes-11">Main Changes</h2>
 <ul>
 <li><p>General updates to align Bit and registers definition with the STM32H7 reference manual</p></li>
 <li>Add support of stm32h7A3xx, stm32h7A3xxQ, stm32h7B3xx, stm32h7B3xxQ, stm32h7B0xx and stm32h7B0xxQ devices:
@@ -284,7 +298,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section8" aria-hidden="true"> <label for="collapse-section8" aria-hidden="true"><strong>V1.6.0 / 28-June-2019</strong></label>
 <div>
-<h2 id="main-changes-11">Main Changes</h2>
+<h2 id="main-changes-12">Main Changes</h2>
 <ul>
 <li>Add definition of “ART_TypeDef” structure: ART accelerator for Cortex-M4 available in Dual Core devices</li>
 <li>Add definition of “ART” instance: pointer to “ART_TypeDef” structure</li>
@@ -299,7 +313,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section7" aria-hidden="true"> <label for="collapse-section7" aria-hidden="true"><strong>V1.5.0 / 05-April-2019</strong></label>
 <div>
-<h2 id="main-changes-12">Main Changes</h2>
+<h2 id="main-changes-13">Main Changes</h2>
 <ul>
 <li>General updates to align Bit and registers definition with the STM32H7 reference manual</li>
 <li>Updates to aligned with STM32H7xx <strong>rev.V</strong> devices</li>
@@ -363,7 +377,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section6" aria-hidden="true"> <label for="collapse-section6" aria-hidden="true"><strong>V1.3.1 / 31-January-2019</strong></label>
 <div>
-<h2 id="main-changes-13">Main Changes</h2>
+<h2 id="main-changes-14">Main Changes</h2>
 <ul>
 <li><strong>Patch Release on top of V1.3.0</strong></li>
 <li>Add Definition of UID_BASE ( Unique device ID register base address) to the STM32H7xx include files:
@@ -376,7 +390,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section5" aria-hidden="true"> <label for="collapse-section5" aria-hidden="true"><strong>V1.4.0 / 30-November-2018</strong></label>
 <div>
-<h2 id="main-changes-14">Main Changes</h2>
+<h2 id="main-changes-15">Main Changes</h2>
 <ul>
 <li>STM32H7xx include files:
 <ul>
@@ -421,7 +435,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section4" aria-hidden="true"> <label for="collapse-section4" aria-hidden="true"><strong>V1.3.0 / 29-June-2018</strong></label>
 <div>
-<h2 id="main-changes-15">Main Changes</h2>
+<h2 id="main-changes-16">Main Changes</h2>
 <ul>
 <li>Add support for stm32h750xx value line devices:
 <ul>
@@ -434,7 +448,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section3"  aria-hidden="true"> <label for="collapse-section3" aria-hidden="true"><strong>V1.2.0 / 29-December-2017</strong></label>
 <div>
-<h2 id="main-changes-16">Main Changes</h2>
+<h2 id="main-changes-17">Main Changes</h2>
 <ul>
 <li>Update FDCAN bit definition</li>
 <li>Update SystemCoreClockUpdate() function in system_stm32h7xx.c file to use direct register access</li>
@@ -444,7 +458,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" aria-hidden="true"><strong>V1.1.0 / 31-August-2017</strong></label>
 <div>
-<h2 id="main-changes-17">Main Changes</h2>
+<h2 id="main-changes-18">Main Changes</h2>
 <ul>
 <li>Update USB OTG bit definition</li>
 <li>Adjust PLL fractional computation</li>
@@ -454,7 +468,7 @@
 <div class="collapse">
 <input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true"><strong>V1.0.0 / 21-April-2017</strong></label>
 <div>
-<h2 id="main-changes-18">Main Changes</h2>
+<h2 id="main-changes-19">Main Changes</h2>
 <ul>
 <li>First official release for <strong>STM32H743xx/753xx</strong> devices</li>
 </ul>

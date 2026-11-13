@@ -22,7 +22,7 @@ Here is the list of the current device header version and release date:
 - [STM32G4: v1.2.6 created 06-February-2026](https://github.com/STMicroelectronics/STM32CubeG4)
 - [STM32G5: v2.0.0 created 25-September-2026](https://github.com/STMicroelectronics/stm32g5xx-dfp)
 - [STM32H5: v1.7.0 created 03-June-2026](https://github.com/STMicroelectronics/STM32CubeH5)
-- [STM32H7: v1.10.7 created 04-February-2026](https://github.com/STMicroelectronics/STM32CubeH7)
+- [STM32H7: v1.10.8 created 26-October-2026](https://github.com/STMicroelectronics/STM32CubeH7)
 - [STM32H7P: v2.0.0 created 30-October-2026](https://github.com/STMicroelectronics/stm32h7pxx-dfp)
 - [STM32H7RS: v1.2.1 created 29-October-2025](https://github.com/STMicroelectronics/STM32CubeH7RS)
 - [STM32L0: v1.9.4 created 07-March-2025](https://github.com/STMicroelectronics/STM32CubeL0)
