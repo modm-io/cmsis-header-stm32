@@ -147,11 +147,11 @@ typedef enum
   I2C3_ER_IRQn                = 73,     /*!< I2C3 error interrupt                                              */
   RNG_IRQn                    = 80,     /*!< RNG global Interrupt                                              */
   FPU_IRQn                    = 81,     /*!< FPU global interrupt                                              */
-                                SPI4_IRQn                   = 84,     /*!< SPI4 global Interrupt                                             */
-                                                              SPI5_IRQn                   = 85,     /*!< SPI5 global Interrupt                                             */
-                                                                  QUADSPI_IRQn                = 92,     /*!< QuadSPI global Interrupt                                          */
-                                                                  FMPI2C1_EV_IRQn             = 95,     /*!< FMPI2C1 Event Interrupt                                           */
-                                                                  FMPI2C1_ER_IRQn             = 96      /*!< FMPI2C1 Error Interrupt                                           */
+  SPI4_IRQn                   = 84,     /*!< SPI4 global Interrupt                                             */
+  SPI5_IRQn                   = 85,     /*!< SPI5 global Interrupt                                             */
+  QUADSPI_IRQn                = 92,     /*!< QuadSPI global Interrupt                                          */
+  FMPI2C1_EV_IRQn             = 95,     /*!< FMPI2C1 Event Interrupt                                           */
+  FMPI2C1_ER_IRQn             = 96      /*!< FMPI2C1 Error Interrupt                                           */
 } IRQn_Type;
 
 /**
@@ -842,6 +842,9 @@ typedef struct
 #define SRAM1_BB_BASE         0x22000000UL /*!< SRAM1(256 KB) base address in the bit-band region                          */
 #define PERIPH_BB_BASE        0x42000000UL /*!< Peripheral base address in the bit-band region                             */
 #define FLASH_END             0x080FFFFFUL /*!< FLASH end address                                                          */
+#define FLASH_SIZE            ((((*((uint16_t *)FLASHSIZE_BASE)) == 0xFFFFU)) ? 0x100000U : \
+                              ((((*((uint16_t *)FLASHSIZE_BASE)) == 0x0000U)) ? 0x100000U : \
+                              (((uint32_t)(*((uint16_t *)FLASHSIZE_BASE)) & (0xFFFFU)) << 10U)))
 #define FLASH_OTP_BASE        0x1FFF7800UL /*!< Base address of : (up to 528 Bytes) embedded FLASH OTP Area                */
 #define FLASH_OTP_END         0x1FFF7A0FUL /*!< End address of : (up to 528 Bytes) embedded FLASH OTP Area                 */
 
@@ -11652,7 +11655,7 @@ typedef struct
 #define SYSCFG_CMPCR_READY_Pos               (8U)
 #define SYSCFG_CMPCR_READY_Msk               (0x1UL << SYSCFG_CMPCR_READY_Pos)  /*!< 0x00000100 */
 #define SYSCFG_CMPCR_READY                   SYSCFG_CMPCR_READY_Msk            /*!<Compensation cell power-down */
-/******************  Bit definition for SYSCFG_CFGR register  ****************/
+/******************  Bit definition for SYSCFG_CFGR register  *****************/
 #define SYSCFG_CFGR_FMPI2C1_SCL_Pos          (0U)
 #define SYSCFG_CFGR_FMPI2C1_SCL_Msk          (0x1UL << SYSCFG_CFGR_FMPI2C1_SCL_Pos) /*!< 0x00000001 */
 #define SYSCFG_CFGR_FMPI2C1_SCL              SYSCFG_CFGR_FMPI2C1_SCL_Msk       /*!<FM+ drive capability for FMPI2C1_SCL pin */
@@ -11660,6 +11663,13 @@ typedef struct
 #define SYSCFG_CFGR_FMPI2C1_SDA_Msk          (0x1UL << SYSCFG_CFGR_FMPI2C1_SDA_Pos) /*!< 0x00000002 */
 #define SYSCFG_CFGR_FMPI2C1_SDA              SYSCFG_CFGR_FMPI2C1_SDA_Msk       /*!<FM+ drive capability for FMPI2C1_SDA pin */
 
+/******************  Bit definition for SYSCFG_CFGR2 register  *****************/
+#define SYSCFG_CFGR2_LOCKUP_LOCK_Pos         (0U)
+#define SYSCFG_CFGR2_LOCKUP_LOCK_Msk         (0x1UL << SYSCFG_CFGR2_LOCKUP_LOCK_Pos) /*!< 0x00000001 */
+#define SYSCFG_CFGR2_LOCKUP_LOCK             SYSCFG_CFGR2_LOCKUP_LOCK_Msk      /*!<Core Lockup lock */
+#define SYSCFG_CFGR2_PVD_LOCK_Pos            (2U)
+#define SYSCFG_CFGR2_PVD_LOCK_Msk            (0x1UL << SYSCFG_CFGR2_PVD_LOCK_Pos) /*!< 0x00000004 */
+#define SYSCFG_CFGR2_PVD_LOCK                SYSCFG_CFGR2_PVD_LOCK_Msk         /*!<PVD Lock         */
 
 /******************************************************************************/
 /*                                                                            */

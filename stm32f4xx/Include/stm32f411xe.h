@@ -129,8 +129,8 @@ typedef enum
   I2C3_EV_IRQn                = 72,     /*!< I2C3 event interrupt                                              */
   I2C3_ER_IRQn                = 73,     /*!< I2C3 error interrupt                                              */
   FPU_IRQn                    = 81,     /*!< FPU global interrupt                                              */
-                                SPI4_IRQn                   = 84,     /*!< SPI4 global Interrupt                                             */
-                                                              SPI5_IRQn                   = 85      /*!< SPI5 global Interrupt                                              */
+  SPI4_IRQn                   = 84,     /*!< SPI4 global Interrupt                                             */
+  SPI5_IRQn                   = 85      /*!< SPI5 global Interrupt                                             */
 } IRQn_Type;
 
 /**
@@ -640,6 +640,9 @@ typedef struct
 #define PERIPH_BB_BASE        0x42000000UL /*!< Peripheral base address in the bit-band region                             */
 #define BKPSRAM_BB_BASE       0x42480000UL /*!< Backup SRAM(4 KB) base address in the bit-band region                      */
 #define FLASH_END             0x0807FFFFUL /*!< FLASH end address                                                          */
+#define FLASH_SIZE            ((((*((uint16_t *)FLASHSIZE_BASE)) == 0xFFFFU)) ? 0x80000U : \
+                              ((((*((uint16_t *)FLASHSIZE_BASE)) == 0x0000U)) ? 0x80000U : \
+                              (((uint32_t)(*((uint16_t *)FLASHSIZE_BASE)) & (0xFFFFU)) << 10U)))
 #define FLASH_OTP_BASE        0x1FFF7800UL /*!< Base address of : (up to 528 Bytes) embedded FLASH OTP Area                */
 #define FLASH_OTP_END         0x1FFF7A0FUL /*!< End address of : (up to 528 Bytes) embedded FLASH OTP Area                 */
 

@@ -152,14 +152,14 @@ typedef enum
   OTG_HS_IRQn                 = 77,     /*!< USB OTG HS global interrupt                                       */
   DCMI_IRQn                   = 78,     /*!< DCMI global interrupt                                             */
   FPU_IRQn                    = 81,     /*!< FPU global interrupt                                              */
-                                SPI4_IRQn                   = 84,     /*!< SPI4 global Interrupt                                             */
-                                                                  SAI1_IRQn                   = 87,     /*!< SAI1 global Interrupt                                             */
-                                                                  SAI2_IRQn                   = 91,     /*!< SAI2 global Interrupt                                             */
-                                                                  QUADSPI_IRQn                = 92,     /*!< QuadSPI global Interrupt                                          */
-                                                                  CEC_IRQn                    = 93,     /*!< CEC global Interrupt                                              */
-                                                                  SPDIF_RX_IRQn               = 94,     /*!< SPDIF-RX global Interrupt                                          */
-                                                                  FMPI2C1_EV_IRQn             = 95,     /*!< FMPI2C1 Event Interrupt                                           */
-                                                                  FMPI2C1_ER_IRQn             = 96      /*!< FMPI2C1 Error Interrupt                                           */
+  SPI4_IRQn                   = 84,     /*!< SPI4 global Interrupt                                             */
+  SAI1_IRQn                   = 87,     /*!< SAI1 global Interrupt                                             */
+  SAI2_IRQn                   = 91,     /*!< SAI2 global Interrupt                                             */
+  QUADSPI_IRQn                = 92,     /*!< QuadSPI global Interrupt                                          */
+  CEC_IRQn                    = 93,     /*!< CEC global Interrupt                                              */
+  SPDIF_RX_IRQn               = 94,     /*!< SPDIF-RX global Interrupt                                         */
+  FMPI2C1_EV_IRQn             = 95,     /*!< FMPI2C1 Event Interrupt                                           */
+  FMPI2C1_ER_IRQn             = 96      /*!< FMPI2C1 Error Interrupt                                           */
 } IRQn_Type;
 
 /**
@@ -926,6 +926,9 @@ typedef struct
 #define PERIPH_BB_BASE        0x42000000UL /*!< Peripheral base address in the bit-band region                             */
 #define BKPSRAM_BB_BASE       0x42480000UL /*!< Backup SRAM(4 KB) base address in the bit-band region                      */
 #define FLASH_END             0x0807FFFFUL /*!< FLASH end address                                                          */
+#define FLASH_SIZE            ((((*((uint16_t *)FLASHSIZE_BASE)) == 0xFFFFU)) ? 0x80000U : \
+                              ((((*((uint16_t *)FLASHSIZE_BASE)) == 0x0000U)) ? 0x80000U : \
+                              (((uint32_t)(*((uint16_t *)FLASHSIZE_BASE)) & (0xFFFFU)) << 10U)))
 #define FLASH_OTP_BASE        0x1FFF7800UL /*!< Base address of : (up to 528 Bytes) embedded FLASH OTP Area                */
 #define FLASH_OTP_END         0x1FFF7A0FUL /*!< End address of : (up to 528 Bytes) embedded FLASH OTP Area                 */
 
