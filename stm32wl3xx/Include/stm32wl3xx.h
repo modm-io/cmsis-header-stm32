@@ -712,12 +712,12 @@ typedef struct{ /*!< LCSC Structure  */
   __IO uint32_t CR2;       /*!< (@ 0x00000008) LCSC_CR2 register               */
   __IO uint32_t PULSE_CR;  /*!< (@ 0x0000000C) LCSC_PULSE_CR register          */
   __IO uint32_t ENR;       /*!< (@ 0x00000010) LCSC_ENR register               */
-  __IO  uint32_t WHEEL_SR;  /*!< (@ 0x00000014) LCSC_WHEEL_SR register          */
+  __IO uint32_t WHEEL_SR;  /*!< (@ 0x00000014) LCSC_WHEEL_SR register          */
   __IO uint32_t CONFR;     /*!< (@ 0x00000018) LCSC_CONFR register             */
-  __IO  uint32_t COMP_CNT;  /*!< (@ 0x0000001C) LCSC_COMP_CNT register          */
-  __IO  uint32_t SR;        /*!< (@ 0x00000020) LCSC_SR register                */
+  __IO uint32_t COMP_CNT;  /*!< (@ 0x0000001C) LCSC_COMP_CNT register          */
+  __IO uint32_t SR;        /*!< (@ 0x00000020) LCSC_SR register                */
   __IO uint32_t STAT;      /*!< (@ 0x00000024) LCSC_STAT register              */
-  __IO  uint32_t RESERVED[6];
+  __IO uint32_t RESERVED[7];
   __IO uint32_t ISR;       /*!< (@ 0x00000044) LCSC_ISR register               */
 } LCSC_TypeDef;              /*!< Size = 72 (0x48) */
 
@@ -1101,6 +1101,14 @@ typedef struct{ /*!< LPAWUR Structure  */
 
 /** @} */ /* End of group Device_Peripheral_peripheralAddr */
 
+/** @addtogroup Hardware_Constant_Definition
+  * @{
+  */
+#define LSI_STARTUP_TIME                16000U /*!< LSI Maximum startup time in us : 4 cycles @ 250 Hz = 16 ms */
+
+/**
+  * @}
+  */
 
 /* =========================================================================================================================== */
 /* ================                                  Peripheral declaration                                   ================ */

@@ -37,7 +37,7 @@ Here is the list of the current device header version and release date:
 - [STM32WB0: v1.4.0 created 29-October-2025](https://github.com/STMicroelectronics/STM32CubeWB0)
 - [STM32WBA: v1.11.0 created 28-October-2026](https://github.com/STMicroelectronics/STM32CubeWBA)
 - [STM32WL: v1.4.0 created 04-February-2026](https://github.com/STMicroelectronics/STM32CubeWL)
-- [STM32WL3: v1.5.0 created 05-June-2026](https://github.com/STMicroelectronics/STM32CubeWL3)
+- [STM32WL3: v1.6.0 created 28-October-2026](https://github.com/STMicroelectronics/STM32CubeWL3)
 <!--/table-->
 
 This repository is updated periodically by Github Actions.
